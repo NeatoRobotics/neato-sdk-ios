@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Neato Login View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="NeatoLoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKV-6h-1mD">
+                                <rect key="frame" x="225" y="273" width="150" height="55"/>
+                                <state key="normal" image="Login_BTN"/>
+                                <connections>
+                                    <action selector="launchLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lxy-Ri-by1"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CKV-6h-1mD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="X2D-Cc-JXe"/>
+                            <constraint firstItem="CKV-6h-1mD" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="poa-eY-8FP"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="518" y="404"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="s9n-fy-dKd">
+            <objects>
+                <navigationController storyboardIdentifier="Authorized" id="HKi-0h-Ei8" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="XQr-CZ-xWW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.20000000000000001" green="0.23921568630000001" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="0.0"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Cr7-wi-hSc" kind="relationship" relationship="rootViewController" id="aYj-y9-v8N"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wxX-Jj-bcC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1234" y="404"/>
+        </scene>
+        <!--Neato Dashboard View Controller-->
+        <scene sceneID="OCw-Dt-hCQ">
+            <objects>
+                <viewController id="Cr7-wi-hSc" customClass="NeatoDashboardViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="129-TS-fMR"/>
+                        <viewControllerLayoutGuide type="bottom" id="cVi-2V-prZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9DA-4s-7cb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="5" translatesAutoresizingMaskIntoConstraints="NO" id="9RK-3O-6n8">
+                                <rect key="frame" x="10" y="86" width="580" height="14"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="10"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="9RK-3O-6n8" secondAttribute="trailing" constant="10" id="Sqo-q1-sWc"/>
+                            <constraint firstItem="9RK-3O-6n8" firstAttribute="top" secondItem="129-TS-fMR" secondAttribute="bottom" constant="22" id="WVl-qK-c5C"/>
+                            <constraint firstItem="9RK-3O-6n8" firstAttribute="leading" secondItem="9DA-4s-7cb" secondAttribute="leading" constant="10" id="uUt-VO-J47"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="vSO-zf-ECG">
+                        <barButtonItem key="leftBarButtonItem" image="Logout_ICN" id="WVo-Pl-cTA">
+                            <color key="tintColor" red="0.95686274510000002" green="0.96862745100000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="logout:" destination="Cr7-wi-hSc" id="VV8-gN-nKV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tokenLabel" destination="9RK-3O-6n8" id="gfL-mY-uXZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b1y-YL-RPh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1962" y="404"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Login_BTN" width="150" height="55"/>
+        <image name="Logout_ICN" width="22" height="22"/>
+    </resources>
+</document>
