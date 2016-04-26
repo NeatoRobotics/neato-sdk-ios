@@ -56,7 +56,7 @@ static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages"
         
         NSString *signedString = [unsignedString SHA256:secretKey];
 
-        NeatoHTTPSessionManager *manager = [NeatoHTTPSessionManager setupInstanceWithNucleoAuthorization:signedString];
+        NeatoHTTPSessionManager *manager = [NeatoHTTPSessionManager managerWithNucleoAuthorization:signedString];
         
         [manager POST:@"path" parameters:parameters
          

@@ -16,9 +16,9 @@ extern NSString * const kNucleoBaseURLPath;
 
 @interface NeatoHTTPSessionManager : AFHTTPSessionManager
 
-+ (_Nullable instancetype) authenticatedBeehiveInstance;
-+ (instancetype) setupInstanceWithNucleoAuthorization:(NSString*)signedString;
-+ (instancetype) setupInstanceWithBeehiveAuthorization:(NSString*)token;
++ (_Nullable instancetype) authenticatedBeehiveManager;
++ (instancetype) managerWithNucleoAuthorization:(NSString*)signedString;
++ (instancetype) managerWithBeehiveAuthorization:(NSString*)token;
 
 @end
 

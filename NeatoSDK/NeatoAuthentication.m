@@ -138,7 +138,7 @@ static NSString * const kNeatoOAuthAuthorizeEndPoint = @"https://beehive.neatocl
 
 - (void) logout:(NeatoAuthenticationLogoutCallback)completionHandler{
 
-    NeatoHTTPSessionManager *manager = [NeatoHTTPSessionManager authenticatedBeehiveInstance];
+    NeatoHTTPSessionManager *manager = [NeatoHTTPSessionManager authenticatedBeehiveManager];
     
     [manager POST:@"/oauth2/revoke"
                     parameters:@{@"token":self.accessToken}

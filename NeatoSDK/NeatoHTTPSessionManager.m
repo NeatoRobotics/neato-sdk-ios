@@ -15,28 +15,28 @@ NSString * const kBeehiveBaseURLPath = @"https://beehive-playground.neatocloud.c
 NSString * const kNucleoBaseURLPath = @"https://nucleo.neatocloud.com:4443/";
 
 @interface NeatoHTTPSessionManager()
-+ (instancetype) setupInstanceWithAuthorization:(NSString *)key value:(NSString *)value baseURL:(NSString*)url;
++ (instancetype) managerWithAuthorization:(NSString *)key value:(NSString *)value baseURL:(NSString*)url;
 @end
 
 @implementation NeatoHTTPSessionManager
 
-+ (_Nullable instancetype) authenticatedBeehiveInstance{
++ (_Nullable instancetype) authenticatedBeehiveManager{
     if ([NeatoAuthentication sharedInstance].isAuthenticated){
-        return [self setupInstanceWithBeehiveAuthorization:[NeatoAuthentication sharedInstance].accessToken];
+        return [self managerWithBeehiveAuthorization:[NeatoAuthentication sharedInstance].accessToken];
     }else{
         return nil;
     }
 }
 
-+ (instancetype) setupInstanceWithBeehiveAuthorization:(NSString*)token {
-    return [self setupInstanceWithAuthorization:@"Bearer" value:token baseURL:kBeehiveBaseURLPath];
++ (instancetype) managerWithBeehiveAuthorization:(NSString*)token {
+    return [self managerWithAuthorization:@"Bearer" value:token baseURL:kBeehiveBaseURLPath];
 }
 
-+ (instancetype) setupInstanceWithNucleoAuthorization:(NSString*)signedString{
-    return [self setupInstanceWithAuthorization:@"NEATOAPP" value:signedString baseURL:kNucleoBaseURLPath];
++ (instancetype) managerWithNucleoAuthorization:(NSString*)signedString{
+    return [self managerWithAuthorization:@"NEATOAPP" value:signedString baseURL:kNucleoBaseURLPath];
 }
 
-+ (instancetype) setupInstanceWithAuthorization:(NSString *)key value:(NSString *)value baseURL:(NSString*)url{
++ (instancetype) managerWithAuthorization:(NSString *)key value:(NSString *)value baseURL:(NSString*)url{
     
     NeatoHTTPSessionManager *manager = [[self alloc]initWithBaseURL:[NSURL URLWithString:url]];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
