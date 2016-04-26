@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NeatoAuthentication.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -22,7 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype)sharedInstance;
 
-
 #pragma mark - NeatoAuthentication bridge
 
 + (void) configureWithClientID: (NSString*) clientID
@@ -33,6 +31,10 @@ NS_ASSUME_NONNULL_BEGIN
 - (void) handleURL:(NSURL*)url;
 - (BOOL) isAuthenticated;
 - (void) logout:(void (^)(NSError* error)) completionHandler;
+
+#pragma mark - Neato Server bridge 
+
+- (void) robots:(void (^)(NSArray* _Nullable robots, NSError *error))completionHandler;
 
 @end
 

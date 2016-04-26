@@ -67,7 +67,7 @@ typedef void (^NeatoAuthenticationLogoutCallback)(NSError* _Nullable  error);
  *  to complete the auth process.
  *  @param  completionHandler   .
  */
-- (void)handleURL:(NSURL*)url;
+- (void) handleURL:(NSURL*)url;
 
 /**
  * Verify if a not expired token is stored in the current device. 

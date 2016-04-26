@@ -7,3 +7,6 @@
 [submodule "Carthage/Checkouts/specta"]
 	path = Carthage/Checkouts/specta
 	url = https://github.com/specta/specta.git
+[submodule "Carthage/Checkouts/OHHTTPStubs"]
+	path = Carthage/Checkouts/OHHTTPStubs
+	url = https://github.com/AliSoftware/OHHTTPStubs.git

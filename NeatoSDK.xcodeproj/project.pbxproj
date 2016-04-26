@@ -7,10 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		58A338181CC92D85008F5B7D /* NeatoSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A3380D1CC92D85008F5B7D /* NeatoSDK.framework */; };
 		58A338281CC93993008F5B7D /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A338271CC93993008F5B7D /* AFNetworking.framework */; };
-		58A3382D1CC93BC3008F5B7D /* Expecta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A3382B1CC93BC3008F5B7D /* Expecta.framework */; };
-		58A3382E1CC93BC3008F5B7D /* Specta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A3382C1CC93BC3008F5B7D /* Specta.framework */; };
 		58A338391CC93D16008F5B7D /* NeatoAuthentication.h in Headers */ = {isa = PBXBuildFile; fileRef = 58A338301CC93D16008F5B7D /* NeatoAuthentication.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		58A3383A1CC93D16008F5B7D /* NeatoAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A338311CC93D16008F5B7D /* NeatoAuthentication.m */; };
 		58A3383B1CC93D16008F5B7D /* NeatoAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A338311CC93D16008F5B7D /* NeatoAuthentication.m */; };
@@ -30,7 +27,14 @@
 		58A338511CC93D44008F5B7D /* NeatoHTTPSessionManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A3384C1CC93D44008F5B7D /* NeatoHTTPSessionManagerTest.m */; };
 		58A338521CC93D44008F5B7D /* NeatoUserDefaultTokenStoreTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A3384D1CC93D44008F5B7D /* NeatoUserDefaultTokenStoreTest.m */; };
 		58A338531CC93DC8008F5B7D /* NeatoSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = 58A338101CC92D85008F5B7D /* NeatoSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		58A338561CC9426E008F5B7D /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A338271CC93993008F5B7D /* AFNetworking.framework */; };
+		58C5743C1CCAE05B0068D5E1 /* NeatoBeehiveClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 58C5743A1CCAE05B0068D5E1 /* NeatoBeehiveClient.h */; };
+		58C5743D1CCAE05B0068D5E1 /* NeatoBeehiveClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C5743B1CCAE05B0068D5E1 /* NeatoBeehiveClient.m */; };
+		58C5743E1CCAE05B0068D5E1 /* NeatoBeehiveClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C5743B1CCAE05B0068D5E1 /* NeatoBeehiveClient.m */; };
+		58C58CA41CCA6A90005DCB3D /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A338271CC93993008F5B7D /* AFNetworking.framework */; };
+		58C58CA51CCA6A93005DCB3D /* Expecta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A3382B1CC93BC3008F5B7D /* Expecta.framework */; };
+		58C58CA61CCA6A98005DCB3D /* Specta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A3382C1CC93BC3008F5B7D /* Specta.framework */; };
+		58C58CA71CCA6A9D005DCB3D /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5849EEA61CCA66D400A2C2D6 /* OHHTTPStubs.framework */; };
+		58C58CAA1CCA6BD0005DCB3D /* OHHTPStubEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C58CA91CCA6BD0005DCB3D /* OHHTPStubEmpty.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5849EEA61CCA66D400A2C2D6 /* OHHTTPStubs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OHHTTPStubs.framework; path = Carthage/Build/iOS/OHHTTPStubs.framework; sourceTree = "<group>"; };
 		58A3380D1CC92D85008F5B7D /* NeatoSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NeatoSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58A338101CC92D85008F5B7D /* NeatoSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NeatoSDK.h; sourceTree = "<group>"; };
 		58A338121CC92D85008F5B7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -68,6 +73,10 @@
 		58A3384B1CC93D44008F5B7D /* NeatoHTTPSessionManagerTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeatoHTTPSessionManagerTest.h; sourceTree = "<group>"; };
 		58A3384C1CC93D44008F5B7D /* NeatoHTTPSessionManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeatoHTTPSessionManagerTest.m; sourceTree = "<group>"; };
 		58A3384D1CC93D44008F5B7D /* NeatoUserDefaultTokenStoreTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeatoUserDefaultTokenStoreTest.m; sourceTree = "<group>"; };
+		58C5743A1CCAE05B0068D5E1 /* NeatoBeehiveClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeatoBeehiveClient.h; sourceTree = "<group>"; };
+		58C5743B1CCAE05B0068D5E1 /* NeatoBeehiveClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeatoBeehiveClient.m; sourceTree = "<group>"; };
+		58C58CA81CCA6BD0005DCB3D /* NeatoSDKTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NeatoSDKTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		58C58CA91CCA6BD0005DCB3D /* OHHTPStubEmpty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OHHTPStubEmpty.swift; path = ../OHHTPStubEmpty.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,10 +92,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58A338181CC92D85008F5B7D /* NeatoSDK.framework in Frameworks */,
-				58A3382D1CC93BC3008F5B7D /* Expecta.framework in Frameworks */,
-				58A3382E1CC93BC3008F5B7D /* Specta.framework in Frameworks */,
-				58A338561CC9426E008F5B7D /* AFNetworking.framework in Frameworks */,
+				58C58CA41CCA6A90005DCB3D /* AFNetworking.framework in Frameworks */,
+				58C58CA51CCA6A93005DCB3D /* Expecta.framework in Frameworks */,
+				58C58CA61CCA6A98005DCB3D /* Specta.framework in Frameworks */,
+				58C58CA71CCA6A9D005DCB3D /* OHHTTPStubs.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +113,7 @@
 		5849EEA51CCA5EAA00A2C2D6 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				5849EEA41CCA5E9C00A2C2D6 /* Protocols */,
 				58A338371CC93D16008F5B7D /* NeatoTokenUserDefaultStore.h */,
 				58A338381CC93D16008F5B7D /* NeatoTokenUserDefaultStore.m */,
 				58A338341CC93D16008F5B7D /* NeatoHTTPSessionManager.h */,
@@ -136,8 +146,8 @@
 		58A3380F1CC92D85008F5B7D /* NeatoSDK */ = {
 			isa = PBXGroup;
 			children = (
+				58C574391CCAE0210068D5E1 /* Neato */,
 				5849EEA51CCA5EAA00A2C2D6 /* Authentication */,
-				5849EEA41CCA5E9C00A2C2D6 /* Protocols */,
 				58A338321CC93D16008F5B7D /* NeatoClient.h */,
 				58A338331CC93D16008F5B7D /* NeatoClient.m */,
 				58A338101CC92D85008F5B7D /* NeatoSDK.h */,
@@ -156,6 +166,7 @@
 				58A3384C1CC93D44008F5B7D /* NeatoHTTPSessionManagerTest.m */,
 				58A3384D1CC93D44008F5B7D /* NeatoUserDefaultTokenStoreTest.m */,
 				58A3381E1CC92D85008F5B7D /* Info.plist */,
+				58C58CA81CCA6BD0005DCB3D /* NeatoSDKTests-Bridging-Header.h */,
 			);
 			path = NeatoSDKTests;
 			sourceTree = "<group>";
@@ -163,6 +174,7 @@
 		58A3382F1CC93BF1008F5B7D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5849EEA61CCA66D400A2C2D6 /* OHHTTPStubs.framework */,
 				58A3382B1CC93BC3008F5B7D /* Expecta.framework */,
 				58A3382C1CC93BC3008F5B7D /* Specta.framework */,
 				58A338271CC93993008F5B7D /* AFNetworking.framework */,
@@ -173,10 +185,20 @@
 		58A338461CC93D44008F5B7D /* Mock */ = {
 			isa = PBXGroup;
 			children = (
+				58C58CA91CCA6BD0005DCB3D /* OHHTPStubEmpty.swift */,
 				58A338471CC93D44008F5B7D /* MockNeatoTokenStore.h */,
 				58A338481CC93D44008F5B7D /* MockNeatoTokenStore.m */,
 			);
 			path = Mock;
+			sourceTree = "<group>";
+		};
+		58C574391CCAE0210068D5E1 /* Neato */ = {
+			isa = PBXGroup;
+			children = (
+				58C5743A1CCAE05B0068D5E1 /* NeatoBeehiveClient.h */,
+				58C5743B1CCAE05B0068D5E1 /* NeatoBeehiveClient.m */,
+			);
+			name = Neato;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -187,6 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58A338391CC93D16008F5B7D /* NeatoAuthentication.h in Headers */,
+				58C5743C1CCAE05B0068D5E1 /* NeatoBeehiveClient.h in Headers */,
 				58A338421CC93D16008F5B7D /* NeatoTokenStore.h in Headers */,
 				58A338531CC93DC8008F5B7D /* NeatoSDK.h in Headers */,
 				58A3383C1CC93D16008F5B7D /* NeatoClient.h in Headers */,
@@ -312,6 +335,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Expecta.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Specta.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/AFNetworking.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/OHHTTPStubs.framework",
 			);
 			outputPaths = (
 			);
@@ -330,6 +354,7 @@
 				58A3383D1CC93D16008F5B7D /* NeatoClient.m in Sources */,
 				58A3383A1CC93D16008F5B7D /* NeatoAuthentication.m in Sources */,
 				58A338401CC93D16008F5B7D /* NeatoHTTPSessionManager.m in Sources */,
+				58C5743D1CCAE05B0068D5E1 /* NeatoBeehiveClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +362,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58C5743E1CCAE05B0068D5E1 /* NeatoBeehiveClient.m in Sources */,
 				58A338451CC93D16008F5B7D /* NeatoTokenUserDefaultStore.m in Sources */,
 				58A3383E1CC93D16008F5B7D /* NeatoClient.m in Sources */,
 				58A338411CC93D16008F5B7D /* NeatoHTTPSessionManager.m in Sources */,
@@ -346,6 +372,7 @@
 				58A3383B1CC93D16008F5B7D /* NeatoAuthentication.m in Sources */,
 				58A338501CC93D44008F5B7D /* NeatoClientTests.m in Sources */,
 				58A3384E1CC93D44008F5B7D /* MockNeatoTokenStore.m in Sources */,
+				58C58CAA1CCA6BD0005DCB3D /* OHHTPStubEmpty.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,6 +522,7 @@
 		58A338251CC92D85008F5B7D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -503,12 +531,15 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neatorobotics.NeatoSDKTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "NeatoSDKTests/NeatoSDKTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		58A338261CC92D85008F5B7D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -517,6 +548,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neatorobotics.NeatoSDKTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "NeatoSDKTests/NeatoSDKTests-Bridging-Header.h";
 			};
 			name = Release;
 		};

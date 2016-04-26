@@ -8,6 +8,8 @@
 #import <AFNetworking/AFNetworking.h>
 #import <Specta/Specta.h>
 #import <Expecta/Expecta.h>
+#import <OHHTTPStubs/OHHTTPStubs.h>
+#import <OHHTTPStubs/OHHTTPStubsResponse+JSON.h>
 #import "MockNeatoTokenStore.h"
 
 @import NeatoSDK;
@@ -104,6 +106,33 @@ describe(@"NeatoClient", ^{
                     expect([[NeatoClient sharedInstance] isAuthenticated]).to.equal(false);
                 });
             });
+        });
+        
+        describe(@"Request Logout", ^{
+            before(^{
+                [[NeatoClient sharedInstance] handleURL:[NSURL URLWithString:@"redirect://url#access_token=this_is_the_token&expires_in=10000"]];
+                
+                [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+                    return [request.URL.path isEqualToString:@"/oauth2/revoke"];
+                } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
+                    NSDictionary* obj = @{};
+                    return [OHHTTPStubsResponse responseWithJSONObject:obj statusCode:200 headers:@{@"Content-Type": @"application/json"}];
+                }].name = @"revoke";
+
+            });
+            
+            it(@"delete the current session",^{
+                expect([NeatoClient sharedInstance].isAuthenticated).to.equal(true);
+
+                waitUntil(^(DoneCallback done) {
+                    [[NeatoClient sharedInstance] logout:^(NSError * _Nonnull error) {
+                        expect([NeatoClient sharedInstance].isAuthenticated).to.equal(false);
+                        done();
+                    }];
+                });
+
+            });
+            
         });
         
      });

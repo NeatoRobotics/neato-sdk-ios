@@ -17,6 +17,7 @@ extern NSString * const kNeatoAPIBaseURLPath;
 
 + (instancetype) sharedInstance;
 + (instancetype) setupInstanceWithAccessToken:(NSString*)token;
++ (_Nullable instancetype) authenticatedInstance;
 
 @end
 

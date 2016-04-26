@@ -9,6 +9,7 @@
 #import "NeatoClient.h"
 #import "NeatoAuthentication.h"
 #import "NeatoHTTPSessionManager.h"
+#import "NeatoBeehiveClient.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -56,6 +57,15 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)logout:(void (^)(NSError * _Nonnull))completionHandler{
     [[NeatoAuthentication sharedInstance]logout:completionHandler];
 }
+
+#pragma mark - NeatoBeehiveClient Bridge
+
+- (void) robots:(void (^)(NSArray* _Nullable robots, NSError *error))completionHandler{
+    [[NeatoBeehiveClient sharedInstance] robots:^(NSArray * _Nullable robots, NSError * _Nonnull error) {
+        completionHandler(robots, error);
+    }];
+}
+
 
 @end
 

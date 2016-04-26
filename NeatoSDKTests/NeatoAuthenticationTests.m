@@ -10,6 +10,8 @@
 #import <AFNetworking/AFNetworking.h>
 #import <Specta/Specta.h>
 #import <Expecta/Expecta.h>
+#import <OHHTTPStubs/OHHTTPStubs.h>
+#import <OHHTTPStubs/OHHTTPStubsResponse+JSON.h>
 #import "MockNeatoTokenStore.h"
 
 @import NeatoSDK;
@@ -145,6 +147,71 @@ describe(@"NeatoAuthentication", ^{
             });
         });
     });
+    
+    describe(@"Logout", ^{
+        
+        beforeEach(^{
+            [NeatoAuthentication configureWithClientID:@"acliendid"
+                                                scopes:@[NeatoOAuthScopeControlRobots]
+                                           redirectURI:@"test-app://neato"];
+            
+            [NeatoAuthentication sharedInstance].tokenStore = [[MockNeatoTokenStore alloc]init];
+            [[NeatoAuthentication sharedInstance] handleURL:[NSURL URLWithString:@"redirect://url#access_token=this_is_the_token&expires_in=10000"]];
+        });
+        
+        context(@"when a valid session is stored", ^{
+
+            before(^{
+                [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+                    return [request.URL.path isEqualToString:@"/oauth2/revoke"];
+                } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
+                    NSDictionary* obj = @{ @"key1": @"value1", @"key2": @[@"value2A", @"value2B"] };
+                    return [OHHTTPStubsResponse responseWithJSONObject:obj statusCode:200 headers:@{@"Content-Type": @"application/json"}];
+                }].name = @"revoke";
+            });
+            
+            after(^{
+                [OHHTTPStubs removeAllStubs];
+            });
+            
+            it(@"deletes the session", ^ {
+                waitUntil(^(DoneCallback done) {
+                    
+                    [[NeatoAuthentication sharedInstance] logout:^(NSError * _Nullable error) {
+                        expect([NeatoAuthentication sharedInstance].isAuthenticated).to.equal(false);
+                        done(); 
+                    }];
+                });
+            });
+        });
+        
+        context(@"when an error occured", ^{
+            
+            before(^{
+                [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
+                    return [request.URL.path isEqualToString:@"/oauth2/revoke"];
+                } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
+                    NSDictionary* obj = @{};
+                    return [OHHTTPStubsResponse responseWithJSONObject:obj statusCode:400 headers:@{@"Content-Type": @"application/json"}];
+                }].name = @"revoke";
+            });
+            
+            after(^{
+                [OHHTTPStubs removeAllStubs];
+            });
+            
+            it(@"Session is not deleted", ^ {
+                waitUntil(^(DoneCallback done) {
+                    
+                    [[NeatoAuthentication sharedInstance] logout:^(NSError * _Nullable error) {
+                        expect([NeatoAuthentication sharedInstance].isAuthenticated).to.equal(true);
+                        done();
+                    }];
+                });
+            });
+        });
+    });
+    
 });
 
 SpecEnd
