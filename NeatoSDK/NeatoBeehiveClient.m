@@ -33,7 +33,7 @@ static NSString * const kNeatoBeehiveRobotPath = @"/robot";
 
 - (void)robots:(void (^)( NSArray* _Nullable robots, NSError* _Nullable error))completionHandler {
     
-    NeatoHTTPSessionManager *manager = [NeatoHTTPSessionManager authenticatedInstance];
+    NeatoHTTPSessionManager *manager = [NeatoHTTPSessionManager authenticatedBeehiveInstance];
     
     if (manager != nil){
         [manager GET:kNeatoBeehiveUserRobotsPath

@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (instancetype) sharedInstance;
 
-- (void)sendCommand:(NSString*)command withParamenters:(id _Nullable)parameters toRobot:(NSString*)robotSerial complete:(void (^)(id _Nullable, NSError * _Nullable))completionHandler;
+- (void)sendCommand:(NSString*)command withParamenters:(id _Nullable)parameters robotSerial:(NSString*)robotSerial  robotKey:(NSString*)secret complete:(void (^)(id _Nullable, NSError * _Nullable))completionHandler;
 
 @end
 

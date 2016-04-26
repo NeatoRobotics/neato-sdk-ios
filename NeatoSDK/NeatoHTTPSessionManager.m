@@ -11,52 +11,34 @@
 
 @import AFNetworking;
 
-NSString * const kNeatoAPIBaseURLPath = @"https://beehive-playground.neatocloud.com/";
+NSString * const kBeehiveBaseURLPath = @"https://beehive-playground.neatocloud.com/";
+NSString * const kNucleoBaseURLPath = @"https://nucleo.neatocloud.com:4443/";
+
+@interface NeatoHTTPSessionManager()
++ (instancetype) setupInstanceWithAuthorization:(NSString *)key value:(NSString *)value baseURL:(NSString*)url;
+@end
 
 @implementation NeatoHTTPSessionManager
 
-+ (instancetype) sharedInstance {
-    static NeatoHTTPSessionManager *_sharedInstance= nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _sharedInstance = [[NeatoHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:kNeatoAPIBaseURLPath]
-                                                      sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-    });
-    
-    return _sharedInstance;
-}
-
-+ (instancetype) setupInstanceWithAccessToken:(NSString*)token {
-    return [self setupInstanceWithAuthorization:@"Bearer" value:token];
-}
-
-+ (_Nullable instancetype) authenticatedInstance{
++ (_Nullable instancetype) authenticatedBeehiveInstance{
     if ([NeatoAuthentication sharedInstance].isAuthenticated){
-        static NeatoHTTPSessionManager *_sharedInstance= nil;
-        static dispatch_once_t onceToken;
-        
-        dispatch_once(&onceToken, ^{
-            _sharedInstance = [[NeatoHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:kNeatoAPIBaseURLPath]
-                                                          sessionConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
-        });
-        
-        _sharedInstance.requestSerializer = [AFJSONRequestSerializer serializer];
-        NSString *value = [NSString stringWithFormat:@"Bearer %@", [NeatoAuthentication sharedInstance].accessToken];
-        [_sharedInstance.requestSerializer setValue:value forHTTPHeaderField:@"Authorization"];
-
-        return _sharedInstance;
+        return [self setupInstanceWithBeehiveAuthorization:[NeatoAuthentication sharedInstance].accessToken];
     }else{
         return nil;
     }
 }
 
-+ (instancetype) setupInstanceWithNucleoAuthorization:(NSString*)signedString{
-    return [self setupInstanceWithAuthorization:@"NEATOAPP" value:signedString];
++ (instancetype) setupInstanceWithBeehiveAuthorization:(NSString*)token {
+    return [self setupInstanceWithAuthorization:@"Bearer" value:token baseURL:kBeehiveBaseURLPath];
 }
 
-+ (instancetype) setupInstanceWithAuthorization:(NSString *)key value:(NSString *)value{
++ (instancetype) setupInstanceWithNucleoAuthorization:(NSString*)signedString{
+    return [self setupInstanceWithAuthorization:@"NEATOAPP" value:signedString baseURL:kNucleoBaseURLPath];
+}
+
++ (instancetype) setupInstanceWithAuthorization:(NSString *)key value:(NSString *)value baseURL:(NSString*)url{
     
-    NeatoHTTPSessionManager *manager = [NeatoHTTPSessionManager sharedInstance];
+    NeatoHTTPSessionManager *manager = [[self alloc]initWithBaseURL:[NSURL URLWithString:url]];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     NSString *authValue = [NSString stringWithFormat:@"%@ %@", key, value];
     [manager.requestSerializer setValue:authValue forHTTPHeaderField:@"Authorization"];

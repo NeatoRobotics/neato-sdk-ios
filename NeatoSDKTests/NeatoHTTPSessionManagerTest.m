@@ -18,24 +18,6 @@ SpecBegin(NeatoHTTPSessionManager)
 
 describe(@"NeatoHTTPSessionManager", ^{
     
-    describe(@"Singleton", ^{
-        
-        context(@"when it is requested", ^{
-            
-            it(@"returns an instance :)", ^{
-                expect([NeatoHTTPSessionManager sharedInstance]).toNot.beNil();
-            });
-        });
-        
-        context(@"when it is setup with a token", ^{
-            before(^{
-                [NeatoHTTPSessionManager setupInstanceWithAccessToken:@"this_is_the_token"];
-            });
-            
-            it(@"uses the token for Authorization", ^{
-                expect([[NeatoHTTPSessionManager sharedInstance].requestSerializer valueForHTTPHeaderField:@"Authorization"]).to.equal(@"Bearer this_is_the_token");
-            });
-        });
-    });
+
 });
 SpecEnd

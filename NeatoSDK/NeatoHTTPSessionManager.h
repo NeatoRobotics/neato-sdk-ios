@@ -11,17 +11,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-extern NSString * const kNeatoAPIBaseURLPath;
+extern NSString * const kBeehiveBaseURLPath;
+extern NSString * const kNucleoBaseURLPath;
 
 @interface NeatoHTTPSessionManager : AFHTTPSessionManager
 
-+ (instancetype) sharedInstance;
-+ (instancetype) setupInstanceWithAccessToken:(NSString*)token;
-+ (_Nullable instancetype) authenticatedInstance;
-
++ (_Nullable instancetype) authenticatedBeehiveInstance;
 + (instancetype) setupInstanceWithNucleoAuthorization:(NSString*)signedString;
++ (instancetype) setupInstanceWithBeehiveAuthorization:(NSString*)token;
 
-+ (instancetype) setupInstanceWithAuthorization:(NSString*)key value:(NSString*)value;
 @end
 
 NS_ASSUME_NONNULL_END
