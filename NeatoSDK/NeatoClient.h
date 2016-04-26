@@ -36,6 +36,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void) robots:(void (^)(NSArray* _Nullable robots, NSError *error))completionHandler;
 
+- (void) getRobotState:(NSString *)robotSerial robotSecretKey:(NSString*)robotSecretKey complete:(void (^)(id _Nullable robotState, NSError *error))completionHandler;
+
 @end
 
 NS_ASSUME_NONNULL_END

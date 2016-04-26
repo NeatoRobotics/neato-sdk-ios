@@ -12,7 +12,7 @@
 @implementation NSString (Neato)
 
 -(NSString *)SHA256:(NSString *)key{
-
+    
     const char *cKey  = [key cStringUsingEncoding:NSASCIIStringEncoding];
     const char *cData = [self cStringUsingEncoding:NSASCIIStringEncoding];
     
@@ -20,12 +20,8 @@
     
     CCHmac(kCCHmacAlgSHA256, cKey, strlen(cKey), cData, strlen(cData), cHMAC);
     
-    NSData *HMAC = [[NSData alloc] initWithBytes:cHMAC
-                                          length:sizeof(cHMAC)];
+    NSData *HMAC = [[NSData alloc] initWithBytes:cHMAC length:sizeof(cHMAC)];
     
-    NSString *hash = [HMAC base64EncodedStringWithOptions:0];
-
-    return hash;
-
+    return [[HMAC.description stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]] stringByReplacingOccurrencesOfString:@" " withString:@""];
 }
 @end

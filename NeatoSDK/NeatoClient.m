@@ -10,6 +10,7 @@
 #import "NeatoAuthentication.h"
 #import "NeatoHTTPSessionManager.h"
 #import "NeatoBeehiveClient.h"
+#import "NeatoNucleoClient.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -66,6 +67,18 @@ NS_ASSUME_NONNULL_BEGIN
     }];
 }
 
+#pragma mark - NeatoNucleClient Bridge
+
+- (void) getRobotState:(NSString *)robotSerial robotSecretKey:(NSString*)robotSecretKey complete:(void (^)(id _Nullable robotState, NSError *error))completionHandler{
+    
+    [[NeatoNucleoClient sharedInstance] sendCommand:@"getRobotState" withParamenters:nil
+                                        robotSerial:robotSerial robotKey:robotSecretKey
+                                           complete:^(id _Nullable robotState, NSError * _Nullable error) {
+                                               NSLog(@"ERROR %@", error);
+                                               NSLog(@"STATE %@", robotState);
+                                               
+    }];
+}
 
 @end
 

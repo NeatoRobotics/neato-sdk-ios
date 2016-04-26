@@ -23,6 +23,7 @@
         self.name = data[@"name"];
         self.serial = data[@"serial"];
         self.model = data[@"model"];
+        self.secretKey = data[@"secret_key"];
     }
     return self;
 }

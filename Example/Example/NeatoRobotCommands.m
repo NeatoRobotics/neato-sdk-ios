@@ -24,7 +24,15 @@
     
     self.title = self.robot.name;
     
+    [self updateRobotState];
+    
 }
 
-
+- (void)updateRobotState{
+    [[NeatoClient sharedInstance] getRobotState:self.robot.serial
+                                 robotSecretKey:self.robot.secretKey
+                                       complete:^(id  _Nullable robotState, NSError * _Nonnull error) {
+                                           NSLog(@"Call Completed");
+    }];
+}
 @end

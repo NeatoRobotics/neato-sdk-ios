@@ -12,7 +12,7 @@
 @import AFNetworking;
 
 NSString * const kBeehiveBaseURLPath = @"https://beehive-playground.neatocloud.com/";
-NSString * const kNucleoBaseURLPath = @"https://nucleo.neatocloud.com:4443/";
+NSString * const kNucleoBaseURLPath = @"https://nucleo-playground.neatocloud.com:4443/";
 
 @interface NeatoHTTPSessionManager()
 + (instancetype) managerWithAuthorization:(NSString *)key value:(NSString *)value baseURL:(NSString*)url;
@@ -32,8 +32,17 @@ NSString * const kNucleoBaseURLPath = @"https://nucleo.neatocloud.com:4443/";
     return [self managerWithAuthorization:@"Bearer" value:token baseURL:kBeehiveBaseURLPath];
 }
 
-+ (instancetype) managerWithNucleoAuthorization:(NSString*)signedString{
-    return [self managerWithAuthorization:@"NEATOAPP" value:signedString baseURL:kNucleoBaseURLPath];
++ (instancetype) managerWithNucleoAuthorization:(NSString*)signedString date:(NSString*)date{
+    
+    NeatoHTTPSessionManager *manager = [[self alloc]initWithBaseURL:[NSURL URLWithString:kNucleoBaseURLPath]];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    NSString *authValue = [NSString stringWithFormat:@"NEATOAPP %@", signedString];
+    [manager.requestSerializer setValue:authValue forHTTPHeaderField:@"Authorization"];
+    [manager.requestSerializer setValue:@"application/vnd.neato.nucleo.v1" forHTTPHeaderField:@"Accept"];
+    [manager.requestSerializer setValue:date forHTTPHeaderField:@"Date"];
+    [manager.requestSerializer setValue:@"iOS-SDK" forHTTPHeaderField:@"X-Agent"];
+    
+    return manager;
 }
 
 + (instancetype) managerWithAuthorization:(NSString *)key value:(NSString *)value baseURL:(NSString*)url{
