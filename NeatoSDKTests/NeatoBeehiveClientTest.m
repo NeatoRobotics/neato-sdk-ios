@@ -12,12 +12,17 @@
 #import <OHHTTPStubs/OHHTTPStubs.h>
 #import <OHHTTPStubs/OHHTTPStubsResponse+JSON.h>
 #import <OHHTTPStubs/OHPathHelpers.h>
+#import "OHHTTPStubs+Neato.h"
 
 @import NeatoSDK;
 
 SpecBegin(NeatoBeehiveClient)
 
 describe(@"NeatoBeehiveClient", ^{
+    
+    afterEach(^{
+        [OHHTTPStubs removeAllStubs];
+    });
     
     describe(@"Singleton", ^{
         
@@ -30,28 +35,13 @@ describe(@"NeatoBeehiveClient", ^{
     });
     
     describe(@"Get Robots", ^{
-        context(@"when a robots is available", ^{
+        
+        context(@"when a robots is available 2", ^{
             
             before(^{
-                [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-                    return YES;
-                } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
-                    NSString *json = @"[\
-                    {\"serial\": \"robot1\",\
-                    \"name\": \"Robot 1\",\
-                    \"model\": \"botvac-85\",\
-                    \"secret_key\": \"04a0fbe6b1f2572d\"}, \
-                    ]";
-                    NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
-                    id jsondata = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                    return [OHHTTPStubsResponse responseWithJSONObject:jsondata statusCode:200 headers:@{@"Content-Type": @"application/json"}];
-                    
-                }].name = @"robots";
-
-            });
-            
-            after(^{
-                [OHHTTPStubs removeAllStubs];
+                [OHHTTPStubs stub:@"/users/me/robots"
+                         withFile:@"beehive_users_me_robots_one.json"
+                            code:200];
             });
             
             it(@"is expected to list a robot", ^{
@@ -65,23 +55,14 @@ describe(@"NeatoBeehiveClient", ^{
                 
             });
         });
+
         
-        context(@"when response return an invalid type", ^{
+        context(@"when response returns an invalid type", ^{
             
             before(^{
-                [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-                    return YES;
-                } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
-                    NSString *json = @"{\"something\":2}";
-                    NSData *data = [json dataUsingEncoding:NSUTF8StringEncoding];
-                    id jsondata = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-                    return [OHHTTPStubsResponse responseWithJSONObject:jsondata statusCode:200 headers:@{@"Content-Type": @"application/json"}];
-                    
-                }].name = @"robotsinv";
-            });
-            
-            after(^{
-                [OHHTTPStubs removeAllStubs];
+                [OHHTTPStubs stub:@"/users/me/robots"
+                         withJSON:@"{\"something\":2}"
+                             code:200];
             });
             
             it(@"is expected to return an error", ^{
@@ -98,16 +79,7 @@ describe(@"NeatoBeehiveClient", ^{
         context(@"when call fails", ^{
             
             before(^{
-                [OHHTTPStubs stubRequestsPassingTest:^BOOL(NSURLRequest *request) {
-                    return YES;
-                } withStubResponse:^OHHTTPStubsResponse*(NSURLRequest *request) {
-                    return [OHHTTPStubsResponse responseWithJSONObject:@{} statusCode:400 headers:@{@"Content-Type": @"application/json"}];
-                    
-                }].name = @"robotsinv";
-            });
-            
-            after(^{
-                [OHHTTPStubs removeAllStubs];
+                [OHHTTPStubs stub:@"/users/me/robots" withFailure:400];
             });
             
             it(@"is expected to return an error", ^{

@@ -37,6 +37,7 @@
 		58C58CAA1CCA6BD0005DCB3D /* OHHTPStubEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C58CA91CCA6BD0005DCB3D /* OHHTPStubEmpty.swift */; };
 		58DF8D731CCF932E00B1F6DA /* NeatoBeehiveClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DF8D721CCF932E00B1F6DA /* NeatoBeehiveClientTest.m */; };
 		58DF8D751CCF989500B1F6DA /* beehive_users_me_robots_one.json in Resources */ = {isa = PBXBuildFile; fileRef = 58DF8D741CCF989500B1F6DA /* beehive_users_me_robots_one.json */; };
+		58DF8D781CCFA91E00B1F6DA /* OHHTTPStubs+Neato.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DF8D771CCFA91E00B1F6DA /* OHHTTPStubs+Neato.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +82,8 @@
 		58C58CA91CCA6BD0005DCB3D /* OHHTPStubEmpty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OHHTPStubEmpty.swift; path = ../OHHTPStubEmpty.swift; sourceTree = "<group>"; };
 		58DF8D721CCF932E00B1F6DA /* NeatoBeehiveClientTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeatoBeehiveClientTest.m; sourceTree = "<group>"; };
 		58DF8D741CCF989500B1F6DA /* beehive_users_me_robots_one.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = beehive_users_me_robots_one.json; sourceTree = "<group>"; };
+		58DF8D761CCFA91E00B1F6DA /* OHHTTPStubs+Neato.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OHHTTPStubs+Neato.h"; sourceTree = "<group>"; };
+		58DF8D771CCFA91E00B1F6DA /* OHHTTPStubs+Neato.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OHHTTPStubs+Neato.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,10 +193,10 @@
 		58A338461CC93D44008F5B7D /* Mock */ = {
 			isa = PBXGroup;
 			children = (
-				58C58CA91CCA6BD0005DCB3D /* OHHTPStubEmpty.swift */,
+				58DF8D791CCFAA4D00B1F6DA /* OHHTTPStubs */,
+				58DF8D7A1CCFAA5A00B1F6DA /* JSON */,
 				58A338471CC93D44008F5B7D /* MockNeatoTokenStore.h */,
 				58A338481CC93D44008F5B7D /* MockNeatoTokenStore.m */,
-				58DF8D741CCF989500B1F6DA /* beehive_users_me_robots_one.json */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -205,6 +208,24 @@
 				58C5743B1CCAE05B0068D5E1 /* NeatoBeehiveClient.m */,
 			);
 			name = Neato;
+			sourceTree = "<group>";
+		};
+		58DF8D791CCFAA4D00B1F6DA /* OHHTTPStubs */ = {
+			isa = PBXGroup;
+			children = (
+				58C58CA91CCA6BD0005DCB3D /* OHHTPStubEmpty.swift */,
+				58DF8D761CCFA91E00B1F6DA /* OHHTTPStubs+Neato.h */,
+				58DF8D771CCFA91E00B1F6DA /* OHHTTPStubs+Neato.m */,
+			);
+			name = OHHTTPStubs;
+			sourceTree = "<group>";
+		};
+		58DF8D7A1CCFAA5A00B1F6DA /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				58DF8D741CCF989500B1F6DA /* beehive_users_me_robots_one.json */,
+			);
+			name = JSON;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -369,6 +390,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58DF8D781CCFA91E00B1F6DA /* OHHTTPStubs+Neato.m in Sources */,
 				58C5743E1CCAE05B0068D5E1 /* NeatoBeehiveClient.m in Sources */,
 				58A338451CC93D16008F5B7D /* NeatoTokenUserDefaultStore.m in Sources */,
 				58A3383E1CC93D16008F5B7D /* NeatoClient.m in Sources */,
