@@ -7,13 +7,15 @@
 //
 
 #import "NeatoDashboardViewController.h"
+#import "NeatoRobotCommands.h"
 #import "Robot.h"
 
 @import NeatoSDK;
 
-@interface NeatoDashboardViewController ()
+@interface NeatoDashboardViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, weak) IBOutlet UILabel *tokenLabel;
 @property (nonatomic, strong) NSMutableArray *robots;
+@property (nonatomic, weak) IBOutlet UITableView *table;
 @end
 
 @implementation NeatoDashboardViewController
@@ -31,7 +33,8 @@
             Robot * robot = [Robot robotWithDictionary:robotData];
             [self.robots addObject:robot];
         }
-        
+
+        [self.table reloadData];
     }];
 }
 
@@ -47,4 +50,34 @@
     }];
 }
 
+#pragma mark - Table Delegate
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [self.robots count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    Robot *robot = self.robots[indexPath.row];
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"robot_cell"];
+    cell.textLabel.text = robot.name;
+    cell.detailTextLabel.text = robot.model;
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [self performSegueWithIdentifier:@"robotCommands" sender:[tableView cellForRowAtIndexPath:indexPath]];
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    UITableViewCell *cell = sender;
+    NSIndexPath *index = [self.table indexPathForCell:cell];
+    Robot *robot = self.robots[index.row];
+    NSLog(@"ROBOT%@", robot);
+    NeatoRobotCommands *commands = segue.destinationViewController;
+    commands.robot = robot;
+}
 @end

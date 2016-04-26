@@ -17,6 +17,7 @@
 		5849EE9E1CCA526800A2C2D6 /* NeatoLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5849EE9D1CCA526800A2C2D6 /* NeatoLoginViewController.m */; };
 		5849EEA31CCA55B900A2C2D6 /* NeatoDashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5849EEA21CCA55B900A2C2D6 /* NeatoDashboardViewController.m */; };
 		58DF8D6E1CCF565C00B1F6DA /* Robot.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DF8D6D1CCF565C00B1F6DA /* Robot.m */; };
+		58DF8D711CCF899400B1F6DA /* NeatoRobotCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DF8D701CCF899400B1F6DA /* NeatoRobotCommands.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,8 @@
 		5849EEA21CCA55B900A2C2D6 /* NeatoDashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeatoDashboardViewController.m; sourceTree = "<group>"; };
 		58DF8D6C1CCF565C00B1F6DA /* Robot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Robot.h; sourceTree = "<group>"; };
 		58DF8D6D1CCF565C00B1F6DA /* Robot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Robot.m; sourceTree = "<group>"; };
+		58DF8D6F1CCF899400B1F6DA /* NeatoRobotCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeatoRobotCommands.h; sourceTree = "<group>"; };
+		58DF8D701CCF899400B1F6DA /* NeatoRobotCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeatoRobotCommands.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +111,8 @@
 				5849EE9D1CCA526800A2C2D6 /* NeatoLoginViewController.m */,
 				5849EEA11CCA55B900A2C2D6 /* NeatoDashboardViewController.h */,
 				5849EEA21CCA55B900A2C2D6 /* NeatoDashboardViewController.m */,
+				58DF8D6F1CCF899400B1F6DA /* NeatoRobotCommands.h */,
+				58DF8D701CCF899400B1F6DA /* NeatoRobotCommands.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -206,6 +211,7 @@
 				5849EE8A1CCA4EC500A2C2D6 /* ViewController.m in Sources */,
 				5849EE871CCA4EC500A2C2D6 /* AppDelegate.m in Sources */,
 				5849EE841CCA4EC500A2C2D6 /* main.m in Sources */,
+				58DF8D711CCF899400B1F6DA /* NeatoRobotCommands.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
