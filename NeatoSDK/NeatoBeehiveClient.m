@@ -39,7 +39,6 @@ static NSString * const kNeatoBeehiveRobotsPath = @"/users/me/robots";
           parameters:nil
             progress:^(NSProgress * _Nonnull downloadProgress) {}
              success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                 
                  if ([responseObject isKindOfClass:[NSArray class]]){
                      completionHandler(responseObject, nil);
                  }else{
