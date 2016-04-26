@@ -34,9 +34,10 @@ describe(@"NeatoBeehiveClient", ^{
         });
     });
     
+    
     describe(@"Get Robots", ^{
         
-        context(@"when a robots is available 2", ^{
+        context(@"when a robots is available", ^{
             
             before(^{
                 [OHHTTPStubs stub:@"/users/me/robots"
@@ -56,7 +57,6 @@ describe(@"NeatoBeehiveClient", ^{
             });
         });
 
-        
         context(@"when response returns an invalid type", ^{
             
             before(^{
@@ -72,7 +72,6 @@ describe(@"NeatoBeehiveClient", ^{
                         done();
                     }];
                 });
-                
             });
         });
         

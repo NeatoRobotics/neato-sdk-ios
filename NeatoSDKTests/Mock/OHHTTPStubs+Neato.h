@@ -12,4 +12,5 @@
 + (void)stub:(NSString *)call withFile:(NSString*)filepath code:(int)code;
 + (void)stub:(NSString *)call withJSON:(NSString*)json  code:(int)code;
 + (void)stub:(NSString *)call withFailure:(int)code;
++ (void)stub:(NSString *)call withSuccess:(int)code;
 @end

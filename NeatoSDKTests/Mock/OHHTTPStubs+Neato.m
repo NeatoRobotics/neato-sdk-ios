@@ -42,4 +42,8 @@
     [OHHTTPStubs stub:call withJSON:@"{}" code:code];
 }
 
++ (void)stub:(NSString *)call withSuccess:(int)code{
+    [OHHTTPStubs stub:call withJSON:@"{}" code:code];
+}
+
 @end

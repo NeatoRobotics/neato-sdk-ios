@@ -38,6 +38,9 @@
 		58DF8D731CCF932E00B1F6DA /* NeatoBeehiveClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DF8D721CCF932E00B1F6DA /* NeatoBeehiveClientTest.m */; };
 		58DF8D751CCF989500B1F6DA /* beehive_users_me_robots_one.json in Resources */ = {isa = PBXBuildFile; fileRef = 58DF8D741CCF989500B1F6DA /* beehive_users_me_robots_one.json */; };
 		58DF8D781CCFA91E00B1F6DA /* OHHTTPStubs+Neato.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DF8D771CCFA91E00B1F6DA /* OHHTTPStubs+Neato.m */; };
+		58DF8D7D1CCFBB1700B1F6DA /* NeatoNucleoClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 58DF8D7B1CCFBB1700B1F6DA /* NeatoNucleoClient.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		58DF8D7E1CCFBB1700B1F6DA /* NeatoNucleoClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DF8D7C1CCFBB1700B1F6DA /* NeatoNucleoClient.m */; };
+		58DF8D801CCFBBB200B1F6DA /* NeatoNucleoClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DF8D7F1CCFBBB200B1F6DA /* NeatoNucleoClientTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +87,9 @@
 		58DF8D741CCF989500B1F6DA /* beehive_users_me_robots_one.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = beehive_users_me_robots_one.json; sourceTree = "<group>"; };
 		58DF8D761CCFA91E00B1F6DA /* OHHTTPStubs+Neato.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OHHTTPStubs+Neato.h"; sourceTree = "<group>"; };
 		58DF8D771CCFA91E00B1F6DA /* OHHTTPStubs+Neato.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OHHTTPStubs+Neato.m"; sourceTree = "<group>"; };
+		58DF8D7B1CCFBB1700B1F6DA /* NeatoNucleoClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeatoNucleoClient.h; sourceTree = "<group>"; };
+		58DF8D7C1CCFBB1700B1F6DA /* NeatoNucleoClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeatoNucleoClient.m; sourceTree = "<group>"; };
+		58DF8D7F1CCFBBB200B1F6DA /* NeatoNucleoClientTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeatoNucleoClientTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +174,7 @@
 			children = (
 				58A338461CC93D44008F5B7D /* Mock */,
 				58DF8D721CCF932E00B1F6DA /* NeatoBeehiveClientTest.m */,
+				58DF8D7F1CCFBBB200B1F6DA /* NeatoNucleoClientTest.m */,
 				58A338491CC93D44008F5B7D /* NeatoAuthenticationTests.m */,
 				58A3384A1CC93D44008F5B7D /* NeatoClientTests.m */,
 				58A3384B1CC93D44008F5B7D /* NeatoHTTPSessionManagerTest.h */,
@@ -206,6 +213,8 @@
 			children = (
 				58C5743A1CCAE05B0068D5E1 /* NeatoBeehiveClient.h */,
 				58C5743B1CCAE05B0068D5E1 /* NeatoBeehiveClient.m */,
+				58DF8D7B1CCFBB1700B1F6DA /* NeatoNucleoClient.h */,
+				58DF8D7C1CCFBB1700B1F6DA /* NeatoNucleoClient.m */,
 			);
 			name = Neato;
 			sourceTree = "<group>";
@@ -240,6 +249,7 @@
 				58A338531CC93DC8008F5B7D /* NeatoSDK.h in Headers */,
 				58A3383C1CC93D16008F5B7D /* NeatoClient.h in Headers */,
 				58C5743C1CCAE05B0068D5E1 /* NeatoBeehiveClient.h in Headers */,
+				58DF8D7D1CCFBB1700B1F6DA /* NeatoNucleoClient.h in Headers */,
 				58A338431CC93D16008F5B7D /* NeatoTokenUserDefaultStore.h in Headers */,
 				58A3383F1CC93D16008F5B7D /* NeatoHTTPSessionManager.h in Headers */,
 			);
@@ -382,6 +392,7 @@
 				58A3383D1CC93D16008F5B7D /* NeatoClient.m in Sources */,
 				58A3383A1CC93D16008F5B7D /* NeatoAuthentication.m in Sources */,
 				58A338401CC93D16008F5B7D /* NeatoHTTPSessionManager.m in Sources */,
+				58DF8D7E1CCFBB1700B1F6DA /* NeatoNucleoClient.m in Sources */,
 				58C5743D1CCAE05B0068D5E1 /* NeatoBeehiveClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -390,6 +401,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58DF8D801CCFBBB200B1F6DA /* NeatoNucleoClientTest.m in Sources */,
 				58DF8D781CCFA91E00B1F6DA /* OHHTTPStubs+Neato.m in Sources */,
 				58C5743E1CCAE05B0068D5E1 /* NeatoBeehiveClient.m in Sources */,
 				58A338451CC93D16008F5B7D /* NeatoTokenUserDefaultStore.m in Sources */,

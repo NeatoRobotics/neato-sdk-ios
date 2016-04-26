@@ -12,6 +12,7 @@
 #import "NeatoTokenStore.h"
 #import "NeatoTokenUserDefaultStore.h"
 #import "NeatoBeehiveClient.h"
+#import "NeatoNucleoClient.h"
 
 //! Project version number for iossdk.
 FOUNDATION_EXPORT double iossdkVersionNumber;

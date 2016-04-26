@@ -10,7 +10,8 @@
 #import "NeatoAuthentication.h"
 #import "NeatoHTTPSessionManager.h"
 
-static NSString * const kNeatoBeehiveRobotsPath = @"/users/me/robots";
+static NSString * const kNeatoBeehiveUserRobotsPath = @"/users/me/robots";
+static NSString * const kNeatoBeehiveRobotPath = @"/robot";
 
 @implementation NeatoBeehiveClient
 
@@ -30,12 +31,12 @@ static NSString * const kNeatoBeehiveRobotsPath = @"/users/me/robots";
     return beehiveClient;
 }
 
-- (void)robots:(void (^)( NSArray* _Nullable robots, NSError *error))completionHandler {
+- (void)robots:(void (^)( NSArray* _Nullable robots, NSError* _Nullable error))completionHandler {
     
     NeatoHTTPSessionManager *manager = [NeatoHTTPSessionManager authenticatedInstance];
     
     if (manager != nil){
-        [manager GET:kNeatoBeehiveRobotsPath
+        [manager GET:kNeatoBeehiveUserRobotsPath
           parameters:nil
             progress:^(NSProgress * _Nonnull downloadProgress) {}
              success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -50,5 +51,6 @@ static NSString * const kNeatoBeehiveRobotsPath = @"/users/me/robots";
         }];
     }
 }
+
 
 @end
