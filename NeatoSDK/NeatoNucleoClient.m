@@ -7,6 +7,11 @@
 //
 
 #import "NeatoNucleoClient.h"
+#import "NeatoHTTPSessionManager.h"
+
+@interface NeatoNucleoClient ()
+
+@end
 
 @implementation NeatoNucleoClient
 
@@ -26,4 +31,12 @@
     return nucleoClient;
 }
 
+- (void) sendCommand:(NSString *)command
+     withParamenters:(id)parameters
+             toRobot:(NSString *)robotSerial
+            complete:(void (^)(id _Nullable, NSError * _Nullable))completionHandler{
+    
+    NeatoHTTPSessionManager *manager = [NeatoHTTPSessionManager sharedInstance];
+    
+}
 @end

@@ -27,12 +27,7 @@ NSString * const kNeatoAPIBaseURLPath = @"https://beehive-playground.neatocloud.
 }
 
 + (instancetype) setupInstanceWithAccessToken:(NSString*)token {
-    NeatoHTTPSessionManager *manager = [NeatoHTTPSessionManager sharedInstance];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    NSString *value = [NSString stringWithFormat:@"Bearer %@", token];
-    [manager.requestSerializer setValue:value forHTTPHeaderField:@"Authorization"];
-    
-    return manager;
+    return [self setupInstanceWithAuthorization:@"Bearer" value:token];
 }
 
 + (_Nullable instancetype) authenticatedInstance{
@@ -53,6 +48,20 @@ NSString * const kNeatoAPIBaseURLPath = @"https://beehive-playground.neatocloud.
     }else{
         return nil;
     }
+}
+
++ (instancetype) setupInstanceWithNucleoAuthorization:(NSString*)signedString{
+    return [self setupInstanceWithAuthorization:@"NEATOAPP" value:signedString];
+}
+
++ (instancetype) setupInstanceWithAuthorization:(NSString *)key value:(NSString *)value{
+    
+    NeatoHTTPSessionManager *manager = [NeatoHTTPSessionManager sharedInstance];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    NSString *authValue = [NSString stringWithFormat:@"%@ %@", key, value];
+    [manager.requestSerializer setValue:authValue forHTTPHeaderField:@"Authorization"];
+    
+    return manager;
 }
 
 @end

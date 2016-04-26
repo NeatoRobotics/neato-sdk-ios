@@ -22,7 +22,7 @@ describe(@"NeatoHTTPSessionManager", ^{
         
         context(@"when it is requested", ^{
             
-            it(@"is expected to return an instance :)", ^{
+            it(@"returns an instance :)", ^{
                 expect([NeatoHTTPSessionManager sharedInstance]).toNot.beNil();
             });
         });

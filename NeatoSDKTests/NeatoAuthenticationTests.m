@@ -24,7 +24,7 @@ describe(@"NeatoAuthentication", ^{
         
         context(@"when is requested", ^{
             
-            it(@"is expected to return an instance :)", ^{
+            it(@"returns an instance :)", ^{
                 expect([NeatoAuthentication sharedInstance]).toNot.beNil();
             });
         });
@@ -200,7 +200,7 @@ describe(@"NeatoAuthentication", ^{
                 [OHHTTPStubs removeAllStubs];
             });
             
-            it(@"Session is not deleted", ^ {
+            it(@"keeps the session", ^ {
                 waitUntil(^(DoneCallback done) {
                     
                     [[NeatoAuthentication sharedInstance] logout:^(NSError * _Nullable error) {

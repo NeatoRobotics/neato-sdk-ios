@@ -49,6 +49,8 @@ static NSString * const kNeatoBeehiveRobotPath = @"/robot";
              failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                  completionHandler(nil, error);
         }];
+    }else{
+        completionHandler(nil, [NSError errorWithDomain:@"OAuth" code:1 userInfo:nil]);
     }
 }
 

@@ -28,7 +28,7 @@ describe(@"NeatoBeehiveClient", ^{
         
         context(@"when is requested", ^{
             
-            it(@"is expected to return an instance :)", ^{
+            it(@"returns an instance :)", ^{
                 expect([NeatoNucleoClient sharedInstance]).toNot.beNil();
             });
         });

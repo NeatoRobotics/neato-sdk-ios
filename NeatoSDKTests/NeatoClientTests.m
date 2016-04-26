@@ -22,7 +22,7 @@ describe(@"NeatoClient", ^{
 
         context(@"when is requested", ^{
             
-            it(@"is expected to return an instance :)", ^{
+            it(@"returns an instance :)", ^{
                 expect([NeatoClient sharedInstance]).toNot.beNil();
             });
         });
@@ -34,15 +34,15 @@ describe(@"NeatoClient", ^{
                                        redirectURI:@"test-url://redirect"];
             });
 
-            it(@"has passed a clientID to NeatoAuthentication", ^{
+            it(@"passes a clientID to NeatoAuthentication", ^{
                 expect([NeatoAuthentication sharedInstance].clientID).to.equal(@"test-client");
             });
             
-            it(@"has passed a redirect URL to NeatoAuthentication", ^{
+            it(@"passes a redirect URL to NeatoAuthentication", ^{
                 expect([NeatoAuthentication sharedInstance].redirectURI).to.equal(@"test-url://redirect");
             });
             
-            it(@"has passed scopes to NeatoAuthentication", ^{
+            it(@"passes scopes to NeatoAuthentication", ^{
                 expect([NeatoAuthentication sharedInstance].authScopes).to.equal(@[NeatoOAuthScopeControlRobots]);
             });
         });
@@ -72,7 +72,7 @@ describe(@"NeatoClient", ^{
                     [[NeatoClient sharedInstance] handleURL:[NSURL URLWithString:@"redirect://url#access_token=this_is_the_token&expires_in=10000"]];
                 });
                 
-                it(@"has setup the NeatoAuthentication with the token", ^{
+                it(@"has stored a token", ^{
                     expect([NeatoAuthentication sharedInstance].accessToken).to.equal(@"this_is_the_token");
                 });
             });
@@ -121,7 +121,7 @@ describe(@"NeatoClient", ^{
 
             });
             
-            it(@"delete the current session",^{
+            it(@"deletes the current session",^{
                 expect([NeatoClient sharedInstance].isAuthenticated).to.equal(true);
 
                 waitUntil(^(DoneCallback done) {

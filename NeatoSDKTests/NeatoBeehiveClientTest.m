@@ -28,7 +28,7 @@ describe(@"NeatoBeehiveClient", ^{
         
         context(@"when is requested", ^{
             
-            it(@"is expected to return an instance :)", ^{
+            it(@"return an instance :)", ^{
                 expect([NeatoBeehiveClient sharedInstance]).toNot.beNil();
             });
         });
@@ -45,7 +45,7 @@ describe(@"NeatoBeehiveClient", ^{
                             code:200];
             });
             
-            it(@"is expected to list a robot", ^{
+            it(@"returns a robot", ^{
                 waitUntil(^(DoneCallback done) {
                     [[NeatoBeehiveClient sharedInstance] robots:^(NSArray * _Nullable robots, NSError * _Nonnull error) {
                         expect(error).to.beNil;
@@ -65,7 +65,7 @@ describe(@"NeatoBeehiveClient", ^{
                              code:200];
             });
             
-            it(@"is expected to return an error", ^{
+            it(@"it raises an error", ^{
                 waitUntil(^(DoneCallback done) {
                     [[NeatoBeehiveClient sharedInstance] robots:^(NSArray * _Nullable robots, NSError * _Nonnull error) {
                         expect(error.domain).to.equal(@"Beehive.Robots");
@@ -81,7 +81,7 @@ describe(@"NeatoBeehiveClient", ^{
                 [OHHTTPStubs stub:@"/users/me/robots" withFailure:400];
             });
             
-            it(@"is expected to return an error", ^{
+            it(@"raises an error", ^{
                 waitUntil(^(DoneCallback done) {
                     [[NeatoBeehiveClient sharedInstance] robots:^(NSArray * _Nullable robots, NSError * _Nonnull error) {
                         expect(error).notTo.beNil();
