@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		583ACE751CD0BF4F00C2CE0A /* TestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 583ACE741CD0BF4F00C2CE0A /* TestHelpers.m */; };
+		583ACE781CD1011600C2CE0A /* NeatoRobot.h in Headers */ = {isa = PBXBuildFile; fileRef = 583ACE761CD1011600C2CE0A /* NeatoRobot.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		583ACE791CD1011600C2CE0A /* NeatoRobot.m in Sources */ = {isa = PBXBuildFile; fileRef = 583ACE771CD1011600C2CE0A /* NeatoRobot.m */; };
 		58A338281CC93993008F5B7D /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A338271CC93993008F5B7D /* AFNetworking.framework */; };
 		58A338391CC93D16008F5B7D /* NeatoAuthentication.h in Headers */ = {isa = PBXBuildFile; fileRef = 58A338301CC93D16008F5B7D /* NeatoAuthentication.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		58A3383A1CC93D16008F5B7D /* NeatoAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A338311CC93D16008F5B7D /* NeatoAuthentication.m */; };
@@ -62,6 +64,8 @@
 /* Begin PBXFileReference section */
 		583ACE731CD0A9DC00C2CE0A /* TestHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestHelpers.h; sourceTree = "<group>"; };
 		583ACE741CD0BF4F00C2CE0A /* TestHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestHelpers.m; sourceTree = "<group>"; };
+		583ACE761CD1011600C2CE0A /* NeatoRobot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeatoRobot.h; sourceTree = "<group>"; };
+		583ACE771CD1011600C2CE0A /* NeatoRobot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeatoRobot.m; sourceTree = "<group>"; };
 		5849EEA61CCA66D400A2C2D6 /* OHHTTPStubs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OHHTTPStubs.framework; path = Carthage/Build/iOS/OHHTTPStubs.framework; sourceTree = "<group>"; };
 		58A3380D1CC92D85008F5B7D /* NeatoSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NeatoSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58A338101CC92D85008F5B7D /* NeatoSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NeatoSDK.h; sourceTree = "<group>"; };
@@ -176,6 +180,8 @@
 				5849EEA51CCA5EAA00A2C2D6 /* Authentication */,
 				58A338321CC93D16008F5B7D /* NeatoClient.h */,
 				58A338331CC93D16008F5B7D /* NeatoClient.m */,
+				583ACE761CD1011600C2CE0A /* NeatoRobot.h */,
+				583ACE771CD1011600C2CE0A /* NeatoRobot.m */,
 				58A338101CC92D85008F5B7D /* NeatoSDK.h */,
 				58A338121CC92D85008F5B7D /* Info.plist */,
 			);
@@ -276,6 +282,7 @@
 				58A338531CC93DC8008F5B7D /* NeatoSDK.h in Headers */,
 				58A3383C1CC93D16008F5B7D /* NeatoClient.h in Headers */,
 				58C5743C1CCAE05B0068D5E1 /* NeatoBeehiveClient.h in Headers */,
+				583ACE781CD1011600C2CE0A /* NeatoRobot.h in Headers */,
 				58DF8D7D1CCFBB1700B1F6DA /* NeatoNucleoClient.h in Headers */,
 				58A338431CC93D16008F5B7D /* NeatoTokenUserDefaultStore.h in Headers */,
 				58DF8D881CCFC70800B1F6DA /* NSString+Neato.h in Headers */,
@@ -418,6 +425,7 @@
 			files = (
 				58A338441CC93D16008F5B7D /* NeatoTokenUserDefaultStore.m in Sources */,
 				58A3383D1CC93D16008F5B7D /* NeatoClient.m in Sources */,
+				583ACE791CD1011600C2CE0A /* NeatoRobot.m in Sources */,
 				58A3383A1CC93D16008F5B7D /* NeatoAuthentication.m in Sources */,
 				58DF8D851CCFC65E00B1F6DA /* NSDate+Neato.m in Sources */,
 				58A338401CC93D16008F5B7D /* NeatoHTTPSessionManager.m in Sources */,

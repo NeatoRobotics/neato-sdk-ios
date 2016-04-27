@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "Robot.h"
+@import NeatoSDK;
 
 @interface NeatoRobotCommands : UIViewController
-@property (nonatomic, strong) Robot *robot;
+@property (nonatomic, strong) NeatoRobot *robot;
 @end

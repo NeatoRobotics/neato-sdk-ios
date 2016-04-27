@@ -78,6 +78,6 @@
     Robot *robot = self.robots[index.row];
     NSLog(@"ROBOT%@", robot);
     NeatoRobotCommands *commands = segue.destinationViewController;
-    commands.robot = robot;
+    commands.robot = [[NeatoRobot alloc]initWithName:robot.name serial:robot.serial secretKey:robot.secretKey];
 }
 @end

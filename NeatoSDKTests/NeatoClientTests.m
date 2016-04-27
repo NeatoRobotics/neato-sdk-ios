@@ -164,6 +164,7 @@ describe(@"NeatoClient", ^{
 
     });
     
+    /*
     describe(@"Get Robot State", ^{
         
         context(@"when robot is online", ^{
@@ -215,6 +216,7 @@ describe(@"NeatoClient", ^{
             });
         });
     });
+     */
     
 });
 

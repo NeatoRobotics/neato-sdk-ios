@@ -12,7 +12,6 @@
 @interface NeatoRobotCommands()
 
 @property (nonatomic, weak) IBOutlet UILabel* robotState;
-
 @end
 
 @implementation NeatoRobotCommands
@@ -29,51 +28,36 @@
 }
 
 - (void)updateRobotState{
-    [[NeatoClient sharedInstance] getRobotState:self.robot.serial
-                                 robotSecretKey:self.robot.secretKey
-                                       complete:^(id  _Nullable robotState, bool online, NSError * _Nonnull error) {
-                                           
-                                           if(online){
-                                               self.robotState.text = @"Online";
-                                           }else{
-                                               self.robotState.text = @"OFFLINE";
-                                           }
+    [self.robot updateState:^{
+        self.robotState.text = (self.robot.online) ? @"ONLine" : @"OFFLine" ;
+    } failure:^(NSError *error) {
+        self.robotState.text = (self.robot.online) ? @"ONLine" : @"OFFLine" ;
     }];
 }
 
 - (IBAction)robotInfo:(id)sender{
     
-    [[NeatoClient sharedInstance]
-     getRobotInfo:self.robot.serial
-     robotSecretKey:self.robot.secretKey
-     complete:^(id  _Nullable robotInfo, NSError * _Nonnull error) {
-         NSLog(@"%@", robotInfo);
-    }];
 }
 
 - (IBAction)startCleaning:(id)sender{
-    NSDictionary *params = @{@"category":@(2), @"mode":@(1), @"modifier":@(1)};
-    
-    [[NeatoClient sharedInstance] startCleaning:self.robot.serial robotSecretKey:self.robot.secretKey parameters:params complete:^(id  _Nullable robotState, bool online, NSError * _Nonnull error) {
-        
+    [self.robot startCleaning:@{@"category":@(2), @"modifier":@(1), @"mode":@(1)} success:^{
+        NSLog(@"cleaning");
+    } failure:^(NSError * _Nullable error) {
+        NSLog(@"Error");
     }];
 }
 
 - (IBAction)stopCleaning:(id)sender{
-    [[NeatoClient sharedInstance] stopCleaning:self.robot.serial robotSecretKey:self.robot.secretKey complete:^(id  _Nullable robotState, bool online, NSError * _Nonnull error) {
-        
+    [self.robot stopCleaning:^{
+        nil;
+    } failure:^(NSError * _Nullable error) {
+        nil;
     }];
 }
 
 - (IBAction)enableSchedule:(id)sender{
-    [[NeatoClient sharedInstance] enableSchedule:self.robot.serial robotSecretKey:self.robot.secretKey complete:^(id  _Nullable robotInfo, NSError * _Nonnull error) {
-        NSLog(@"Scheduling Enabled");
-    }];
 }
 
 - (IBAction)disableSchedule:(id)sender{
-    [[NeatoClient sharedInstance] disableSchedule:self.robot.serial robotSecretKey:self.robot.secretKey complete:^(id  _Nullable robotInfo, NSError * _Nonnull error) {
-        NSLog(@"Scheduling Disabled");
-    }];
 }
 @end
