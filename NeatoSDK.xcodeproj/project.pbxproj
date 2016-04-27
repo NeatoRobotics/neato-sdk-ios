@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		583ACE751CD0BF4F00C2CE0A /* TestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 583ACE741CD0BF4F00C2CE0A /* TestHelpers.m */; };
 		58A338281CC93993008F5B7D /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A338271CC93993008F5B7D /* AFNetworking.framework */; };
 		58A338391CC93D16008F5B7D /* NeatoAuthentication.h in Headers */ = {isa = PBXBuildFile; fileRef = 58A338301CC93D16008F5B7D /* NeatoAuthentication.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		58A3383A1CC93D16008F5B7D /* NeatoAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A338311CC93D16008F5B7D /* NeatoAuthentication.m */; };
@@ -60,6 +61,7 @@
 
 /* Begin PBXFileReference section */
 		583ACE731CD0A9DC00C2CE0A /* TestHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestHelpers.h; sourceTree = "<group>"; };
+		583ACE741CD0BF4F00C2CE0A /* TestHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestHelpers.m; sourceTree = "<group>"; };
 		5849EEA61CCA66D400A2C2D6 /* OHHTTPStubs.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OHHTTPStubs.framework; path = Carthage/Build/iOS/OHHTTPStubs.framework; sourceTree = "<group>"; };
 		58A3380D1CC92D85008F5B7D /* NeatoSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NeatoSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		58A338101CC92D85008F5B7D /* NeatoSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NeatoSDK.h; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				58DF8D8A1CD0074D00B1F6DA /* NeatoUtilsTest.m */,
 				58DF8D8C1CD00B6600B1F6DA /* NeatoHTTPSessionTest.m */,
 				583ACE731CD0A9DC00C2CE0A /* TestHelpers.h */,
+				583ACE741CD0BF4F00C2CE0A /* TestHelpers.m */,
 			);
 			path = NeatoSDKTests;
 			sourceTree = "<group>";
@@ -439,6 +442,7 @@
 				58DF8D731CCF932E00B1F6DA /* NeatoBeehiveClientTest.m in Sources */,
 				58A3384F1CC93D44008F5B7D /* NeatoAuthenticationTests.m in Sources */,
 				58A3383B1CC93D16008F5B7D /* NeatoAuthentication.m in Sources */,
+				583ACE751CD0BF4F00C2CE0A /* TestHelpers.m in Sources */,
 				58A338501CC93D44008F5B7D /* NeatoClientTests.m in Sources */,
 				58DF8D8D1CD00B6600B1F6DA /* NeatoHTTPSessionTest.m in Sources */,
 				58A3384E1CC93D44008F5B7D /* MockNeatoTokenStore.m in Sources */,

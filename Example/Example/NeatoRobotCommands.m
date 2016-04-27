@@ -31,8 +31,22 @@
 - (void)updateRobotState{
     [[NeatoClient sharedInstance] getRobotState:self.robot.serial
                                  robotSecretKey:self.robot.secretKey
-                                       complete:^(id  _Nullable robotState, NSError * _Nonnull error) {
-                                           NSLog(@"Call Completed");
+                                       complete:^(id  _Nullable robotState, bool online, NSError * _Nonnull error) {
+                                           
+                                           if(online){
+                                               self.robotState.text = @"Online";
+                                           }else{
+                                               self.robotState.text = @"OFFLINE";
+                                           }
+    }];
+}
+
+- (IBAction)robotInfo:(id)sender{
+    [[NeatoClient sharedInstance]
+     getRobotInfo:self.robot.serial
+     robotSecretKey:self.robot.secretKey
+     complete:^(id  _Nullable robotInfo, NSError * _Nonnull error) {
+         NSLog(@"%@", robotInfo);
     }];
 }
 @end

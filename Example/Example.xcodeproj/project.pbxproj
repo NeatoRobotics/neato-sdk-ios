@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5849EE841CCA4EC500A2C2D6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5849EE831CCA4EC500A2C2D6 /* main.m */; };
 		5849EE871CCA4EC500A2C2D6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5849EE861CCA4EC500A2C2D6 /* AppDelegate.m */; };
-		5849EE8A1CCA4EC500A2C2D6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5849EE891CCA4EC500A2C2D6 /* ViewController.m */; };
 		5849EE8D1CCA4EC500A2C2D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5849EE8B1CCA4EC500A2C2D6 /* Main.storyboard */; };
 		5849EE8F1CCA4EC500A2C2D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5849EE8E1CCA4EC500A2C2D6 /* Assets.xcassets */; };
 		5849EE921CCA4EC500A2C2D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5849EE901CCA4EC500A2C2D6 /* LaunchScreen.storyboard */; };
@@ -25,8 +24,6 @@
 		5849EE831CCA4EC500A2C2D6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5849EE851CCA4EC500A2C2D6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5849EE861CCA4EC500A2C2D6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		5849EE881CCA4EC500A2C2D6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		5849EE891CCA4EC500A2C2D6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		5849EE8C1CCA4EC500A2C2D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5849EE8E1CCA4EC500A2C2D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5849EE911CCA4EC500A2C2D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -75,12 +72,10 @@
 			isa = PBXGroup;
 			children = (
 				58DF8D6B1CCF564400B1F6DA /* Models */,
-				5849EE851CCA4EC500A2C2D6 /* AppDelegate.h */,
-				5849EE861CCA4EC500A2C2D6 /* AppDelegate.m */,
 				5849EE9F1CCA526F00A2C2D6 /* Controllers */,
 				5849EEA01CCA528A00A2C2D6 /* Views */,
-				5849EE881CCA4EC500A2C2D6 /* ViewController.h */,
-				5849EE891CCA4EC500A2C2D6 /* ViewController.m */,
+				5849EE851CCA4EC500A2C2D6 /* AppDelegate.h */,
+				5849EE861CCA4EC500A2C2D6 /* AppDelegate.m */,
 				5849EE8E1CCA4EC500A2C2D6 /* Assets.xcassets */,
 				5849EE931CCA4EC500A2C2D6 /* Info.plist */,
 				5849EE821CCA4EC500A2C2D6 /* Supporting Files */,
@@ -208,7 +203,6 @@
 				58DF8D6E1CCF565C00B1F6DA /* Robot.m in Sources */,
 				5849EEA31CCA55B900A2C2D6 /* NeatoDashboardViewController.m in Sources */,
 				5849EE9E1CCA526800A2C2D6 /* NeatoLoginViewController.m in Sources */,
-				5849EE8A1CCA4EC500A2C2D6 /* ViewController.m in Sources */,
 				5849EE871CCA4EC500A2C2D6 /* AppDelegate.m in Sources */,
 				5849EE841CCA4EC500A2C2D6 /* main.m in Sources */,
 				58DF8D711CCF899400B1F6DA /* NeatoRobotCommands.m in Sources */,
