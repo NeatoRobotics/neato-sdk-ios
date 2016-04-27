@@ -45,7 +45,7 @@ static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages"
     NSMutableDictionary *payloadData = [NSMutableDictionary dictionaryWithDictionary:@{@"reqId":@"1", @"cmd":command}];
     
     if (parameters){
-        [payloadData setObject:parameters forKey:@"parameters"];
+        [payloadData setObject:parameters forKey:@"params"];
     }
     
     @try {

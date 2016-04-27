@@ -76,7 +76,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)sendCommand:(NSString*)command toRobot:(NSString *)robotSerial secretKey:(NSString *)robotSecretKey parameters:(NSDictionary* _Nullable) parameters complete:(void (^)(id _Nullable response, NSError *error))completionHandler{
     
-    [[NeatoNucleoClient sharedInstance] sendCommand:command withParamenters:nil
+    [[NeatoNucleoClient sharedInstance] sendCommand:command withParamenters:parameters
                                         robotSerial:robotSerial robotKey:robotSecretKey
                                            complete:^(id _Nullable response, NSError * _Nullable error) {
                                                
@@ -87,7 +87,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)sendStateCommand:(NSString*)command toRobot:(NSString *)robotSerial secretKey:(NSString *)robotSecretKey parameters:(NSDictionary* _Nullable) parameters complete:(void (^)(id _Nullable robotState, bool online, NSError *error))completionHandler{
 
-    [[NeatoNucleoClient sharedInstance] sendCommand:command withParamenters:nil
+    [[NeatoNucleoClient sharedInstance] sendCommand:command withParamenters:parameters
                                         robotSerial:robotSerial robotKey:robotSecretKey
                                            complete:^(id _Nullable robotState, NSError * _Nullable error) {
                                                

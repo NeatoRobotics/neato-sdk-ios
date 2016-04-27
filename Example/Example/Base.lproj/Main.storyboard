@@ -161,6 +161,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1cP-nK-IOj">
                                 <rect key="frame" x="238" y="144" width="124" height="30"/>
                                 <state key="normal" title="START CLEANING"/>
+                                <connections>
+                                    <action selector="startCleaning:" destination="dBV-B0-yel" eventType="touchUpInside" id="Hd6-V5-3ME"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRe-p8-Drd">
                                 <rect key="frame" x="279" y="195" width="42" height="21"/>
@@ -198,9 +201,17 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gkC-jn-xmZ">
+                                <rect key="frame" x="390" y="144" width="39" height="30"/>
+                                <state key="normal" title="STOP"/>
+                                <connections>
+                                    <action selector="stopCleaning:" destination="dBV-B0-yel" eventType="touchUpInside" id="eVu-Pt-bPV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="gkC-jn-xmZ" firstAttribute="leading" secondItem="1cP-nK-IOj" secondAttribute="trailing" constant="28" id="1Wf-CG-8oK"/>
                             <constraint firstItem="1cP-nK-IOj" firstAttribute="top" secondItem="VQX-9K-21Q" secondAttribute="bottom" constant="80" id="6gq-V9-Kcb"/>
                             <constraint firstItem="WOT-EH-zLm" firstAttribute="top" secondItem="Y8M-Ne-iQ6" secondAttribute="bottom" id="6yY-3a-Dn5"/>
                             <constraint firstItem="PRe-p8-Drd" firstAttribute="centerX" secondItem="1cP-nK-IOj" secondAttribute="centerX" id="B3R-dh-oIo"/>
@@ -211,6 +222,7 @@
                             <constraint firstItem="Y8M-Ne-iQ6" firstAttribute="leading" secondItem="Rqq-hm-TUs" secondAttribute="trailing" constant="-12" id="WUJ-dd-9y8"/>
                             <constraint firstItem="Y8M-Ne-iQ6" firstAttribute="centerX" secondItem="cBO-R7-ujK" secondAttribute="centerX" id="XcO-r9-GFw"/>
                             <constraint firstItem="WOT-EH-zLm" firstAttribute="leading" secondItem="Y8M-Ne-iQ6" secondAttribute="trailing" constant="-11" id="hFb-ym-qf9"/>
+                            <constraint firstItem="gkC-jn-xmZ" firstAttribute="centerY" secondItem="1cP-nK-IOj" secondAttribute="centerY" id="kka-Lv-aai"/>
                             <constraint firstItem="mOq-Ic-j32" firstAttribute="top" secondItem="PRe-p8-Drd" secondAttribute="bottom" constant="28" id="s8C-bf-Ajf"/>
                             <constraint firstItem="1cP-nK-IOj" firstAttribute="centerX" secondItem="cBO-R7-ujK" secondAttribute="centerX" id="uAf-m8-htD"/>
                             <constraint firstItem="mOq-Ic-j32" firstAttribute="centerX" secondItem="cBO-R7-ujK" secondAttribute="centerX" id="vhn-Uj-Osn"/>

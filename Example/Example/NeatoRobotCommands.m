@@ -51,6 +51,20 @@
     }];
 }
 
+- (IBAction)startCleaning:(id)sender{
+    NSDictionary *params = @{@"category":@(2), @"mode":@(1), @"modifier":@(1)};
+    
+    [[NeatoClient sharedInstance] startCleaning:self.robot.serial robotSecretKey:self.robot.secretKey parameters:params complete:^(id  _Nullable robotState, bool online, NSError * _Nonnull error) {
+        
+    }];
+}
+
+- (IBAction)stopCleaning:(id)sender{
+    [[NeatoClient sharedInstance] stopCleaning:self.robot.serial robotSecretKey:self.robot.secretKey complete:^(id  _Nullable robotState, bool online, NSError * _Nonnull error) {
+        
+    }];
+}
+
 - (IBAction)enableSchedule:(id)sender{
     [[NeatoClient sharedInstance] enableSchedule:self.robot.serial robotSecretKey:self.robot.secretKey complete:^(id  _Nullable robotInfo, NSError * _Nonnull error) {
         NSLog(@"Scheduling Enabled");
