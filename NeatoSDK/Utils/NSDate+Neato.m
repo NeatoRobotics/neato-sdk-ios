@@ -9,6 +9,7 @@
 #import "NSDate+Neato.h"
 
 @implementation NSDate (Neato)
+
 - (NSString *) rfc1123String
 {
     static NSDateFormatter *df = nil;

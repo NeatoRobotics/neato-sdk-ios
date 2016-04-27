@@ -74,8 +74,8 @@ NS_ASSUME_NONNULL_BEGIN
     [[NeatoNucleoClient sharedInstance] sendCommand:@"getRobotState" withParamenters:nil
                                         robotSerial:robotSerial robotKey:robotSecretKey
                                            complete:^(id _Nullable robotState, NSError * _Nullable error) {
-                                               NSLog(@"ERROR %@", error);
-                                               NSLog(@"STATE %@", robotState);
+                                               
+                                               completionHandler(robotState, error);
                                                
     }];
 }

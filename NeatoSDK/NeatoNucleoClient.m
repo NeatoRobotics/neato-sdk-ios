@@ -41,38 +41,44 @@ static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages"
             robotKey:(NSString *)secretKey
             complete:(void (^)(id _Nullable, NSError * _Nullable))completionHandler{
     
-    NSMutableDictionary *payloadData = @{@"reqId":@"1", @"cmd":command};
+    // Serialize and sign the call
+    NSMutableDictionary *payloadData = [NSMutableDictionary dictionaryWithDictionary:@{@"reqId":@"1", @"cmd":command}];
+    
     if (parameters){
         [payloadData setObject:parameters forKey:@"parameters"];
     }
     
-    NSError *jsonSerializeError;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:payloadData options:0 error:&jsonSerializeError];
-    NSString *payloadString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    @try {
+        NSError *jsonSerializeError;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:payloadData options:0 error:&jsonSerializeError];
 
-    NSString *dateStr = [NSDate date].rfc1123String;
-    NSString *unsignedString = [NSString stringWithFormat:@"%@\n%@\n%@",
-                                robotSerial.lowercaseString,
-                                dateStr,
-                                payloadString];
-    NSLog(@"%@", unsignedString);
-    NSString *signedString = [unsignedString SHA256:secretKey];
-    NSLog(@"%@", signedString);
-    NSLog(@"secret %@", secretKey);
-    NeatoHTTPSessionManager *manager = [NeatoHTTPSessionManager managerWithNucleoAuthorization:signedString date:dateStr];
+        if(!jsonSerializeError){
+            NSString *payloadString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+
+            NSString *dateString = [NSDate date].rfc1123String;
+            NSString *unsignedString = [NSString stringWithFormat:@"%@\n%@\n%@",
+                                        robotSerial.lowercaseString,
+                                        dateString,
+                                        payloadString];
+            NSString *signedString = [unsignedString SHA256:secretKey];
+            
+            
+            // Perform call
+            NeatoHTTPSessionManager *manager = [NeatoHTTPSessionManager managerWithNucleoAuthorization:signedString date:dateString];
+            NSString *path = [NSString stringWithFormat:kNeatoNucleoMessagesPath,robotSerial];
+            [manager POST:path parameters:payloadData
+                 progress:^(NSProgress * _Nonnull uploadProgress) {}
+                  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                      completionHandler(responseObject, nil);
+                  }
+                  failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                      completionHandler(nil, error);
+            }];
+        }
+    }
     
-    NSString *path = [NSString stringWithFormat:kNeatoNucleoMessagesPath,robotSerial];
-    
-    [manager POST:path parameters:payloadData
-     
-         progress:^(NSProgress * _Nonnull uploadProgress) {}
-     
-          success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-              completionHandler(responseObject, nil);
-          }
-          failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-              NSLog(@"%@", task.originalRequest.allHTTPHeaderFields);
-              completionHandler(nil, error);
-    }];
+    @catch (NSException *exception) {
+        completionHandler(nil, [NSError errorWithDomain:@"Neato.Nucleo" code:1 userInfo:@{@"exception":exception.name}]);
+    }
 }
 @end

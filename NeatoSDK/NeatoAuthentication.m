@@ -76,7 +76,10 @@ static NSString * const kNeatoOAuthAuthorizeEndPoint = @"https://beehive.neatocl
     NSString *token = [self.tokenStore readStoredAccessToken];
     NSDate *tokenExpiration = [self.tokenStore readStoredAccessTokenExpirationDate];
     
-    if (token != nil && [tokenExpiration compare:[NSDate date]] == NSOrderedDescending){
+    NSLog(@"\n\n\n\n\n\n\n\n\nTOKEN SHOULD %@",[NeatoAuthentication sharedInstance].accessToken);
+    NSLog(@"\n\n\n\n\n\n\n\n\nTOKEN ACCESS %@",token);
+
+    if (token != NULL && [tokenExpiration compare:[NSDate date]] == NSOrderedDescending){
         return true;
     }else{
         return false;
