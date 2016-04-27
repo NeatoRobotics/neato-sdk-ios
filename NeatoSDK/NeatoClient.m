@@ -130,6 +130,20 @@ NS_ASSUME_NONNULL_BEGIN
     }];
 }
 
+- (void) enableSchedule:(NSString *)robotSerial robotSecretKey:(NSString*)robotSecretKey complete:(void (^)(id _Nullable robotInfo, NSError *error))completionHandler{
+    
+    [self sendCommand:@"enableSchedule" toRobot:robotSerial secretKey:robotSecretKey parameters:nil complete:^(id  _Nullable response, NSError * _Nonnull error) {
+        completionHandler(response, error);
+    }];
+}
+
+- (void) disableSchedule:(NSString *)robotSerial robotSecretKey:(NSString*)robotSecretKey complete:(void (^)(id _Nullable robotInfo, NSError *error))completionHandler{
+    
+    [self sendCommand:@"disableSchedule" toRobot:robotSerial secretKey:robotSecretKey parameters:nil complete:^(id  _Nullable response, NSError * _Nonnull error) {
+        completionHandler(response, error);
+    }];
+}
+
 @end
 
 NS_ASSUME_NONNULL_END

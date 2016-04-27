@@ -32,15 +32,19 @@ NS_ASSUME_NONNULL_BEGIN
 - (BOOL) isAuthenticated;
 - (void) logout:(void (^)(NSError* error)) completionHandler;
 
-#pragma mark - Robot bridge
+#pragma mark - User commands
 
 - (void) robots:(void (^)(NSArray* _Nullable robots, NSError *error))completionHandler;
+
+#pragma mark - Robot commands
 
 - (void) getRobotState:(NSString *)robotSerial robotSecretKey:(NSString*)robotSecretKey complete:(void (^)(id _Nullable robotState, bool online, NSError *error))completionHandler;
 - (void) getRobotInfo:(NSString *)robotSerial robotSecretKey:(NSString*)robotSecretKey complete:(void (^)(id _Nullable robotInfo, NSError *error))completionHandler;
 - (void) startCleaning:(NSString *)robotSerial robotSecretKey:(NSString*)robotSecretKey parameters:(NSDictionary *)parameters complete:(void (^)(id _Nullable robotState, bool online, NSError *error))completionHandler;
 - (void) pauseCleaning:(NSString *)robotSerial robotSecretKey:(NSString*)robotSecretKey complete:(void (^)(id _Nullable robotState, bool online, NSError *error))completionHandler;
 - (void) stopCleaning:(NSString *)robotSerial robotSecretKey:(NSString*)robotSecretKey complete:(void (^)(id _Nullable robotState, bool online, NSError *error))completionHandler;
+- (void) enableSchedule:(NSString *)robotSerial robotSecretKey:(NSString*)robotSecretKey complete:(void (^)(id _Nullable robotInfo, NSError *error))completionHandler;
+- (void) disableSchedule:(NSString *)robotSerial robotSecretKey:(NSString*)robotSecretKey complete:(void (^)(id _Nullable robotInfo, NSError *error))completionHandler;
 
 @end
 

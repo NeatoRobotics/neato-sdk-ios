@@ -42,11 +42,24 @@
 }
 
 - (IBAction)robotInfo:(id)sender{
+    
     [[NeatoClient sharedInstance]
      getRobotInfo:self.robot.serial
      robotSecretKey:self.robot.secretKey
      complete:^(id  _Nullable robotInfo, NSError * _Nonnull error) {
          NSLog(@"%@", robotInfo);
+    }];
+}
+
+- (IBAction)enableSchedule:(id)sender{
+    [[NeatoClient sharedInstance] enableSchedule:self.robot.serial robotSecretKey:self.robot.secretKey complete:^(id  _Nullable robotInfo, NSError * _Nonnull error) {
+        NSLog(@"Scheduling Enabled");
+    }];
+}
+
+- (IBAction)disableSchedule:(id)sender{
+    [[NeatoClient sharedInstance] disableSchedule:self.robot.serial robotSecretKey:self.robot.secretKey complete:^(id  _Nullable robotInfo, NSError * _Nonnull error) {
+        NSLog(@"Scheduling Disabled");
     }];
 }
 @end

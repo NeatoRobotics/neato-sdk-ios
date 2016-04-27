@@ -168,6 +168,9 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hsw-Sr-3NI">
+                                <rect key="frame" x="275.5" y="300" width="51" height="31"/>
+                            </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mOq-Ic-j32">
                                 <rect key="frame" x="256" y="244" width="89" height="30"/>
                                 <state key="normal" title="ROBOT INFO"/>
@@ -175,16 +178,49 @@
                                     <action selector="robotInfo:" destination="dBV-B0-yel" eventType="touchUpInside" id="TMi-vw-Obz"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rqq-hm-TUs">
+                                <rect key="frame" x="261" y="351" width="30" height="30"/>
+                                <state key="normal" title="ON"/>
+                                <connections>
+                                    <action selector="enableSchedule:" destination="dBV-B0-yel" eventType="touchUpInside" id="0FK-Pr-zdl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOT-EH-zLm">
+                                <rect key="frame" x="310" y="351" width="30" height="30"/>
+                                <state key="normal" title="OFF"/>
+                                <connections>
+                                    <action selector="disableSchedule:" destination="dBV-B0-yel" eventType="touchUpInside" id="WzU-Se-8xv"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8M-Ne-iQ6">
+                                <rect key="frame" x="279" y="330" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="1cP-nK-IOj" firstAttribute="top" secondItem="VQX-9K-21Q" secondAttribute="bottom" constant="80" id="6gq-V9-Kcb"/>
+                            <constraint firstItem="WOT-EH-zLm" firstAttribute="top" secondItem="Y8M-Ne-iQ6" secondAttribute="bottom" id="6yY-3a-Dn5"/>
                             <constraint firstItem="PRe-p8-Drd" firstAttribute="centerX" secondItem="1cP-nK-IOj" secondAttribute="centerX" id="B3R-dh-oIo"/>
+                            <constraint firstItem="Hsw-Sr-3NI" firstAttribute="centerX" secondItem="cBO-R7-ujK" secondAttribute="centerX" id="Oic-81-Bgt"/>
                             <constraint firstItem="PRe-p8-Drd" firstAttribute="top" secondItem="1cP-nK-IOj" secondAttribute="bottom" constant="21" id="RsQ-db-xxb"/>
+                            <constraint firstItem="Hsw-Sr-3NI" firstAttribute="top" secondItem="mOq-Ic-j32" secondAttribute="bottom" constant="26" id="Ufh-AO-Pwd"/>
+                            <constraint firstItem="Y8M-Ne-iQ6" firstAttribute="top" secondItem="mOq-Ic-j32" secondAttribute="bottom" constant="56" id="WPX-iV-45A"/>
+                            <constraint firstItem="Y8M-Ne-iQ6" firstAttribute="leading" secondItem="Rqq-hm-TUs" secondAttribute="trailing" constant="-12" id="WUJ-dd-9y8"/>
+                            <constraint firstItem="Y8M-Ne-iQ6" firstAttribute="centerX" secondItem="cBO-R7-ujK" secondAttribute="centerX" id="XcO-r9-GFw"/>
+                            <constraint firstItem="WOT-EH-zLm" firstAttribute="leading" secondItem="Y8M-Ne-iQ6" secondAttribute="trailing" constant="-11" id="hFb-ym-qf9"/>
                             <constraint firstItem="mOq-Ic-j32" firstAttribute="top" secondItem="PRe-p8-Drd" secondAttribute="bottom" constant="28" id="s8C-bf-Ajf"/>
                             <constraint firstItem="1cP-nK-IOj" firstAttribute="centerX" secondItem="cBO-R7-ujK" secondAttribute="centerX" id="uAf-m8-htD"/>
                             <constraint firstItem="mOq-Ic-j32" firstAttribute="centerX" secondItem="cBO-R7-ujK" secondAttribute="centerX" id="vhn-Uj-Osn"/>
+                            <constraint firstItem="Rqq-hm-TUs" firstAttribute="top" secondItem="Y8M-Ne-iQ6" secondAttribute="bottom" id="z7V-6o-otI"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="Hsw-Sr-3NI"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="robotState" destination="PRe-p8-Drd" id="jxa-fm-BHS"/>
