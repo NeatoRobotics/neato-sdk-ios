@@ -100,6 +100,11 @@ NS_ASSUME_NONNULL_BEGIN
  **/
 - (void)disableScheduleWithCompletion:(void (^)(NSError * _Nullable error))completion;
 
+/**
+ Force robot state and action. This function should be used for testing purpose only.
+ **/
+- (void)forceRobotState:(RobotState)state action:(RobotAction)action online:(BOOL)online;
+
 @end
 
 NS_ASSUME_NONNULL_END

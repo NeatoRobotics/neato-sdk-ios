@@ -1,0 +1,40 @@
+{
+    "version": 1,
+    "reqId": "0",
+    "result": "ok",
+    "state": 2,
+    "action": 1,
+    "alert": null,
+    "error": null,
+    "cleaning": {
+        "category": 2,
+        "mode": 1,
+        "modifier": 1,
+        "spotWidth": 0,
+        "spotHeight": 0
+    },
+    "details": {
+        "isCharging": true,
+        "isDocked": true,
+        "dockHasBeenSeen": false,
+        "isScheduleEnabled":true,
+        "charge": 100
+    },
+    "availableCommands": {
+        "start": false,
+        "stop": true,
+        "pause": true,
+        "resume": false,
+        "goToBase": false
+    },
+    "availableServices":{
+        "houseCleaning":"basic-1",
+        "spotCleaning":"basic-1",
+        "manualCleaning":"basic-1",
+        "schedule":"basic-1"
+    },
+    "meta":{
+        "modelName":"BotVacConnected",
+        "firmware": "2.0.0"
+    }
+}

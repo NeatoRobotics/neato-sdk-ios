@@ -66,10 +66,10 @@
         _action = [self robotActionFromObject:response[@"action"]];
         
         if(response[@"details"]){
-            _chargeLevel = (int)response[@"details"][@"charge"];
-            _isCharging = response[@"details"][@"isCharging"];
-            _isDocked = response[@"details"][@"isDocked"];
-            _isScheduleEnabled = response[@"details"][@"isScheduleEnabled"];
+            _chargeLevel = [response[@"details"][@"charge"] intValue];
+            _isCharging = [response[@"details"][@"isCharging"] boolValue];
+            _isDocked = [response[@"details"][@"isDocked"] boolValue];
+            _isScheduleEnabled = [response[@"details"][@"isScheduleEnabled"] boolValue];
         }
     }
 }
@@ -80,7 +80,11 @@
 - (RobotState)robotStateFromObject:(id)obj{
     if ([obj respondsToSelector:@selector(intValue)]){
         int value = [obj intValue];
-        return (RobotState)value;
+        if (value > RobotStateError){
+            return RobotStateInvalid;
+        }else{
+            return (RobotState)value;
+        }
     }else{
         return RobotStateInvalid;
     }
@@ -92,7 +96,11 @@
 - (RobotAction)robotActionFromObject:(id)obj{
     if ([obj respondsToSelector:@selector(intValue)]){
         int value = [obj intValue];
-        return (RobotAction)value;
+        if (value > RobotActionRecoveryLocation){
+            return RobotActionInvalid;
+        }else{
+            return (RobotAction)value;
+        }
     }else{
         return RobotActionInvalid;
     }
@@ -146,6 +154,12 @@
     return [NSString stringWithFormat:
             @"<Hi! I'm %@ state=%lu action=%lu>",
             self.name, (unsigned long)self.state, (unsigned long)self.action];
+}
+
+- (void)forceRobotState:(RobotState)state action:(RobotAction)action online:(BOOL)online{
+    _state = state;
+    _action = action;
+    _online = online;
 }
  
 @end
