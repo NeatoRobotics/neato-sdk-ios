@@ -37,6 +37,13 @@
 
         [self.table reloadData];
     }];
+    
+    [user updateUserInfo:^(NSError * _Nullable error) {
+        if(error){
+            NSLog(@"%@", [error localizedDescription]);
+        }
+        NSLog(@"%@ %@ %@", user.firstname, user.lastname, user.email);
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

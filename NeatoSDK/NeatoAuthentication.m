@@ -76,8 +76,6 @@ static NSString * const kNeatoOAuthAuthorizeEndPoint = @"https://beehive.neatocl
 - (BOOL) isAuthenticated{
     NSString *token = [self.tokenStore readStoredAccessToken];
     NSDate *tokenExpiration = [self.tokenStore readStoredAccessTokenExpirationDate];
-    
-    NSLog(@"\n\n\n\n\n\n\n%@ %@\n\n\n\n\n\n\n", token, tokenExpiration);
     if (token != NULL && [tokenExpiration compare:[NSDate date]] == NSOrderedDescending){
         return true;
     }else{
@@ -158,10 +156,11 @@ static NSString * const kNeatoOAuthAuthorizeEndPoint = @"https://beehive.neatocl
 #pragma mark - Private Methods
 
 - (NSURL*) buildAuthorizationURL{
+    
     NSString *parametersString = [NSString stringWithFormat:@"client_id=%@&redirect_uri=%@&scope=%@&response_type=token",
                             self.clientID,
                             self.redirectURI,
-                            NeatoOAuthScopeControlRobots];
+                            [self.authScopes componentsJoinedByString:@"+"]];
     
     NSString *urlPath = [kNeatoOAuthLoginEndPoint stringByAppendingString:parametersString];
     return [NSURL URLWithString:urlPath];

@@ -18,7 +18,7 @@
 
 @import NeatoSDK;
 
-SpecBegin(NeatoBeehiveClient)
+SpecBegin(NeatoUser)
 
 describe(@"NeatoUser", ^{
     
@@ -26,6 +26,34 @@ describe(@"NeatoUser", ^{
         [OHHTTPStubs removeAllStubs];
     });
 
+    describe(@"Authenticated", ^{
+        context(@"when user is authenticated", ^{
+           
+            before(^{
+                signInUserDefault();
+            });
+            
+            it(@"returns true",^{
+                NeatoUser *user = [NeatoUser new];
+                expect([user isAuthenticated]).to.equal(true);
+            });
+        });
+        
+        context(@"when user is logged out", ^{
+            
+            before(^{
+                signInUserDefault();
+            });
+            
+            it(@"returns false",^{
+                [[NeatoAuthentication sharedInstance]logoutWithCompletion:^(NSError * _Nullable error) {
+                    NeatoUser *user = [NeatoUser new];
+                    expect([user isAuthenticated]).to.equal(false);
+                }];
+            });
+        });
+    });
+    
     describe(@"Get Robots", ^{
         
         context(@"when a robots is available", ^{

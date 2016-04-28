@@ -166,7 +166,6 @@
 			isa = PBXGroup;
 			children = (
 				58DF8D811CCFC64700B1F6DA /* Utils */,
-				58C574391CCAE0210068D5E1 /* Clients */,
 				5849EEA51CCA5EAA00A2C2D6 /* Authentication */,
 				583ACE761CD1011600C2CE0A /* NeatoRobot.h */,
 				583ACE771CD1011600C2CE0A /* NeatoRobot.m */,
@@ -216,13 +215,6 @@
 				58A338481CC93D44008F5B7D /* MockNeatoTokenStore.m */,
 			);
 			path = Mock;
-			sourceTree = "<group>";
-		};
-		58C574391CCAE0210068D5E1 /* Clients */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Clients;
 			sourceTree = "<group>";
 		};
 		58DF8D791CCFAA4D00B1F6DA /* OHHTTPStubs */ = {

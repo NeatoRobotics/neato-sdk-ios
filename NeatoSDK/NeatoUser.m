@@ -11,7 +11,7 @@
 #import "NeatoHTTPSessionManager.h"
 
 static NSString * const kNeatoBeehiveUserRobotsPath = @"/users/me/robots";
-static NSString * const kNeatoBeehiveRobotPath = @"/robot";
+static NSString * const kNeatoBeehiveUserInfoPath = @"/users/me";
 
 @implementation NeatoUser
 
@@ -40,6 +40,28 @@ static NSString * const kNeatoBeehiveRobotPath = @"/robot";
              }];
     }else{
         completionHandler(nil, [NSError errorWithDomain:@"OAuth" code:1 userInfo:nil]);
+    }
+}
+
+- (void) updateUserInfo:(void(^)(NSError * _Nullable error))completionHandler{
+    NeatoHTTPSessionManager *manager = [NeatoHTTPSessionManager authenticatedBeehiveManager];
+    
+    if (manager != nil){
+        [manager GET:kNeatoBeehiveUserInfoPath
+          parameters:nil
+            progress:^(NSProgress * _Nonnull downloadProgress) {}
+             success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                 _firstname = responseObject[@"first_name"];
+                 _lastname = responseObject[@"last_name"];
+                 _email = responseObject[@"email"];
+                 NSLog(@"%@", responseObject);
+                 completionHandler(nil);
+             }
+             failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                 completionHandler(error);
+             }];
+    }else{
+        completionHandler([NSError errorWithDomain:@"OAuth" code:1 userInfo:nil]);
     }
 }
 
