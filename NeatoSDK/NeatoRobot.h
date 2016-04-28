@@ -33,14 +33,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NeatoRobot : NSObject
 
-@property (nonatomic, copy) NSString* serial;
-@property (nonatomic, copy) NSString* secretKey;
-@property (nonatomic, copy) NSString* name;
-@property (nonatomic, assign) RobotState state;
-@property (nonatomic, assign) RobotAction action;
-@property (nonatomic, assign) bool online;
-@property (nonatomic, assign) int batteryLevel;
-@property (nonatomic, assign) bool isCharging;
+@property (nonatomic, copy, readonly) NSString* serial;
+@property (nonatomic, copy, readonly) NSString* secretKey;
+@property (nonatomic, copy, readonly) NSString* name;
+@property (nonatomic, assign, readonly) RobotState state;
+@property (nonatomic, assign, readonly) RobotAction action;
+@property (nonatomic, assign, readonly) bool online;
+@property (nonatomic, assign, readonly) int chargeLevel;
+@property (nonatomic, assign, readonly) bool isCharging;
+@property (nonatomic, assign, readonly) bool isDocked;
+@property (nonatomic, assign, readonly) bool isScheduleEnabled;
 
 /**
  Initialize a new Robot instance.
@@ -55,39 +57,48 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Update robot state asynchronously. When the update succeeded robot properties will be updated to the current robot state.
  
- @param success: Callback to handle call success.
- @param failure: Callback to handle call failure.
+ @param completion: Callback to handle call response.
  
  **/
-- (void)updateState:(void(^)())success failure:(void(^)(NSError * _Nullable error))failure;
+- (void)updateStateWithCompletion:(void(^)(NSError * _Nullable error))completion;
 
 /**
  Send StartCleaning command to the robot. After this call succeeded robot state will be automatically updated to the new robot state (i.e. state:busy action:house cleaning).
  
  @param parameters: Define the cleaning setup. Check Neato docs for all the available choices.
- @param success: Callback to handle call success.
- @param failure: Callback to handle call failure.
- 
+ @param completion: Callback to handle call response.
+
  **/
-- (void)startCleaning:(NSDictionary *)parameters success:(void(^)())success failure:(void(^)(NSError * _Nullable error))failure;
+- (void)startCleaningWithParameters:(NSDictionary *)parameters completion:(void (^)(NSError * _Nullable error))completion;
 
 /**
  Send pauseCleaning command to the robot. After this call succeeded robot state will be automatically updated to the new robot state (i.e state:paused action:house cleaning).
  
- @param success: Callback to handle call success.
- @param failure: Callback to handle call failure.
- 
+ @param completion: Callback to handle call response.
  **/
-- (void)pauseCleaning:(void(^)())success failure:(void(^)(NSError * _Nullable error))failure;
+- (void)pauseCleaningWithCompletion:(void (^)(NSError * _Nullable error))completion;
 
 /**
  Send stopCleaning command to the robot. After this call succeeded robot state will be automatically updated to the new robot state (i.e. state:idle action:ready to clean).
  
- @param success: Callback to handle call success.
- @param failure: Callback to handle call failure.
+ @param completion: Callback to handle call response.
  
  **/
-- (void)stopCleaning:(void(^)())success failure:(void(^)(NSError * _Nullable error))failure;
+- (void)stopCleaningWithCompletion:(void (^)(NSError * _Nullable error))completion;
+
+/**
+ Send enableSchedule command to the robot. After this call succeeded robot state will be automatically updated to the new robot state (i.e state:paused action:house cleaning).
+ 
+ @param completion: Callback to handle call response.
+ **/
+- (void)enableScheduleWithCompletion:(void (^)(NSError * _Nullable error))completion;
+
+/**
+ Send disableSchedule command to the robot. After this call succeeded robot state will be automatically updated to the new robot state (i.e state:paused action:house cleaning).
+ 
+ @param completion: Callback to handle call response.
+ **/
+- (void)disableScheduleWithCompletion:(void (^)(NSError * _Nullable error))completion;
 
 @end
 

@@ -22,16 +22,17 @@
     NSAssert(self.robot != nil, @"A robot is needed...");
     
     self.title = self.robot.name;
-    
     [self updateRobotState];
     
 }
 
 - (void)updateRobotState{
-    [self.robot updateState:^{
-        self.robotState.text = (self.robot.online) ? @"ONLine" : @"OFFLine" ;
-    } failure:^(NSError *error) {
-        self.robotState.text = (self.robot.online) ? @"ONLine" : @"OFFLine" ;
+    [self.robot updateStateWithCompletion:^(NSError * _Nonnull error) {
+        if(error){
+            self.robotState.text = @"Offline";
+        }else{
+            self.robotState.text = @"Online";
+        }
     }];
 }
 
@@ -40,18 +41,15 @@
 }
 
 - (IBAction)startCleaning:(id)sender{
-    [self.robot startCleaning:@{@"category":@(2), @"modifier":@(1), @"mode":@(1)} success:^{
-        NSLog(@"cleaning");
-    } failure:^(NSError * _Nullable error) {
-        NSLog(@"Error");
+    [self.robot startCleaningWithParameters:@{@"category":@(2), @"modifier":@(1), @"mode":@(1)}
+                                 completion:^(NSError * _Nullable error) {
+                                     NSLog(@"OK!");
     }];
 }
 
 - (IBAction)stopCleaning:(id)sender{
-    [self.robot stopCleaning:^{
-        nil;
-    } failure:^(NSError * _Nullable error) {
-        nil;
+    [self.robot stopCleaningWithCompletion:^(NSError * _Nullable error) {
+                                     NSLog(@"OK!");
     }];
 }
 

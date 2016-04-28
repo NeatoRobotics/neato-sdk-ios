@@ -8,10 +8,11 @@
 
 #import "NeatoRobot.h"
 #import "NeatoNucleoClient.h"
+#import <objc/runtime.h> 
 
 @implementation NeatoRobot
 
-#pragma mark - Private
+#pragma mark - Private -
 
 /** 
  Send command to the robot then extract result, state and data from robot response.
@@ -26,16 +27,13 @@
      robotSerial:self.serial robotKey:self.secretKey
      completion:^(id _Nullable response, NSError * _Nullable error) {
          
-            self.online = (error == nil);
-           
+            _online = (error == nil);
+            [self updateStateFromCommandResponse:response];
+
             NSString *resultStr = response[@"result"];
             bool result = [resultStr isEqualToString:@"ok"];
 
-            [self updateStateFromCommandResponse:response];
-           
-            id data = response[@"data"];
-           
-            completionHandler(result, data, error);
+            completionHandler(result, response[@"data"], error);
     }];
     
 }
@@ -43,17 +41,17 @@
 /**
  Send command to the robot and manage the robot response calling success or failure callbacks.
  **/
-- (void)sendAndManageCommand:(NSString*)command parameters:(NSDictionary* _Nullable)parameters success:(void(^)())success failure:(void(^)(NSError *error))failure{
+- (void)sendAndManageCommand:(NSString*)command parameters:(NSDictionary* _Nullable)parameters completion:(void(^)(NSError * _Nullable error))completion{
     [self sendCommand:command
            parameters:parameters
            completion:^(bool result, id  _Nullable data, NSError * _Nullable error) {
                  if(result){
-                     success();
+                     completion(nil);
                  }else{
                      if (error){
-                         failure(error);
+                         completion(error);
                      }else{
-                         failure([NSError errorWithDomain:@"Neato.Robot" code:1 userInfo:nil]);
+                         completion([NSError errorWithDomain:@"Neato.Robot" code:1 userInfo:nil]);
                      }
                  }
              }];
@@ -64,8 +62,15 @@
  **/
 - (void)updateStateFromCommandResponse:(id _Nullable)response {
     if(response[@"state"]){
-        self.state =  [self robotStateFromObject:response[@"state"]];
-        self.action = [self robotActionFromObject:response[@"action"]];
+        _state =  [self robotStateFromObject:response[@"state"]];
+        _action = [self robotActionFromObject:response[@"action"]];
+        
+        if(response[@"details"]){
+            _chargeLevel = (int)response[@"details"][@"charge"];
+            _isCharging = response[@"details"][@"isCharging"];
+            _isDocked = response[@"details"][@"isDocked"];
+            _isScheduleEnabled = response[@"details"][@"isScheduleEnabled"];
+        }
     }
 }
 
@@ -93,36 +98,54 @@
     }
 }
 
-#pragma mark - Public 
+#pragma mark - Public -
 
 - (instancetype)initWithName:(NSString*)name serial:(NSString *)serial secretKey:(NSString *)secretKey{
     self = [super init];
     if (self) {
-        self.name = name;
-        self.serial = serial;
-        self.secretKey = secretKey;
+        _name = name;
+        _serial = serial;
+        _secretKey = secretKey;
     }
     return self;
 }
 
-- (void)updateState:(void(^)())success failure:(void(^)(NSError *error))failure{
-    [self sendAndManageCommand:@"getRobotState" parameters:nil success:success failure:failure];
+#pragma mark Robot
+
+- (void)updateStateWithCompletion:(void(^)(NSError * _Nullable error))completion{
+    [self sendAndManageCommand:@"getRobotState" parameters:nil completion:completion];
 }
 
-- (void)startCleaning:(NSDictionary *)parameters success:(void (^)())success failure:(void (^)(NSError * _Nullable))failure{
-    [self sendAndManageCommand:@"startCleaning" parameters:parameters success:success failure:failure];
+#pragma mark Cleaning
+
+- (void)startCleaningWithParameters:(NSDictionary *)parameters completion:(void (^)(NSError * _Nullable error))completion{
+    [self sendAndManageCommand:@"startCleaning" parameters:parameters completion:completion];
 }
 
-- (void)stopCleaning:(void (^)())success failure:(void (^)(NSError * _Nullable))failure{
-    [self sendAndManageCommand:@"stopCleaning" parameters:nil success:success failure:failure];
+- (void)pauseCleaningWithCompletion:(void (^)(NSError * _Nullable error))completion{
+    [self sendAndManageCommand:@"pauseCleaning" parameters:nil completion:completion];
 }
 
-- (void)pauseCleaning:(void (^)())success failure:(void (^)(NSError * _Nullable))failure{
-    [self sendAndManageCommand:@"pauseCleaning" parameters:nil success:success failure:failure];
+- (void)stopCleaningWithCompletion:(void (^)(NSError * _Nullable error))completion{
+    [self sendAndManageCommand:@"stopCleaning" parameters:nil completion:completion];
 }
+
+#pragma mark Scheduling
+
+- (void)enableScheduleWithParameters:(NSDictionary *)parameters completion:(void (^)(NSError * _Nullable error))completion{
+    [self sendAndManageCommand:@"enableSchedule" parameters:parameters completion:completion];
+}
+
+- (void)disableScheduleWithParameters:(NSDictionary *)parameters completion:(void (^)(NSError * _Nullable error))completion{
+    [self sendAndManageCommand:@"disableSchedule" parameters:parameters completion:completion];
+}
+
+#pragma mark Helpers 
 
 - (NSString*)description{
-    return [NSString stringWithFormat:@"My name is:%@\nstate: %lu\naction:%lu", self.name, (unsigned long)self.state, (unsigned long)self.action];
+    return [NSString stringWithFormat:
+            @"<Hi! I'm %@ state=%lu action=%lu>",
+            self.name, (unsigned long)self.state, (unsigned long)self.action];
 }
-
+ 
 @end
