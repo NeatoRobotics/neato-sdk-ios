@@ -52,7 +52,7 @@ describe(@"NeatoNucleoClient", ^{
                      sendCommand:@"getRobotState"
                      withParamenters:@{@"param":@(1)} robotSerial:@"123456"
                      robotKey:@"secretkey"
-                     complete:^(id response, NSError * error) {
+                     completion:^(id response, NSError * error) {
                         expect(response).to.equal(@{@"state":@(1)});
                         done();
                     }];
@@ -74,7 +74,7 @@ describe(@"NeatoNucleoClient", ^{
                      sendCommand:@"getRobotState"
                      withParamenters:[NSDate date] robotSerial:@"123456"
                      robotKey:@"secretkey"
-                     complete:^(id response, NSError * error) {
+                     completion:^(id response, NSError * error) {
                          expect(error).notTo.beNil();
                          NSLog(@"\n\n\n\n\n\n\n%@", error.userInfo);
                          done();
@@ -99,7 +99,7 @@ describe(@"NeatoNucleoClient", ^{
                      withParamenters:nil
                      robotSerial:@"123456"
                      robotKey:@"secretkey"
-                     complete:^(id response, NSError * error) {
+                     completion:^(id response, NSError * error) {
                          expect(error).notTo.beNil();
                          done();
                      }];

@@ -53,7 +53,7 @@ describe(@"NeatoBeehiveClient", ^{
             
             it(@"returns a robot", ^{
                 waitUntil(^(DoneCallback done) {
-                    [[NeatoBeehiveClient sharedInstance] robots:^(NSArray * _Nullable robots, NSError * _Nonnull error) {
+                    [[NeatoBeehiveClient sharedInstance] robotsWithCompletion:^(NSArray * _Nullable robots, NSError * _Nonnull error) {
                         expect(error).to.beNil();
                         expect(robots.count).to.equal(1);
                         done();
@@ -75,7 +75,7 @@ describe(@"NeatoBeehiveClient", ^{
             it(@"Raise an error", ^{
                 
                 waitUntil(^(DoneCallback done) {
-                    [[NeatoBeehiveClient sharedInstance] robots:^(NSArray * _Nullable robots, NSError * _Nonnull error) {
+                    [[NeatoBeehiveClient sharedInstance] robotsWithCompletion:^(NSArray * _Nullable robots, NSError * _Nonnull error) {
                         expect(error).notTo.beNil();
                         done();
                     }];
@@ -99,7 +99,7 @@ describe(@"NeatoBeehiveClient", ^{
             
             it(@"it raises an error", ^{
                 waitUntil(^(DoneCallback done) {
-                    [[NeatoBeehiveClient sharedInstance] robots:^(NSArray * _Nullable robots, NSError * _Nonnull error) {
+                    [[NeatoBeehiveClient sharedInstance] robotsWithCompletion:^(NSArray * _Nullable robots, NSError * _Nonnull error) {
                         expect(error.domain).to.equal(@"Beehive.Robots");
                         done();
                     }];
@@ -115,7 +115,7 @@ describe(@"NeatoBeehiveClient", ^{
             
             it(@"raises an error", ^{
                 waitUntil(^(DoneCallback done) {
-                    [[NeatoBeehiveClient sharedInstance] robots:^(NSArray * _Nullable robots, NSError * _Nonnull error) {
+                    [[NeatoBeehiveClient sharedInstance] robotsWithCompletion:^(NSArray * _Nullable robots, NSError * _Nonnull error) {
                         expect(error).notTo.beNil();
                         done();
                     }];

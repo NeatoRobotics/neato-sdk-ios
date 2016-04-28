@@ -68,7 +68,7 @@ describe(@"NeatoAuthentication", ^{
         
         context(@"when receives a valid url", ^{
             before(^{
-                [[NeatoAuthentication sharedInstance] openLoginInBrowser:^(NSError *error) {
+                [[NeatoAuthentication sharedInstance] openLoginInBrowserWithCompletion:^(NSError *error) {
                     auth_error = error;
                 }];
                 
@@ -177,7 +177,7 @@ describe(@"NeatoAuthentication", ^{
             it(@"deletes the session", ^ {
                 waitUntil(^(DoneCallback done) {
                     
-                    [[NeatoAuthentication sharedInstance] logout:^(NSError * _Nullable error) {
+                    [[NeatoAuthentication sharedInstance] logoutWithCompletion:^(NSError * _Nullable error) {
                         expect([NeatoAuthentication sharedInstance].isAuthenticated).to.equal(false);
                         done(); 
                     }];
@@ -203,7 +203,7 @@ describe(@"NeatoAuthentication", ^{
             it(@"keeps the session", ^ {
                 waitUntil(^(DoneCallback done) {
                     
-                    [[NeatoAuthentication sharedInstance] logout:^(NSError * _Nullable error) {
+                    [[NeatoAuthentication sharedInstance] logoutWithCompletion:^(NSError * _Nullable error) {
                         expect([NeatoAuthentication sharedInstance].isAuthenticated).to.equal(true);
                         done();
                     }];

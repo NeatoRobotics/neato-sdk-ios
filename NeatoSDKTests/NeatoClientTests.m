@@ -71,7 +71,7 @@ describe(@"NeatoClient", ^{
         
         context(@"when receives a valid url", ^{
             before(^{
-                [[NeatoClient sharedInstance] openLoginInBrowser:^(NSError *error) {
+                [[NeatoClient sharedInstance] openLoginInBrowserWithCompletion:^(NSError *error) {
                     auth_error = error;
                 }];
                 
@@ -131,7 +131,7 @@ describe(@"NeatoClient", ^{
             expect([NeatoClient sharedInstance].isAuthenticated).to.equal(true);
 
             waitUntil(^(DoneCallback done) {
-                [[NeatoClient sharedInstance] logout:^(NSError * _Nonnull error) {
+                [[NeatoClient sharedInstance] logoutWithCompletion:^(NSError * _Nonnull error) {
                     expect([NeatoClient sharedInstance].isAuthenticated).to.equal(false);
                     done();
                 }];
@@ -153,7 +153,7 @@ describe(@"NeatoClient", ^{
             
             it(@"receives robots", ^{
                 waitUntil(^(DoneCallback done) {
-                    [[NeatoClient sharedInstance]robots:^(NSArray * _Nullable robots, NSError * _Nonnull error) {
+                    [[NeatoClient sharedInstance]robotsWithCompletion:^(NSArray * _Nullable robots, NSError * _Nonnull error) {
                         expect(error).to.beNil();
                         expect(robots.count).to.equal(1);
                         done();
