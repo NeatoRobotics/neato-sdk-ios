@@ -91,13 +91,35 @@ describe(@"NeatoRobot", ^{
             });
         });
         
-        
         context(@"when receives invalid state/action", ^{
             
             before(^{
                 signInUser();
                 [OHHTTPStubs stub:@"/vendors/neato/robots/serial/messages"
-                         withJSON:@"{\"state\": \"WTF?\",\"action\": 100}"
+                         withJSON:@"{\"state\": \"WTF?\",\"action\": \"WTF?\"}"
+                             code:200];
+            });
+            
+            it(@"robot is not online", ^{
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret"];
+                [robot forceRobotState:RobotStateBusy action:RobotActionHouseCleaning online:YES];
+                
+                waitUntil(^(DoneCallback done) {
+                    [robot updateStateWithCompletion:^(NSError * _Nullable error) {
+                        expect(robot.state).to.equal(0);
+                        expect(robot.action).to.equal(0);
+                        done();
+                    }];
+                });
+            });
+        });
+        
+        context(@"when receives wrong state/action", ^{
+            
+            before(^{
+                signInUser();
+                [OHHTTPStubs stub:@"/vendors/neato/robots/serial/messages"
+                         withJSON:@"{\"state\": 100,\"action\": 100}"
                              code:200];
             });
             

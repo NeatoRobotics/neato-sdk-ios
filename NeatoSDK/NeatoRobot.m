@@ -140,12 +140,12 @@
 
 #pragma mark Scheduling
 
-- (void)enableScheduleWithParameters:(NSDictionary *)parameters completion:(void (^)(NSError * _Nullable error))completion{
-    [self sendAndManageCommand:@"enableSchedule" parameters:parameters completion:completion];
+- (void)enableScheduleWithCompletion:(void (^)(NSError * _Nullable error))completion{
+    [self sendAndManageCommand:@"enableSchedule" parameters:nil completion:completion];
 }
 
-- (void)disableScheduleWithParameters:(NSDictionary *)parameters completion:(void (^)(NSError * _Nullable error))completion{
-    [self sendAndManageCommand:@"disableSchedule" parameters:parameters completion:completion];
+- (void)disableScheduleWithCompletion:(void (^)(NSError * _Nullable error))completion{
+    [self sendAndManageCommand:@"disableSchedule" parameters:nil completion:completion];
 }
 
 #pragma mark Helpers 
