@@ -64,7 +64,7 @@ typedef void (^NeatoAuthenticationLogoutCallback)(NSError* _Nullable  error);
  @param  completionHandler
  
 **/
-- (void) openLoginInBrowser:(NeatoAuthenticationCallback) completionHandler;
+- (void) openLoginInBrowserWithCompletion:(NeatoAuthenticationCallback) completionHandler;
 
 /**
  Call this method inside the appDelegate application:handleOpenURL: method
@@ -86,7 +86,7 @@ typedef void (^NeatoAuthenticationLogoutCallback)(NSError* _Nullable  error);
  Perform logout on server and remove local token data.
 
 **/
-- (void) logout:(NeatoAuthenticationLogoutCallback) completionHandler;
+- (void) logoutWithCompletion:(NeatoAuthenticationLogoutCallback) completionHandler;
 
 @end
 

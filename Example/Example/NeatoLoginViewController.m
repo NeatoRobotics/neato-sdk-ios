@@ -35,7 +35,7 @@
 
 - (IBAction)launchLogin:(id)sender{
     
-    [[NeatoClient sharedInstance] openLoginInBrowser:^(NSError *error) {
+    [[NeatoClient sharedInstance] openLoginInBrowserWithCompletion:^(NSError *error) {
         if(error == nil){
             [self enterDashboard];
         }

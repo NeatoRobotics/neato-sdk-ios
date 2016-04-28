@@ -39,7 +39,7 @@ static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages"
      withParamenters:(id)parameters
          robotSerial:(NSString *)robotSerial
             robotKey:(NSString *)secretKey
-            complete:(void (^)(id _Nullable, NSError * _Nullable))completionHandler{
+          completion:(void (^)(id _Nullable, NSError * _Nullable))completionHandler{
     
     // Serialize and sign the call
     NSMutableDictionary *payloadData = [NSMutableDictionary dictionaryWithDictionary:@{@"reqId":@"1", @"cmd":command}];

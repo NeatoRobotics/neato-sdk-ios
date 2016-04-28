@@ -41,7 +41,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param completionHandler The callback called when application is launched through the redirectURI, when user login completes.
  
 **/
-- (void) openLoginInBrowser:(void (^)(NSError* error)) completionHandler;
+- (void) openLoginInBrowserWithCompletion:(void (^)(NSError* error)) completionHandler;
 
 /**
  Call this function from application:(UIApplication *)application handleOpenURL:(NSURL *)url
@@ -63,7 +63,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param completionHandler Callback raised when the logout call completes.
  
  **/
-- (void) logout:(void (^)(NSError* error)) completionHandler;
+- (void) logoutWithCompletion:(void (^)(NSError* error)) completionHandler;
 
 #pragma mark - User commands
 
@@ -73,7 +73,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param completionHandler Callback raised when the logout call completes.
  
  **/
-- (void) robots:(void (^)(NSArray* _Nullable robots, NSError *error))completionHandler;
+- (void) robotsWithCompletion:(void (^)(NSArray* _Nullable robots, NSError *error))completionHandler;
 
 @end
 

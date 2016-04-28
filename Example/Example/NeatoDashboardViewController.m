@@ -27,7 +27,7 @@
     
     self.robots = [NSMutableArray array];
 
-    [[NeatoClient sharedInstance]robots:^(NSArray * _Nullable robots, NSError * _Nonnull error) {
+    [[NeatoClient sharedInstance]robotsWithCompletion:^(NSArray * _Nullable robots, NSError * _Nonnull error) {
         
         for (NSDictionary *robotData in robots){
             Robot * robot = [Robot robotWithDictionary:robotData];
@@ -43,7 +43,7 @@
 }
 
 - (IBAction)logout:(id)sender{
-    [[NeatoClient sharedInstance] logout:^(NSError * _Nonnull error) {
+    [[NeatoClient sharedInstance] logoutWithCompletion:^(NSError * _Nonnull error) {
         NSLog(@"%@", error);
         
         [self dismissViewControllerAnimated:true completion:nil];

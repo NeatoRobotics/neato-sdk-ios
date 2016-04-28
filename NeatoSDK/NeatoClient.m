@@ -38,8 +38,8 @@ NS_ASSUME_NONNULL_BEGIN
                                    redirectURI:redirectURI];
 }
 
-- (void)openLoginInBrowser:(void (^)(NSError * _Nonnull))completionHandler{
-    [[NeatoAuthentication sharedInstance] openLoginInBrowser:^(NSError * _Nullable error) {
+- (void)openLoginInBrowserWithCompletion:(void (^)(NSError * _Nonnull))completionHandler{
+    [[NeatoAuthentication sharedInstance] openLoginInBrowserWithCompletion:^(NSError * _Nullable error) {
         completionHandler(error);
     }];
 }
@@ -52,14 +52,14 @@ NS_ASSUME_NONNULL_BEGIN
     return [[NeatoAuthentication sharedInstance]isAuthenticated];
 }
 
-- (void)logout:(void (^)(NSError * _Nonnull))completionHandler{
-    [[NeatoAuthentication sharedInstance]logout:completionHandler];
+- (void)logoutWithCompletion:(void (^)(NSError * _Nonnull))completionHandler{
+    [[NeatoAuthentication sharedInstance]logoutWithCompletion:completionHandler];
 }
 
 #pragma mark - NeatoBeehiveClient Bridge
 
-- (void) robots:(void (^)(NSArray* _Nullable robots, NSError *error))completionHandler{
-    [[NeatoBeehiveClient sharedInstance] robots:^(NSArray * _Nullable robots, NSError * _Nonnull error) {
+- (void) robotsWithCompletion:(void (^)(NSArray* _Nullable robots, NSError *error))completionHandler{
+    [[NeatoBeehiveClient sharedInstance] robotsWithCompletion:^(NSArray * _Nullable robots, NSError * _Nonnull error) {
         completionHandler(robots, error);
     }];
 }

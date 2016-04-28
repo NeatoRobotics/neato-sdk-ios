@@ -62,7 +62,7 @@ static NSString * const kNeatoOAuthAuthorizeEndPoint = @"https://beehive.neatocl
     [NeatoAuthentication sharedInstance].redirectURI = redirectURI;
 }
 
-- (void) openLoginInBrowser:(NeatoAuthenticationCallback) completionHandler{
+- (void) openLoginInBrowserWithCompletion:(NeatoAuthenticationCallback) completionHandler{
     self.authenticationCallback = completionHandler;
     
     NSURL *authURL = [self buildAuthorizationURL];
@@ -139,7 +139,7 @@ static NSString * const kNeatoOAuthAuthorizeEndPoint = @"https://beehive.neatocl
     }
 }
 
-- (void) logout:(NeatoAuthenticationLogoutCallback)completionHandler{
+- (void) logoutWithCompletion:(NeatoAuthenticationLogoutCallback)completionHandler{
 
     NeatoHTTPSessionManager *manager = [NeatoHTTPSessionManager authenticatedBeehiveManager];
     
