@@ -7,8 +7,11 @@
 //
 
 #import "NeatoRobot.h"
-#import "NeatoNucleoClient.h"
-#import <objc/runtime.h> 
+#import "NeatoHTTPSessionManager.h"
+#import "NSDate+Neato.h"
+#import "NSString+Neato.h"
+
+static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages";
 
 @implementation NeatoRobot
 
@@ -17,25 +20,58 @@
 /** 
  Send command to the robot then extract result, state and data from robot response.
  **/
+
 - (void)sendCommand:(NSString*)command
          parameters:(NSDictionary* _Nullable) parameters
            completion:(void (^)(bool result, id _Nullable data, NSError *error))completionHandler{
-    
-    [[NeatoNucleoClient sharedInstance]
-     sendCommand:command
-     withParamenters:parameters
-     robotSerial:self.serial robotKey:self.secretKey
-     completion:^(id _Nullable response, NSError * _Nullable error) {
-         
-            _online = (error == nil);
-            [self updateStateFromCommandResponse:response];
 
-            NSString *resultStr = response[@"result"];
-            bool result = [resultStr isEqualToString:@"ok"];
-
-            completionHandler(result, response[@"data"], error);
-    }];
+    NSMutableDictionary *payloadData = [NSMutableDictionary dictionaryWithDictionary:@{@"reqId":@"1", @"cmd":command}];
     
+    if (parameters){
+        [payloadData setObject:parameters forKey:@"params"];
+    }
+    
+    @try {
+        NSError *jsonSerializeError;
+        NSData *jsonData = [NSJSONSerialization dataWithJSONObject:payloadData options:0 error:&jsonSerializeError];
+        
+        if(!jsonSerializeError){
+            NSString *payloadString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+            
+            NSString *dateString = [NSDate date].rfc1123String;
+            NSString *unsignedString = [NSString stringWithFormat:@"%@\n%@\n%@",
+                                        self.serial.lowercaseString,
+                                        dateString,
+                                        payloadString];
+            NSString *signedString = [unsignedString SHA256:self.secretKey];
+            
+            
+            // Perform call
+            NeatoHTTPSessionManager *manager = [NeatoHTTPSessionManager managerWithNucleoAuthorization:signedString date:dateString];
+            NSString *path = [NSString stringWithFormat:kNeatoNucleoMessagesPath,self.serial];
+            [manager POST:path parameters:payloadData
+                 progress:^(NSProgress * _Nonnull uploadProgress) {}
+                  success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+
+                      _online = true;
+                      [self updateStateFromCommandResponse:responseObject];
+
+                      NSString *resultStr = responseObject[@"result"];
+                      bool result = [resultStr isEqualToString:@"ok"];
+                      
+                      completionHandler(result, responseObject[@"data"], nil);
+                  }
+                  failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+
+                      _online = false;
+                      completionHandler(false, nil, error);
+                  }];
+        }
+    }
+    
+    @catch (NSException *exception) {
+        completionHandler(nil, nil,  [NSError errorWithDomain:@"Neato.Nucleo" code:1 userInfo:@{@"exception":exception.name}]);
+    }
 }
 
 /**

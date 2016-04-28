@@ -1,38 +1,27 @@
 //
-//  NeatoBeehiveClient.m
+//  NeatoUser.m
 //  NeatoSDK
 //
-//  Created by Yari D'areglia on 23/04/16.
+//  Created by Yari D'areglia on 28/04/16.
 //  Copyright © 2016 Neato Robotics. All rights reserved.
 //
 
-#import "NeatoBeehiveClient.h"
+#import "NeatoUser.h"
 #import "NeatoAuthentication.h"
 #import "NeatoHTTPSessionManager.h"
 
 static NSString * const kNeatoBeehiveUserRobotsPath = @"/users/me/robots";
 static NSString * const kNeatoBeehiveRobotPath = @"/robot";
 
-@implementation NeatoBeehiveClient
+@implementation NeatoUser
 
-- (instancetype) initInstance
-{
-    return [super init];
+#pragma mark - Public -
+
+- (BOOL)isAuthenticated{
+    return [[NeatoAuthentication sharedInstance] isAuthenticated];
 }
 
-+ (instancetype) sharedInstance
-{
-    static NeatoBeehiveClient *beehiveClient;
-    static dispatch_once_t token;
-    dispatch_once(&token, ^{
-        beehiveClient = [[super alloc]initInstance];
-    });
-    
-    return beehiveClient;
-}
-
-- (void)robotsWithCompletion:(void (^)( NSArray* _Nullable robots, NSError* _Nullable error))completionHandler {
-    
+- (void) getRobotsWithCompletion:(void(^)(NSArray<NeatoRobot*> *robots, NSError * _Nullable error))completionHandler{
     NeatoHTTPSessionManager *manager = [NeatoHTTPSessionManager authenticatedBeehiveManager];
     
     if (manager != nil){
@@ -48,11 +37,10 @@ static NSString * const kNeatoBeehiveRobotPath = @"/robot";
              }
              failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
                  completionHandler(nil, error);
-        }];
+             }];
     }else{
         completionHandler(nil, [NSError errorWithDomain:@"OAuth" code:1 userInfo:nil]);
     }
 }
-
 
 @end

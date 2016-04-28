@@ -54,6 +54,10 @@ NS_ASSUME_NONNULL_BEGIN
  **/
 - (instancetype)initWithName:(NSString*)name serial:(NSString *)serial secretKey:(NSString *)secretKey;
 
+- (void)sendCommand:(NSString*)command
+         parameters:(NSDictionary* _Nullable) parameters
+         completion:(void (^)(bool result, id _Nullable data, NSError *error))completionHandler;
+
 /**
  Update robot state asynchronously. When the update succeeded robot properties will be updated to the current robot state.
  

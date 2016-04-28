@@ -39,13 +39,14 @@ static NSString * const kNeatoOAuthAuthorizeEndPoint = @"https://beehive.neatocl
     return [super init];
 }
 
+// TODO: DO NOT USE SINGLETON PATTER :(
 + (instancetype) sharedInstance
 {
     static NeatoAuthentication *neatoAuthClient;
     static dispatch_once_t token;
     dispatch_once(&token, ^{
         neatoAuthClient = [[super alloc]initInstance];
-        // TODO: Move the tokenstore init and token update into confiration.
+        // TODO: Move the tokenstore init and token update into configuration.
         neatoAuthClient.tokenStore = [[NeatoTokenUserDefaultStore alloc]init];
         [neatoAuthClient updateTokenDataFromStore];
     });
@@ -75,7 +76,8 @@ static NSString * const kNeatoOAuthAuthorizeEndPoint = @"https://beehive.neatocl
 - (BOOL) isAuthenticated{
     NSString *token = [self.tokenStore readStoredAccessToken];
     NSDate *tokenExpiration = [self.tokenStore readStoredAccessTokenExpirationDate];
-
+    
+    NSLog(@"\n\n\n\n\n\n\n%@ %@\n\n\n\n\n\n\n", token, tokenExpiration);
     if (token != NULL && [tokenExpiration compare:[NSDate date]] == NSOrderedDescending){
         return true;
     }else{

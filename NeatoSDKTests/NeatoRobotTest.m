@@ -161,6 +161,78 @@ describe(@"NeatoRobot", ^{
         });
     });
     
+    describe(@"Basic messages", ^{
+        
+        context(@"when a valid message is sent", ^{
+            before(^{
+                signInUser();
+                
+                [OHHTTPStubs stub:@"/vendors/neato/robots/123456/messages"
+                         withJSON:@"{\"result\":\"ok\", \"data\":\"data\"}"
+                             code:200];
+            });
+            
+            it(@"converts the response in result and data", ^{
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"robot" serial:@"123456" secretKey:@"secret"];
+                
+                waitUntil(^(DoneCallback done) {
+                    [robot sendCommand:@"command" parameters:nil completion:^(bool result, id  _Nullable data, NSError * _Nonnull error) {
+                        expect(result).to.equal(true);
+                        expect(data).to.equal(@"data");
+                        done();
+                    }];
+                });
+            });
+        });
+        
+        context(@"when invalid params are sent", ^{
+            before(^{
+                signInUser();
+                
+                [OHHTTPStubs stub:@"/vendors/neato/robots/123456/messages"
+                         withJSON:@"{\"result\":\"ok\", \"data\":\"data\"}"
+                             code:200];
+            });
+            
+            it(@"reises an error", ^{
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"robot" serial:@"123456" secretKey:@"secret"];
+                
+                waitUntil(^(DoneCallback done) {
+                    [robot sendCommand:@"command" parameters:@{@"INVALID_PARAM":[NSDate date]} completion:^(bool result, id  _Nullable data, NSError * _Nonnull error) {
+                        expect(result).to.equal(false);
+                        expect(data).to.beNil();
+                        expect(error).notTo.beNil();
+                        expect(error.domain).to.equal(@"Neato.Nucleo");
+                        done();
+                    }];
+                });
+            });
+        });
+        
+        context(@"when message fails", ^{
+            before(^{
+                signInUser();
+                
+                [OHHTTPStubs stub:@"/vendors/neato/robots/123456/messages"
+                         withJSON:@"{}"
+                             code:400];
+            });
+            
+            it(@"reises an error", ^{
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"robot" serial:@"123456" secretKey:@"secret"];
+                
+                waitUntil(^(DoneCallback done) {
+                    [robot sendCommand:@"command" parameters:nil completion:^(bool result, id  _Nullable data, NSError * _Nonnull error) {
+                        expect(result).to.equal(false);
+                        expect(data).to.beNil();
+                        expect(error).notTo.beNil();
+                        done();
+                    }];
+                });
+            });
+        });
+    });
+    
     describe(@"Send a command", ^{
         
         context(@"when a valid command is sent", ^{

@@ -23,8 +23,7 @@ NSString * const kNucleoBaseURLPath = @"https://nucleo-playground.neatocloud.com
 + (_Nullable instancetype) authenticatedBeehiveManager{
     if ([NeatoAuthentication sharedInstance].isAuthenticated){
         return [self managerWithBeehiveAuthorization:[[[NeatoAuthentication sharedInstance] tokenStore] readStoredAccessToken]];
-    }else{
-        
+    }else{        
         return nil;
     }
 }

@@ -3,5 +3,7 @@
 
 void signInUser();
 
+void signInUserDefault();
 
+void logoutUserDefault();
 #endif /* TestHelpers_h */

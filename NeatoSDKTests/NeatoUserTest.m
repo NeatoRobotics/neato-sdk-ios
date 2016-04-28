@@ -13,39 +13,25 @@
 #import <OHHTTPStubs/OHHTTPStubsResponse+JSON.h>
 #import <OHHTTPStubs/OHPathHelpers.h>
 #import "OHHTTPStubs+Neato.h"
+#import "TestHelpers.h"
 #import "MockNeatoTokenStore.h"
 
 @import NeatoSDK;
 
 SpecBegin(NeatoBeehiveClient)
 
-describe(@"NeatoBeehiveClient", ^{
+describe(@"NeatoUser", ^{
     
     afterEach(^{
         [OHHTTPStubs removeAllStubs];
     });
-    
-    describe(@"Singleton", ^{
-        
-        context(@"when is requested", ^{
-            
-            it(@"return an instance :)", ^{
-                expect([NeatoBeehiveClient sharedInstance]).toNot.beNil();
-            });
-        });
-    });
-    
-    
+
     describe(@"Get Robots", ^{
         
         context(@"when a robots is available", ^{
             
             before(^{
-
-                [NeatoAuthentication sharedInstance].tokenStore = [[MockNeatoTokenStore alloc]init];
-                [[NeatoAuthentication sharedInstance].tokenStore storeAccessToken:@"a_token"
-                                                                       expirationDate:[NSDate dateWithTimeIntervalSinceNow:10000]];
-                
+                signInUserDefault();
                 [OHHTTPStubs stub:@"/users/me/robots"
                          withFile:@"beehive_users_me_robots_one.json"
                             code:200];
@@ -53,7 +39,8 @@ describe(@"NeatoBeehiveClient", ^{
             
             it(@"returns a robot", ^{
                 waitUntil(^(DoneCallback done) {
-                    [[NeatoBeehiveClient sharedInstance] robotsWithCompletion:^(NSArray * _Nullable robots, NSError * _Nonnull error) {
+                    NeatoUser *user = [NeatoUser new];
+                    [user getRobotsWithCompletion:^(NSArray<NeatoRobot *> * _Nonnull robots, NSError * _Nullable error) {
                         expect(error).to.beNil();
                         expect(robots.count).to.equal(1);
                         done();
@@ -66,17 +53,16 @@ describe(@"NeatoBeehiveClient", ^{
         context(@"when user is not signed in", ^{
             
             before(^{
-                [NeatoAuthentication sharedInstance].tokenStore = [[MockNeatoTokenStore alloc]init];
-                [[NeatoAuthentication sharedInstance].tokenStore storeAccessToken:@"expired_token"
-                                                                   expirationDate:[NSDate dateWithTimeIntervalSinceNow:-10000]];
-                
+                logoutUserDefault();
             });
             
             it(@"Raise an error", ^{
                 
                 waitUntil(^(DoneCallback done) {
-                    [[NeatoBeehiveClient sharedInstance] robotsWithCompletion:^(NSArray * _Nullable robots, NSError * _Nonnull error) {
+                    NeatoUser *user = [NeatoUser new];
+                    [user getRobotsWithCompletion:^(NSArray<NeatoRobot *> * _Nonnull robots, NSError * _Nullable error) {
                         expect(error).notTo.beNil();
+                        expect(error.domain).to.equal(@"OAuth");
                         done();
                     }];
                 });
@@ -86,12 +72,7 @@ describe(@"NeatoBeehiveClient", ^{
         context(@"when response returns an invalid type", ^{
             
             before(^{
-                [NeatoAuthentication sharedInstance].tokenStore = [[MockNeatoTokenStore alloc]init];
-                [[NeatoAuthentication sharedInstance].tokenStore storeAccessToken:@"a_token"
-                                                                       expirationDate:[NSDate dateWithTimeIntervalSinceNow:10000]];
-                    
-                
-                
+                signInUserDefault();
                 [OHHTTPStubs stub:@"/users/me/robots"
                          withJSON:@"{\"something\":2}"
                              code:200];
@@ -99,7 +80,8 @@ describe(@"NeatoBeehiveClient", ^{
             
             it(@"it raises an error", ^{
                 waitUntil(^(DoneCallback done) {
-                    [[NeatoBeehiveClient sharedInstance] robotsWithCompletion:^(NSArray * _Nullable robots, NSError * _Nonnull error) {
+                    NeatoUser *user = [NeatoUser new];
+                    [user getRobotsWithCompletion:^(NSArray<NeatoRobot *> * _Nonnull robots, NSError * _Nullable error) {
                         expect(error.domain).to.equal(@"Beehive.Robots");
                         done();
                     }];
@@ -110,12 +92,14 @@ describe(@"NeatoBeehiveClient", ^{
         context(@"when call fails", ^{
             
             before(^{
+                signInUserDefault();
                 [OHHTTPStubs stub:@"/users/me/robots" withFailure:400];
             });
             
             it(@"raises an error", ^{
                 waitUntil(^(DoneCallback done) {
-                    [[NeatoBeehiveClient sharedInstance] robotsWithCompletion:^(NSArray * _Nullable robots, NSError * _Nonnull error) {
+                    NeatoUser *user = [NeatoUser new];
+                    [user getRobotsWithCompletion:^(NSArray<NeatoRobot *> * _Nonnull robots, NSError * _Nullable error) {
                         expect(error).notTo.beNil();
                         done();
                     }];

@@ -26,8 +26,9 @@
     self.tokenLabel.text = [NeatoAuthentication sharedInstance].accessToken;
     
     self.robots = [NSMutableArray array];
-
-    [[NeatoClient sharedInstance]robotsWithCompletion:^(NSArray * _Nullable robots, NSError * _Nonnull error) {
+    NeatoUser *user = [NeatoUser new];
+    
+    [user getRobotsWithCompletion:^(NSArray * _Nullable robots, NSError * _Nonnull error) {
         
         for (NSDictionary *robotData in robots){
             Robot * robot = [Robot robotWithDictionary:robotData];
@@ -43,7 +44,7 @@
 }
 
 - (IBAction)logout:(id)sender{
-    [[NeatoClient sharedInstance] logoutWithCompletion:^(NSError * _Nonnull error) {
+    [[NeatoAuthentication sharedInstance] logoutWithCompletion:^(NSError * _Nonnull error) {
         NSLog(@"%@", error);
         
         [self dismissViewControllerAnimated:true completion:nil];

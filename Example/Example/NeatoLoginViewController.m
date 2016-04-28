@@ -23,7 +23,7 @@
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     
-    if ([[NeatoClient sharedInstance]isAuthenticated]){
+    if ([[NeatoAuthentication sharedInstance]isAuthenticated]){
         [self enterDashboard];
     }
 }
@@ -35,7 +35,7 @@
 
 - (IBAction)launchLogin:(id)sender{
     
-    [[NeatoClient sharedInstance] openLoginInBrowserWithCompletion:^(NSError *error) {
+    [[NeatoAuthentication sharedInstance] openLoginInBrowserWithCompletion:^(NSError *error) {
         if(error == nil){
             [self enterDashboard];
         }

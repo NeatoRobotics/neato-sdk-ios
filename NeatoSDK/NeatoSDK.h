@@ -7,13 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NeatoClient.h"
 #import "NeatoAuthentication.h"
 #import "NeatoTokenStore.h"
 #import "NeatoTokenUserDefaultStore.h"
-#import "NeatoBeehiveClient.h"
-#import "NeatoNucleoClient.h"
 #import "NeatoRobot.h"
+#import "NeatoUser.h"
 
 //! Project version number for iossdk.
 FOUNDATION_EXPORT double iossdkVersionNumber;

@@ -19,7 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [NeatoClient configureWithClientID:@"c54d0ac5def8323befb61cfc74e514af80bde385d878c23e47ca990fccb40258"
+    [NeatoAuthentication configureWithClientID:@"c54d0ac5def8323befb61cfc74e514af80bde385d878c23e47ca990fccb40258"
                                 scopes:@[NeatoOAuthScopeControlRobots]
                            redirectURI:@"marco-app://neato"];
     
@@ -30,7 +30,7 @@
     
     // Handle redirect after OAuth login completes.
     // Remember to set the URL schema for your project!
-    [[NeatoClient sharedInstance] handleURL:url];
+    [[NeatoAuthentication sharedInstance] handleURL:url];
     
     return YES;
 }
