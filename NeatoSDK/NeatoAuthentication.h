@@ -42,42 +42,50 @@ typedef void (^NeatoAuthenticationLogoutCallback)(NSError* _Nullable  error);
 - (instancetype) copy __attribute__ ((unavailable("Initialize using sharedInstance")));
 
 /**
- *  Singleton accessor.
- */
+ Singleton accessor.
+**/
 + (instancetype) sharedInstance;
 
 /**
- *  Configure the shared instance.
- *  @param  clientID    .
- *  @param  scopes      .
- *  @param  redirectURI .
- */
+ Configure the shared instance.
+
+ @param  clientID
+ @param  scopes
+ @param  redirectURI
+
+**/
 + (void) configureWithClientID: (NSString*) clientID
                        scopes: (NSArray<NSString*> *) scopes
                   redirectURI: (NSString*) redirectURI;
 
 /**
- *  Launch the login process with an external browser.
- *  @param  completionHandler   .
- */
+ Launch the login process with an external browser.
+ 
+ @param  completionHandler
+ 
+**/
 - (void) openLoginInBrowser:(NeatoAuthenticationCallback) completionHandler;
 
 /**
- *  Call this method inside the appDelegate application:handleOpenURL: method
- *  to complete the auth process.
- *  @param  completionHandler   .
- */
+ Call this method inside the appDelegate application:handleOpenURL: method
+ to complete the auth process.
+ 
+ @param  completionHandler
+ 
+**/
 - (void) handleURL:(NSURL*)url;
 
 /**
- * Verify if a not expired token is stored in the current device. 
- * Note: this function doesn't verify if the token is currently available on the server.
- */
+ Verify if a not expired token is stored in the current device.
+ Note: this function doesn't verify if the token is currently available on the server.
+ 
+**/
 - (BOOL) isAuthenticated;
 
 /**
- * Perform logout on server and remove local token data.
- */
+ Perform logout on server and remove local token data.
+
+**/
 - (void) logout:(NeatoAuthenticationLogoutCallback) completionHandler;
 
 @end

@@ -12,6 +12,33 @@
 @implementation NeatoRobot
 
 #pragma mark - Private
+
+- (void)sendCommand:(NSString*)command
+         parameters:(NSDictionary* _Nullable) parameters
+           complete:(void (^)(bool result, id _Nullable data, NSError *error))completionHandler{
+    
+    [[NeatoNucleoClient sharedInstance]
+     sendCommand:command
+     withParamenters:parameters
+     robotSerial:self.serial robotKey:self.secretKey
+     complete:^(id _Nullable response, NSError * _Nullable error) {
+                                               
+               self.online = (error == nil);
+               
+               NSString *resultStr = response[@"result"];
+               bool result = [resultStr isEqualToString:@"ok"];
+               
+               if (response[@"state"] != nil){
+                   [self updateStateFromCommandResponse:response];
+               }
+               
+               id data = response[@"data"];
+               
+               completionHandler(result, data, error);
+    }];
+    
+}
+
 - (void)sendAndManageCommand:(NSString*)command parameters:(NSDictionary* _Nullable)parameters success:(void(^)())success failure:(void(^)(NSError *error))failure{
     [self sendCommand:command
            parameters:parameters
@@ -28,36 +55,12 @@
              }];
 }
 
-- (void)sendCommand:(NSString*)command
-         parameters:(NSDictionary* _Nullable) parameters
-           complete:(void (^)(bool result, id _Nullable data, NSError *error))completionHandler{
-    
-    [[NeatoNucleoClient sharedInstance] sendCommand:command withParamenters:parameters
-                                        robotSerial:self.serial robotKey:self.secretKey
-                                           complete:^(id _Nullable response, NSError * _Nullable error) {
-                                               
-                                               self.online = (error == nil);
-                                               
-                                               NSString *resultStr = response[@"result"];
-                                               bool result = [resultStr isEqualToString:@"ok"];
-                                               
-                                               if (response[@"state"] != nil){
-                                                   [self updateStateFromCommandResponse:response];
-                                               }
-                                               
-                                               id data = response[@"data"];
-                                               
-                                               completionHandler(result, data, error);
-                                           }];
-    
-}
-
 - (void)updateStateFromCommandResponse:(id _Nullable)response{
-    self.state =  [self stateFromObject:response[@"state"]];
-    self.action = [self actionFromObject:response[@"action"]];
+    self.state =  [self robotStateFromObject:response[@"state"]];
+    self.action = [self robotActionFromObject:response[@"action"]];
 }
 
-- (RobotState)stateFromObject:(id)obj{
+- (RobotState)robotStateFromObject:(id)obj{
     if ([obj respondsToSelector:@selector(intValue)]){
         int value = [obj intValue];
         return (RobotState)value;
@@ -66,7 +69,7 @@
     }
 }
 
-- (RobotAction)actionFromObject:(id)obj{
+- (RobotAction)robotActionFromObject:(id)obj{
     if ([obj respondsToSelector:@selector(intValue)]){
         int value = [obj intValue];
         return (RobotAction)value;
