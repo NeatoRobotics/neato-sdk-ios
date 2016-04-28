@@ -148,13 +148,7 @@
     [self sendAndManageCommand:@"disableSchedule" parameters:nil completion:completion];
 }
 
-#pragma mark Helpers 
-
-- (NSString*)description{
-    return [NSString stringWithFormat:
-            @"<Hi! I'm %@ state=%lu action=%lu>",
-            self.name, (unsigned long)self.state, (unsigned long)self.action];
-}
+#pragma mark Helpers
 
 - (void)forceRobotState:(RobotState)state action:(RobotAction)action online:(BOOL)online{
     _state = state;

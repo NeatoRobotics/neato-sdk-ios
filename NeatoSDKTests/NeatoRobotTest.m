@@ -136,6 +136,77 @@ describe(@"NeatoRobot", ^{
                 });
             });
         });
+        
+        context(@"when receives empty state/action", ^{
+            
+            before(^{
+                signInUser();
+                [OHHTTPStubs stub:@"/vendors/neato/robots/serial/messages"
+                         withJSON:@"{\"state\": null,\"action\": null}"
+                             code:200];
+            });
+            
+            it(@"robot is not online", ^{
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret"];
+                [robot forceRobotState:RobotStateBusy action:RobotActionHouseCleaning online:YES];
+                
+                waitUntil(^(DoneCallback done) {
+                    [robot updateStateWithCompletion:^(NSError * _Nullable error) {
+                        expect(robot.state).to.equal(0);
+                        expect(robot.action).to.equal(0);
+                        done();
+                    }];
+                });
+            });
+        });
+    });
+    
+    describe(@"Send a command", ^{
+        
+        context(@"when a valid command is sent", ^{
+            
+            before(^{
+                signInUser();
+                [OHHTTPStubs stub:@"/vendors/neato/robots/serial/messages"
+                         withFile:@"botvac_house_alltrue.json"
+                             code:200];
+            });
+            
+            it(@"executes a completion callback",^{
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret"];
+
+                waitUntil(^(DoneCallback done) {
+                    [robot startCleaningWithParameters:@{} completion:^(NSError * _Nullable error) {
+                        expect(true);
+                        done();
+                    }];
+                });
+                waitUntil(^(DoneCallback done) {
+                    [robot pauseCleaningWithCompletion:^(NSError * _Nullable error) {
+                        expect(true);
+                        done();
+                    }];
+                });
+                waitUntil(^(DoneCallback done) {
+                    [robot stopCleaningWithCompletion:^(NSError * _Nullable error) {
+                        expect(true);
+                        done();
+                    }];
+                });
+                waitUntil(^(DoneCallback done) {
+                    [robot enableScheduleWithCompletion:^(NSError * _Nullable error) {
+                        expect(true);
+                        done();
+                    }];
+                });
+                waitUntil(^(DoneCallback done) {
+                    [robot disableScheduleWithCompletion:^(NSError * _Nullable error) {
+                        expect(true);
+                        done();
+                    }];
+                });
+            });
+        });
     });
 });
 
