@@ -54,7 +54,6 @@ static NSString * const kNeatoBeehiveUserInfoPath = @"/users/me";
                  _firstname = responseObject[@"first_name"];
                  _lastname = responseObject[@"last_name"];
                  _email = responseObject[@"email"];
-                 NSLog(@"%@", responseObject);
                  completionHandler(nil);
              }
              failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

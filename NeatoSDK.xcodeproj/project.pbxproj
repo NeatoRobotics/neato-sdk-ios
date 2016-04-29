@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		581AF1941CD3743E00347BA9 /* beehive_users_me.json in Resources */ = {isa = PBXBuildFile; fileRef = 581AF1931CD3743E00347BA9 /* beehive_users_me.json */; };
+		581AF1961CD3A87D00347BA9 /* botvac_get_schedule.json in Resources */ = {isa = PBXBuildFile; fileRef = 581AF1951CD3A87D00347BA9 /* botvac_get_schedule.json */; };
 		583ACE751CD0BF4F00C2CE0A /* TestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 583ACE741CD0BF4F00C2CE0A /* TestHelpers.m */; };
 		583ACE781CD1011600C2CE0A /* NeatoRobot.h in Headers */ = {isa = PBXBuildFile; fileRef = 583ACE761CD1011600C2CE0A /* NeatoRobot.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		583ACE791CD1011600C2CE0A /* NeatoRobot.m in Sources */ = {isa = PBXBuildFile; fileRef = 583ACE771CD1011600C2CE0A /* NeatoRobot.m */; };
@@ -58,6 +59,7 @@
 
 /* Begin PBXFileReference section */
 		581AF1931CD3743E00347BA9 /* beehive_users_me.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = beehive_users_me.json; sourceTree = "<group>"; };
+		581AF1951CD3A87D00347BA9 /* botvac_get_schedule.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = botvac_get_schedule.json; sourceTree = "<group>"; };
 		583ACE731CD0A9DC00C2CE0A /* TestHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestHelpers.h; sourceTree = "<group>"; };
 		583ACE741CD0BF4F00C2CE0A /* TestHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestHelpers.m; sourceTree = "<group>"; };
 		583ACE761CD1011600C2CE0A /* NeatoRobot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeatoRobot.h; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 				58DF8D741CCF989500B1F6DA /* beehive_users_me_robots_one.json */,
 				58A7311C1CD23A2200E34C09 /* botvac_house_alltrue.json */,
 				581AF1931CD3743E00347BA9 /* beehive_users_me.json */,
+				581AF1951CD3A87D00347BA9 /* botvac_get_schedule.json */,
 			);
 			name = JSON;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 			files = (
 				58A7311D1CD23A2200E34C09 /* botvac_house_alltrue.json in Resources */,
 				58DF8D751CCF989500B1F6DA /* beehive_users_me_robots_one.json in Resources */,
+				581AF1961CD3A87D00347BA9 /* botvac_get_schedule.json in Resources */,
 				581AF1941CD3743E00347BA9 /* beehive_users_me.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

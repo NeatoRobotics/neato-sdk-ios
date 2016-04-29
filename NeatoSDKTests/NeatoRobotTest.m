@@ -276,6 +276,19 @@ describe(@"NeatoRobot", ^{
                         done();
                     }];
                 });
+                waitUntil(^(DoneCallback done) {
+                    [robot getScheduleWithCompletion:^(NSDictionary * _Nonnull scheduleInfo, NSError * _Nullable error) {
+                        expect(true);
+                        done();
+                    }];
+                });
+                waitUntil(^(DoneCallback done) {
+                    [robot setScheduleWithCleaningEvent:@[@(1), @(2)] completion:^(NSError * _Nullable error) {
+                        expect(true);
+                        done();
+                    }];
+                });
+                
             });
         });
     });
@@ -314,6 +327,31 @@ describe(@"NeatoRobot", ^{
             });
         });
     });
+    
+    describe(@"Get Schedule", ^{
+        
+        context(@"when a list of schedules is available", ^{
+            before(^{
+                signInUser();
+                [OHHTTPStubs stub:@"/vendors/neato/robots/serial/messages"
+                         withFile:@"botvac_get_schedule.json"
+                             code:200];
+            });
+            
+            it(@"receives the list",^{
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret"];
+                
+                waitUntil(^(DoneCallback done) {
+                   
+                    [robot getScheduleWithCompletion:^(NSDictionary * _Nonnull scheduleInfo, NSError * _Nullable error) {
+                        expect([scheduleInfo[@"events"] count]).to.equal(2);
+                        done();
+                    }];
+                });
+            });
+        });
+    });
+    
 });
 
 SpecEnd

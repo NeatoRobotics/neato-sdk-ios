@@ -1,0 +1,21 @@
+{
+    "version": 1,
+    "reqId": "0",
+    "result": "ok",
+    "data":{
+        "type": 1,
+        "enabled": true,
+        "events": [
+                   {
+                   "mode": 1,
+                   "day": 1,
+                   "startTime": "14:45"
+                   },
+                   {
+                   "mode": 1,
+                   "day": 3,
+                   "startTime": "09:05"
+                   }
+                   ]
+        }
+}

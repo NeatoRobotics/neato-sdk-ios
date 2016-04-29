@@ -8,6 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+/**
+ @typedef RobotState
+ @brief The state of the robot
+ @constant RobotStateInvalid    An invalid state, not handled by the robot
+ @constant RobotStateIdle       The robot is Idle
+ @constant RobotStateBusy       The robot is working (i.e. he is cleaning or returning to base)
+ @constant RobotStatePaused     The robot has paused its current action
+ @constant RobotStateError      The robot encounters an error
+ */
 typedef NS_ENUM(NSUInteger, RobotState) {
     RobotStateInvalid,
     RobotStateIdle,
@@ -16,6 +25,19 @@ typedef NS_ENUM(NSUInteger, RobotState) {
     RobotStateError
 };
 
+/**
+ @typedef RobotAction
+ @brief An action that specify why a robot is busy (or paused)
+ @constant RobotActionInvalid               An invalid action
+ @constant RobotActionHouseCleaning         Robot is in House Cleaning mode
+ @constant RobotActionSpotCleaning          Robot is in Spot Cleaning mode
+ @constant RobotActionManualCleaning        Robot is in Manual Cleaning mode
+ @constant RobotActionMenuActive            Robot LCD UI is in use
+ @constant RobotActionSuspendedCleaning     Robot cannot continue cleaning (i.e. battery its low)
+ @constant RobotActionUpdating              Robot is performing a software update
+ @constant RobotActionCopyLogs              Robot is sending logs
+ @constant RobotActionRecoveryLocation      Robot is recovery location
+ */
 typedef NS_ENUM(NSUInteger, RobotAction) {
     RobotActionInvalid,
     RobotActionHouseCleaning,
@@ -92,9 +114,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)startCleaningWithParameters:(NSDictionary *)parameters completion:(void (^)(NSError * _Nullable error))completion;
 
 /**
- Send pauseCleaning command to the robot. After this call succeeded robot state will be automatically updated to the new robot state (i.e state:paused action:house cleaning).
- 
- @param completion: Callback to handle call response.
+ * Send pauseCleaning command to the robot. After this call succeeded robot state will be automatically updated to the new robot state (i.e state:paused action:house cleaning).
+ *
+ * @param completion: Callback to handle call response.
  **/
 - (void)pauseCleaningWithCompletion:(void (^)(NSError * _Nullable error))completion;
 
@@ -119,6 +141,28 @@ NS_ASSUME_NONNULL_BEGIN
  @param completion: Callback to handle call response.
  **/
 - (void)disableScheduleWithCompletion:(void (^)(NSError * _Nullable error))completion;
+
+/** 
+ Setup robot scheduling. 
+ 
+ @param events: an array of cleaning events. The value needed to define an event are:
+                - "day": The day of the week. 0 Sunday 1 Monday 2 Tuesday 3 Wednesday 4 Thursday 5 Friday 6 Saturday.
+                - "mode": The cleaning mode for this event RobotCleaningModeTurbo or RobotCleaningModeEco
+                - "startTime": The start time expressed in HH:MM.
+                @{@"day":1,@"mode":@(RobotCleaningModeTurbo),@"starTime":@"22:11"}
+ 
+ @warning required events parameters may vary depending on robot services support.
+ 
+ **/
+- (void)setScheduleWithCleaningEvent:(NSArray *)events completion:(void (^)(NSError * _Nullable error))completion;
+
+/** 
+ Request the schedule information to the robot.
+ 
+ @param completion: a block that contains the schedule info returned or an error if the call fail.
+ 
+ **/
+- (void)getScheduleWithCompletion:(void (^)(NSDictionary * scheduleInfo, NSError * _Nullable error))completion;
 
 /** 
  Return the version for the given service. It returns Nil if the service is not supported
