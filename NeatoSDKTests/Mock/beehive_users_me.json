@@ -1,0 +1,18 @@
+{
+    "email": "test@example.com",
+    "password": "mypass",
+    "locale": "en",
+    "source": "ios",
+    "first_name": "Firstname",
+    "last_name": "Lastname",
+    "company": "Test Enterprises",
+    "phone_number": "555-432-9080",
+    "newsletter": true,
+    "street_1": "Main",
+    "street_2": "Apt 11",
+    "city": "Maintown",
+    "post_code": "321AX",
+    "province": "CO",
+    "state_region": "CA",
+    "country_code": "US"
+}

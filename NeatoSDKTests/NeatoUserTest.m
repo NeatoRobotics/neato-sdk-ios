@@ -42,7 +42,7 @@ describe(@"NeatoUser", ^{
         context(@"when user is logged out", ^{
             
             before(^{
-                signInUserDefault();
+                logoutUserDefault();
             });
             
             it(@"returns false",^{
@@ -137,6 +137,72 @@ describe(@"NeatoUser", ^{
         });
     });
     
+    
+    describe(@"User Info", ^{
+        
+        context(@"when info is available", ^{
+            
+            before(^{
+                signInUserDefault();
+                [OHHTTPStubs stub:@"/users/me"
+                         withFile:@"beehive_users_me.json"
+                             code:200];
+            });
+            
+            it(@"returns a robot", ^{
+                waitUntil(^(DoneCallback done) {
+                    NeatoUser *user = [NeatoUser new];
+                    [user updateUserInfo:^(NSError * _Nullable error) {
+                        expect(error).to.beNil();
+                        expect(user.firstname).to.equal(@"Firstname");
+                        expect(user.lastname).to.equal(@"Lastname");
+                        expect(user.email).to.equal(@"test@example.com");
+                        done();
+                    }];
+
+                });
+                
+            });
+        });
+        
+        context(@"when user is not signed in", ^{
+            
+            before(^{
+                logoutUserDefault();
+            });
+            
+            it(@"Raise an error", ^{
+                
+                waitUntil(^(DoneCallback done) {
+                    NeatoUser *user = [NeatoUser new];
+                    [user updateUserInfo:^(NSError * _Nullable error) {
+                        expect(error).notTo.beNil();
+                        expect(error.domain).to.equal(@"OAuth");
+                        done();
+                    }];
+                });
+            });
+        });
+        
+        context(@"when call fails", ^{
+            
+            before(^{
+                signInUserDefault();
+                [OHHTTPStubs stub:@"/users/me/" withFailure:400];
+            });
+            
+            it(@"raises an error", ^{
+                waitUntil(^(DoneCallback done) {
+                    NeatoUser *user = [NeatoUser new];
+                    [user updateUserInfo:^(NSError * _Nullable error) {
+                        expect(error).notTo.beNil();
+                        done();
+                    }];
+                });
+                
+            });
+        });
+    });
 });
 
 SpecEnd
