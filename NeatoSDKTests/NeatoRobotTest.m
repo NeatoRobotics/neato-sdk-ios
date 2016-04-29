@@ -188,7 +188,6 @@ describe(@"NeatoRobot", ^{
         context(@"when invalid params are sent", ^{
             before(^{
                 signInUser();
-                
                 [OHHTTPStubs stub:@"/vendors/neato/robots/123456/messages"
                          withJSON:@"{\"result\":\"ok\", \"data\":\"data\"}"
                              code:200];
@@ -274,6 +273,41 @@ describe(@"NeatoRobot", ^{
                 waitUntil(^(DoneCallback done) {
                     [robot disableScheduleWithCompletion:^(NSError * _Nullable error) {
                         expect(true);
+                        done();
+                    }];
+                });
+            });
+        });
+    });
+    
+    describe(@"Supported Services", ^{
+        
+        context(@"when services area available",^{
+            before(^{
+                signInUser();
+                [OHHTTPStubs stub:@"/vendors/neato/robots/serial/messages"
+                         withJSON:@"{\"result\":\"ok\", \"state\":1, \"availableServices\":{\"service_1\":\"version_1\", \"service_2\":\"version_2\"}}"
+                             code:200];
+            });
+            
+            it(@"stores the services",^{
+            __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret"];
+            
+                waitUntil(^(DoneCallback done) {
+                    [robot updateStateWithCompletion:^(NSError * _Nullable error) {
+                        expect(robot.availableServices).to.equal(@{@"service_1":@"version_1", @"service_2":@"version_2"});
+                        done();
+                    }];
+                });
+            });
+            
+            it(@"supports a service",^{
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret"];
+                
+                waitUntil(^(DoneCallback done) {
+                    [robot updateStateWithCompletion:^(NSError * _Nullable error) {
+                        expect([robot supportedVersionForService:@"service_1"]).to.equal(@"version_1");
+                        expect([robot supportedVersionForService:@"unknown_service"]).to.beNil();
                         done();
                     }];
                 });

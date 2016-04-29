@@ -59,7 +59,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, readonly) bool isCharging;
 @property (nonatomic, assign, readonly) bool isDocked;
 @property (nonatomic, assign, readonly) bool isScheduleEnabled;
-
+@property (nonatomic, strong, readonly) NSDictionary *availableServices;
 /**
  Initialize a new Robot instance.
  
@@ -119,6 +119,13 @@ NS_ASSUME_NONNULL_BEGIN
  @param completion: Callback to handle call response.
  **/
 - (void)disableScheduleWithCompletion:(void (^)(NSError * _Nullable error))completion;
+
+/** 
+ Return the version for the given service. It returns Nil if the service is not supported
+ 
+ @param serviceName
+ **/
+- (NSString * _Nullable)supportedVersionForService:(NSString*)serviceName;
 
 /**
  Force robot state and action. This function should be used for testing purpose only.

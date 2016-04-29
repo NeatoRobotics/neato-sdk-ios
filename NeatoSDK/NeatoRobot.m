@@ -107,6 +107,10 @@ static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages"
             _isDocked = [response[@"details"][@"isDocked"] boolValue];
             _isScheduleEnabled = [response[@"details"][@"isScheduleEnabled"] boolValue];
         }
+        
+        if([response[@"availableServices"] isKindOfClass:[NSDictionary class]]){
+            _availableServices = response[@"availableServices"];
+        }
     }
 }
 
@@ -158,6 +162,10 @@ static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages"
 
 - (void)updateStateWithCompletion:(void(^)(NSError * _Nullable error))completion{
     [self sendAndManageCommand:@"getRobotState" parameters:nil completion:completion];
+}
+
+- (NSString *_Nullable)supportedVersionForService:(NSString *)serviceName{
+    return self.availableServices[serviceName];
 }
 
 #pragma mark Cleaning
