@@ -23,7 +23,6 @@
     
     self.title = self.robot.name;
     [self updateRobotState];
-    
 }
 
 - (void)updateRobotState{
@@ -41,7 +40,9 @@
 }
 
 - (IBAction)startCleaning:(id)sender{
-    [self.robot startCleaningWithParameters:@{@"category":@(2), @"modifier":@(1), @"mode":@(1)}
+    [self.robot startCleaningWithParameters:@{@"category":@(RobotCleaningCategoryHouse),
+                                              @"modifier":@(RobotCleaningModifierNormal),
+                                              @"mode":@(RobotCleaningModeTurbo)}
                                  completion:^(NSError * _Nullable error) {
                                      NSLog(@"OK!");
     }];

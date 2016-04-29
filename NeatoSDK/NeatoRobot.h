@@ -29,6 +29,22 @@ typedef NS_ENUM(NSUInteger, RobotAction) {
     RobotActionRecoveryLocation
 };
 
+typedef NS_ENUM(NSUInteger, RobotCleaningCategory){
+    RobotCleaningCategoryManual = 1,
+    RobotCleaningCategoryHouse = 2,
+    RobotCleaningCategorySpot = 3
+};
+
+typedef NS_ENUM(NSUInteger, RobotCleaningMode){
+    RobotCleaningModeEco = 1,
+    RobotCleaningModeTurbo = 2
+};
+
+typedef NS_ENUM(NSUInteger, RobotCleaningModifier){
+    RobotCleaningModifierNormal = 1,
+    RobotCleaningModifierDouble = 2
+};
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NeatoRobot : NSObject
