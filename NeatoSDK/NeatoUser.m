@@ -43,7 +43,7 @@ static NSString * const kNeatoBeehiveUserInfoPath = @"/users/me";
     }
 }
 
-- (void) updateUserInfo:(void(^)(NSError * _Nullable error))completionHandler{
+- (void) getUserInfo:(void(^)(NSDictionary* userinfo, NSError * _Nullable error))completionHandler{
     NeatoHTTPSessionManager *manager = [NeatoHTTPSessionManager authenticatedBeehiveManager];
     
     if (manager != nil){
@@ -51,16 +51,13 @@ static NSString * const kNeatoBeehiveUserInfoPath = @"/users/me";
           parameters:nil
             progress:^(NSProgress * _Nonnull downloadProgress) {}
              success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                 _firstname = responseObject[@"first_name"];
-                 _lastname = responseObject[@"last_name"];
-                 _email = responseObject[@"email"];
-                 completionHandler(nil);
+                 completionHandler(responseObject, nil);
              }
              failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                 completionHandler(error);
+                 completionHandler(nil, error);
              }];
     }else{
-        completionHandler([NSError errorWithDomain:@"OAuth" code:1 userInfo:nil]);
+        completionHandler(nil, [NSError errorWithDomain:@"OAuth" code:1 userInfo:nil]);
     }
 }
 

@@ -35,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @param completion
  **/
-- (void) updateUserInfo:(void(^)(NSError * _Nullable error))completionHandler;
+- (void) getUserInfo:(void(^)(NSDictionary* userinfo, NSError * _Nullable error))completionHandler;
 
 @end
 NS_ASSUME_NONNULL_END

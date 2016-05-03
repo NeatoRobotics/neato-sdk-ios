@@ -189,12 +189,12 @@
 				58DF8D721CCF932E00B1F6DA /* NeatoUserTest.m */,
 				58A338491CC93D44008F5B7D /* NeatoAuthenticationTests.m */,
 				58A3384D1CC93D44008F5B7D /* NeatoUserDefaultTokenStoreTest.m */,
-				58A3381E1CC92D85008F5B7D /* Info.plist */,
 				58C58CA81CCA6BD0005DCB3D /* NeatoSDKTests-Bridging-Header.h */,
 				58DF8D8A1CD0074D00B1F6DA /* NeatoUtilsTest.m */,
 				58DF8D8C1CD00B6600B1F6DA /* NeatoHTTPSessionTest.m */,
 				583ACE731CD0A9DC00C2CE0A /* TestHelpers.h */,
 				583ACE741CD0BF4F00C2CE0A /* TestHelpers.m */,
+				58A3381E1CC92D85008F5B7D /* Info.plist */,
 			);
 			path = NeatoSDKTests;
 			sourceTree = "<group>";

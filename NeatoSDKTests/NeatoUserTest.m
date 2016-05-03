@@ -152,11 +152,11 @@ describe(@"NeatoUser", ^{
             it(@"returns a robot", ^{
                 waitUntil(^(DoneCallback done) {
                     NeatoUser *user = [NeatoUser new];
-                    [user updateUserInfo:^(NSError * _Nullable error) {
+                    [user getUserInfo:^(NSDictionary* userinfo, NSError * _Nullable error) {
                         expect(error).to.beNil();
-                        expect(user.firstname).to.equal(@"Firstname");
-                        expect(user.lastname).to.equal(@"Lastname");
-                        expect(user.email).to.equal(@"test@example.com");
+                        expect(userinfo[@"first_name"]).to.equal(@"Firstname");
+                        expect(userinfo[@"last_name"]).to.equal(@"Lastname");
+                        expect(userinfo[@"email"]).to.equal(@"test@example.com");
                         done();
                     }];
 
@@ -175,7 +175,7 @@ describe(@"NeatoUser", ^{
                 
                 waitUntil(^(DoneCallback done) {
                     NeatoUser *user = [NeatoUser new];
-                    [user updateUserInfo:^(NSError * _Nullable error) {
+                    [user getUserInfo:^(NSDictionary* userinfo, NSError * _Nullable error) {
                         expect(error).notTo.beNil();
                         expect(error.domain).to.equal(@"OAuth");
                         done();
@@ -194,7 +194,7 @@ describe(@"NeatoUser", ^{
             it(@"raises an error", ^{
                 waitUntil(^(DoneCallback done) {
                     NeatoUser *user = [NeatoUser new];
-                    [user updateUserInfo:^(NSError * _Nullable error) {
+                    [user getUserInfo:^(NSDictionary* userinfo, NSError * _Nullable error) {
                         expect(error).notTo.beNil();
                         done();
                     }];
