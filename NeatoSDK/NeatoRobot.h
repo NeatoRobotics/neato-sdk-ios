@@ -82,6 +82,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, readonly) bool isDocked;
 @property (nonatomic, assign, readonly) bool isScheduleEnabled;
 @property (nonatomic, strong, readonly) NSDictionary *availableServices;
+
 /**
  Initialize a new Robot instance.
  

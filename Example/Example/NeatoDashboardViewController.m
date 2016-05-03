@@ -13,7 +13,6 @@
 @import NeatoSDK;
 
 @interface NeatoDashboardViewController ()<UITableViewDelegate, UITableViewDataSource>
-@property (nonatomic, weak) IBOutlet UILabel *tokenLabel;
 @property (nonatomic, strong) NSMutableArray *robots;
 @property (nonatomic, weak) IBOutlet UITableView *table;
 @end
@@ -22,9 +21,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"DASHBOARD";
-    self.tokenLabel.text = [NeatoAuthentication sharedInstance].accessToken;
     
+    self.title = @"DASHBOARD";
     self.robots = [NSMutableArray array];
     NeatoUser *user = [NeatoUser new];
     

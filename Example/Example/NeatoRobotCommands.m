@@ -26,6 +26,7 @@
 }
 
 - (void)updateRobotState{
+    
     [self.robot updateStateWithCompletion:^(NSError * _Nonnull error) {
         if(error){
             self.robotState.text = @"Offline";

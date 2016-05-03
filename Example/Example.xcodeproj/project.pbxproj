@@ -12,12 +12,24 @@
 		5849EE8D1CCA4EC500A2C2D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5849EE8B1CCA4EC500A2C2D6 /* Main.storyboard */; };
 		5849EE8F1CCA4EC500A2C2D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5849EE8E1CCA4EC500A2C2D6 /* Assets.xcassets */; };
 		5849EE921CCA4EC500A2C2D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5849EE901CCA4EC500A2C2D6 /* LaunchScreen.storyboard */; };
-		5849EE9A1CCA4F3000A2C2D6 /* NeatoSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5849EE991CCA4F3000A2C2D6 /* NeatoSDK.framework */; };
 		5849EE9E1CCA526800A2C2D6 /* NeatoLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5849EE9D1CCA526800A2C2D6 /* NeatoLoginViewController.m */; };
 		5849EEA31CCA55B900A2C2D6 /* NeatoDashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5849EEA21CCA55B900A2C2D6 /* NeatoDashboardViewController.m */; };
 		58DF8D6E1CCF565C00B1F6DA /* Robot.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DF8D6D1CCF565C00B1F6DA /* Robot.m */; };
 		58DF8D711CCF899400B1F6DA /* NeatoRobotCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DF8D701CCF899400B1F6DA /* NeatoRobotCommands.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5843A5321CD8C7C5001C835B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5849EE7F1CCA4EC500A2C2D6 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -28,7 +40,6 @@
 		5849EE8E1CCA4EC500A2C2D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5849EE911CCA4EC500A2C2D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5849EE931CCA4EC500A2C2D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5849EE991CCA4F3000A2C2D6 /* NeatoSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NeatoSDK.framework; path = "../../../Library/Developer/Xcode/DerivedData/NeatoSDK-bexyuxxzmcfpgdbrcfokmmmralnv/Build/Products/Debug-iphonesimulator/NeatoSDK.framework"; sourceTree = "<group>"; };
 		5849EE9C1CCA526800A2C2D6 /* NeatoLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeatoLoginViewController.h; sourceTree = "<group>"; };
 		5849EE9D1CCA526800A2C2D6 /* NeatoLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeatoLoginViewController.m; sourceTree = "<group>"; };
 		5849EEA11CCA55B900A2C2D6 /* NeatoDashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeatoDashboardViewController.h; sourceTree = "<group>"; };
@@ -44,7 +55,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5849EE9A1CCA4F3000A2C2D6 /* NeatoSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,7 +104,6 @@
 		5849EE9B1CCA4F3500A2C2D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5849EE991CCA4F3000A2C2D6 /* NeatoSDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -140,6 +149,7 @@
 				5849EE7B1CCA4EC500A2C2D6 /* Sources */,
 				5849EE7C1CCA4EC500A2C2D6 /* Frameworks */,
 				5849EE7D1CCA4EC500A2C2D6 /* Resources */,
+				5843A5321CD8C7C5001C835B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -318,7 +328,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Example/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neatorobotics.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -329,7 +339,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Example/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.neatorobotics.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
