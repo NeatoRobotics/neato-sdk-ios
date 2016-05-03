@@ -23,6 +23,8 @@
     [super viewDidLoad];
     
     self.title = @"DASHBOARD";
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    
     self.robots = [NSMutableArray array];
     NeatoUser *user = [NeatoUser new];
     
@@ -34,13 +36,6 @@
         }
 
         [self.table reloadData];
-    }];
-    
-    [user updateUserInfo:^(NSError * _Nullable error) {
-        if(error){
-            NSLog(@"%@", [error localizedDescription]);
-        }
-        NSLog(@"%@ %@ %@", user.firstname, user.lastname, user.email);
     }];
 }
 

@@ -64,7 +64,6 @@
 		5849EE761CCA4EC500A2C2D6 = {
 			isa = PBXGroup;
 			children = (
-				5849EE9B1CCA4F3500A2C2D6 /* Frameworks */,
 				5849EE811CCA4EC500A2C2D6 /* Example */,
 				5849EE801CCA4EC500A2C2D6 /* Products */,
 			);
@@ -99,13 +98,6 @@
 				5849EE831CCA4EC500A2C2D6 /* main.m */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		5849EE9B1CCA4F3500A2C2D6 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		5849EE9F1CCA526F00A2C2D6 /* Controllers */ = {
@@ -326,6 +318,7 @@
 		5849EE971CCA4EC500A2C2D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -337,6 +330,7 @@
 		5849EE981CCA4EC500A2C2D6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

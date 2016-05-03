@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Neato Login View Controller-->
@@ -44,6 +43,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XQr-CZ-xWW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="barTintColor" red="0.20000000000000001" green="0.23921568630000001" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="0.0"/>
@@ -137,7 +137,7 @@
             </objects>
             <point key="canvasLocation" x="1962" y="404"/>
         </scene>
-        <!--Neato Robot Commands-->
+        <!--Title-->
         <scene sceneID="ONR-ly-DYu">
             <objects>
                 <viewController id="dBV-B0-yel" customClass="NeatoRobotCommands" sceneMemberID="viewController">
@@ -150,7 +150,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1cP-nK-IOj">
-                                <rect key="frame" x="278" y="156" width="45" height="33"/>
+                                <rect key="frame" x="278" y="196" width="45" height="33"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="START">
                                     <color key="titleColor" red="0.0039215686269999999" green="0.1450980392" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
@@ -160,33 +160,33 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdy-gb-FkL">
-                                <rect key="frame" x="320" y="281" width="60" height="33"/>
+                                <rect key="frame" x="328" y="361" width="44" height="33"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
-                                <state key="normal" title="ALWAYS">
+                                <state key="normal" title="WEEK">
                                     <color key="titleColor" red="0.0039215686269999999" green="0.1450980392" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="startCleaning:" destination="dBV-B0-yel" eventType="touchUpInside" id="AOG-6I-Fhs"/>
+                                    <action selector="scheduleWeek" destination="dBV-B0-yel" eventType="touchUpInside" id="SKE-ED-yko"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRe-p8-Drd">
-                                <rect key="frame" x="282" y="79" width="36" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRe-p8-Drd">
+                                <rect key="frame" x="293" y="79" width="13" height="21"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gkC-jn-xmZ">
-                                <rect key="frame" x="363" y="156" width="48" height="33"/>
+                                <rect key="frame" x="363" y="196" width="48" height="33"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="PAUSE">
                                     <color key="titleColor" red="0.0039215686269999999" green="0.1450980392" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="stopCleaning:" destination="dBV-B0-yel" eventType="touchUpInside" id="eVu-Pt-bPV"/>
+                                    <action selector="pauseCleaning:" destination="dBV-B0-yel" eventType="touchUpInside" id="G4F-Bp-89P"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D96-7W-kwe">
-                                <rect key="frame" x="199" y="156" width="39" height="33"/>
+                                <rect key="frame" x="199" y="196" width="39" height="33"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="STOP">
                                     <color key="titleColor" red="0.0039215686269999999" green="0.1450980392" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
@@ -196,45 +196,44 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Commands" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2MW-Or-32p">
-                                <rect key="frame" x="257" y="124" width="87" height="24"/>
+                                <rect key="frame" x="257" y="164" width="87" height="24"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scheduling" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgF-zy-ydy">
-                                <rect key="frame" x="257" y="249" width="85" height="24"/>
+                                <rect key="frame" x="257" y="329" width="85" height="24"/>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UuJ-fk-tll">
-                                <rect key="frame" x="370" y="245" width="51" height="31"/>
+                                <rect key="frame" x="370" y="325" width="51" height="31"/>
+                                <connections>
+                                    <action selector="scheduleStateChanged:" destination="dBV-B0-yel" eventType="valueChanged" id="2Iv-TZ-pE1"/>
+                                </connections>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vm0-BE-ePO">
-                                <rect key="frame" x="226" y="281" width="69" height="33"/>
+                                <rect key="frame" x="226" y="361" width="69" height="33"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="MONDAY">
                                     <color key="titleColor" red="0.0039215686269999999" green="0.1450980392" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="startCleaning:" destination="dBV-B0-yel" eventType="touchUpInside" id="EWS-kZ-8v2"/>
+                                    <action selector="scheduleMonday" destination="dBV-B0-yel" eventType="touchUpInside" id="aGe-Ru-HsJ"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OSN-Bw-qWz">
-                                <rect key="frame" x="558" y="78" width="22" height="22"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="UuJ-fk-tll" firstAttribute="centerY" secondItem="dgF-zy-ydy" secondAttribute="centerY" id="2Q3-TQ-YMY"/>
-                            <constraint firstItem="OSN-Bw-qWz" firstAttribute="centerY" secondItem="PRe-p8-Drd" secondAttribute="centerY" id="5OB-bY-WSU"/>
                             <constraint firstItem="cdy-gb-FkL" firstAttribute="centerX" secondItem="cBO-R7-ujK" secondAttribute="centerX" constant="50" id="EDw-6b-gRh"/>
                             <constraint firstItem="1cP-nK-IOj" firstAttribute="centerX" secondItem="2MW-Or-32p" secondAttribute="centerX" id="J0c-rP-rdZ"/>
-                            <constraint firstItem="2MW-Or-32p" firstAttribute="top" secondItem="VQX-9K-21Q" secondAttribute="bottom" constant="60" id="LOS-8J-0YS"/>
+                            <constraint firstItem="2MW-Or-32p" firstAttribute="top" secondItem="VQX-9K-21Q" secondAttribute="bottom" constant="100" id="LOS-8J-0YS"/>
                             <constraint firstItem="dgF-zy-ydy" firstAttribute="centerX" secondItem="cBO-R7-ujK" secondAttribute="centerX" id="MTW-YV-uRO"/>
                             <constraint firstItem="1cP-nK-IOj" firstAttribute="top" secondItem="2MW-Or-32p" secondAttribute="bottom" constant="8" id="Re2-Gb-kyE"/>
                             <constraint firstItem="UuJ-fk-tll" firstAttribute="leading" secondItem="dgF-zy-ydy" secondAttribute="trailing" constant="28" id="Xqn-ej-SOf"/>
-                            <constraint firstItem="dgF-zy-ydy" firstAttribute="top" secondItem="1cP-nK-IOj" secondAttribute="bottom" constant="60" id="ZJV-6d-ELF"/>
+                            <constraint firstItem="dgF-zy-ydy" firstAttribute="top" secondItem="1cP-nK-IOj" secondAttribute="bottom" constant="100" id="ZJV-6d-ELF"/>
                             <constraint firstItem="vm0-BE-ePO" firstAttribute="top" secondItem="dgF-zy-ydy" secondAttribute="bottom" constant="8" id="atU-er-JeQ"/>
                             <constraint firstItem="gkC-jn-xmZ" firstAttribute="leading" secondItem="1cP-nK-IOj" secondAttribute="trailing" constant="40" id="dQ5-uG-Lcc"/>
                             <constraint firstItem="PRe-p8-Drd" firstAttribute="centerX" secondItem="cBO-R7-ujK" secondAttribute="centerX" id="ez8-bu-DV9"/>
@@ -245,11 +244,14 @@
                             <constraint firstItem="1cP-nK-IOj" firstAttribute="leading" secondItem="D96-7W-kwe" secondAttribute="trailing" constant="40" id="vaQ-x7-UI7"/>
                             <constraint firstItem="PRe-p8-Drd" firstAttribute="top" secondItem="VQX-9K-21Q" secondAttribute="bottom" constant="15" id="wkQ-RN-zne"/>
                             <constraint firstItem="gkC-jn-xmZ" firstAttribute="top" secondItem="2MW-Or-32p" secondAttribute="bottom" constant="8" id="xat-IP-4tu"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="OSN-Bw-qWz" secondAttribute="trailing" id="zYP-iE-8YU"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="Zg4-qK-kr0">
+                        <barButtonItem key="rightBarButtonItem" title="Info" id="F0N-rK-C0A"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="robotState" destination="PRe-p8-Drd" id="jxa-fm-BHS"/>
+                        <outlet property="scheduleSwitch" destination="UuJ-fk-tll" id="ZfS-SL-06e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lgy-QQ-56B" userLabel="First Responder" sceneMemberID="firstResponder"/>

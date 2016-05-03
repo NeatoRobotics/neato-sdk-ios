@@ -10,7 +10,7 @@
 @import NeatoSDK;
 
 @interface NeatoRobotCommands()
-
+@property (nonatomic, weak) IBOutlet UISwitch* scheduleSwitch;
 @property (nonatomic, weak) IBOutlet UILabel* robotState;
 @end
 
@@ -25,7 +25,9 @@
     [self updateRobotState];
 }
 
-- (void)updateRobotState{
+#pragma - Robot -
+
+- (IBAction)updateRobotState{
     
     [self.robot updateStateWithCompletion:^(NSError * _Nonnull error) {
         if(error){
@@ -36,8 +38,56 @@
     }];
 }
 
+
 - (IBAction)robotInfo:(id)sender{
-    /*
+    [self.robot getScheduleWithCompletion:^(NSDictionary * _Nonnull scheduleInfo, NSError * _Nullable error) {
+        NSLog(@"%@", scheduleInfo);
+    }];
+}
+
+#pragma mark - Cleaning -
+
+- (IBAction)startCleaning:(id)sender{
+
+    [self.robot startCleaningWithParameters:@{@"category":@(RobotCleaningCategoryHouse),
+                                              @"modifier":@(RobotCleaningModifierNormal),
+                                              @"mode":@(RobotCleaningModeTurbo)}
+                                 completion:^(NSError * _Nullable error) {
+                                     
+                                     [self stopLoading];
+    }];
+}
+
+- (IBAction)stopCleaning:(id)sender{
+    
+    [self.robot stopCleaningWithCompletion:^(NSError * _Nullable error) {
+        [self stopLoading];
+    }];
+}
+
+- (IBAction)pauseCleaning:(id)sender{
+    
+    [self.robot pauseCleaningWithCompletion:^(NSError * _Nullable error) {
+        [self stopLoading];
+    }];
+}
+
+#pragma mark - Scheduling -
+
+- (IBAction)scheduleStateChanged:(id)sender{
+    if ([self.scheduleSwitch isOn]){
+        [self enableSchedule];
+    }else{
+        [self disableSchedule];
+    }
+}
+
+- (IBAction)scheduleMonday{
+    NSArray *cleaningEvents = @[@{@"day":@(0), @"startTime":@"10:00", @"mode":@(RobotCleaningModeEco)}];
+    [self schedule:cleaningEvents];
+}
+
+- (IBAction)scheduleWeek{
     NSArray *cleaningEvents = @[
                                 @{@"day":@(0), @"startTime":@"10:00", @"mode":@(RobotCleaningModeEco)},
                                 @{@"day":@(1), @"startTime":@"10:00", @"mode":@(RobotCleaningModeEco)},
@@ -48,53 +98,39 @@
                                 @{@"day":@(6), @"startTime":@"10:00", @"mode":@(RobotCleaningModeEco)},
                                 @{@"day":@(7), @"startTime":@"10:00", @"mode":@(RobotCleaningModeEco)}
                                 ];
-    
-    [self.robot setScheduleWithCleaningEvent:cleaningEvents completion:^(NSError * _Nullable error) {
-        if(!error){
+    [self schedule:cleaningEvents];
+}
 
+- (void)schedule:(NSArray *)events{
+    [self.robot setScheduleWithCleaningEvent:events completion:^(NSError * _Nullable error) {
+        
+        [self stopLoading];
+
+        if(!error){
+            
         }else{
             NSLog(@"Error");
         }
-    }];
-    */
-    
-    [self.robot getScheduleWithCompletion:^(NSDictionary * _Nonnull scheduleInfo, NSError * _Nullable error) {
-        NSLog(@"%@", scheduleInfo);
+        
     }];
 }
 
-- (IBAction)readSchedule:(id)sender{
-    
-}
-
-- (IBAction)startCleaning:(id)sender{
-
-    [self.robot startCleaningWithParameters:@{@"category":@(RobotCleaningCategoryHouse),
-                                              @"modifier":@(RobotCleaningModifierNormal),
-                                              @"mode":@(RobotCleaningModeTurbo)}
-                                 completion:^(NSError * _Nullable error) {
-                                     NSLog(@"OK!");
-    }];
-}
-
-- (IBAction)stopCleaning:(id)sender{
-    
-    [self.robot stopCleaningWithCompletion:^(NSError * _Nullable error) {
-                                     NSLog(@"OK!");
-    }];
-}
-
-- (IBAction)enableSchedule:(id)sender{
+- (void)enableSchedule{
     
     [self.robot enableScheduleWithCompletion:^(NSError * _Nullable error) {
-        
+        [self stopLoading];
     }];
 }
 
-- (IBAction)disableSchedule:(id)sender{
+- (void)disableSchedule{
     
     [self.robot disableScheduleWithCompletion:^(NSError * _Nullable error) {
-        
+        [self stopLoading];
     }];
 }
+
+- (void)stopLoading{
+
+}
+
 @end
