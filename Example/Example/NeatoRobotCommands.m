@@ -46,6 +46,61 @@
     [self.view addConstraints:constraint_POS_H];
 }
 
+- (void)updateStateDescription{
+    
+    
+    switch (self.robot.state) {
+            
+        case RobotStateIdle:
+            self.robotState.text = @"Ready to clean";
+
+            break;
+        
+        case RobotStateBusy:
+            
+            switch (self.robot.action){
+                    
+                case RobotActionHouseCleaning:
+                    self.robotState.text = @"House Cleaning";
+                    break;
+                    
+                case RobotActionSpotCleaning:
+                    self.robotState.text = @"Spot Cleaning";
+                    break;
+                    
+                case RobotActionManualCleaning:
+                    self.robotState.text = @"Manual Cleaning";
+                    break;
+                    
+                    // You can handle all the other Robot Action here
+                    
+                default:
+                    self.robotState.text = @"Busy";
+            }
+            break;
+            
+        case RobotStatePaused:
+            self.robotState.text = @"Paused";
+            break;
+            
+        case RobotStateError:
+            self.robotState.text = @"Error";
+            break;
+            
+        case RobotStateInvalid:
+            self.robotState.text = @"???";
+
+    }
+    
+    if(self.robot.action == RobotStateBusy){
+
+    }
+    
+    if(self.robot.action == RobotStateBusy){
+    
+    }
+}
+
 #pragma - Robot -
 
 - (IBAction)updateRobotState{
@@ -54,11 +109,7 @@
     __weak typeof(self) weakSelf = self;
 
     [self.robot updateStateWithCompletion:^(NSError * _Nonnull error) {
-        if(error){
-            weakSelf.robotState.text = @"Offline"; // or check the `robot.online` property
-        }else{
-            weakSelf.robotState.text = @"Online";
-        }
+        [weakSelf updateStateDescription];
         [weakSelf stopLoading];
     }];
 }
@@ -81,6 +132,7 @@
                                               @"mode":@(RobotCleaningModeTurbo)}
                                  completion:^(NSError * _Nullable error) {
                                      
+                                     [weakSelf updateStateDescription];
                                      [weakSelf stopLoading];
     }];
 }
@@ -91,6 +143,8 @@
     __weak typeof(self) weakSelf = self;
 
     [self.robot stopCleaningWithCompletion:^(NSError * _Nullable error) {
+        
+        [weakSelf updateStateDescription];
         [weakSelf stopLoading];
     }];
 }
@@ -101,6 +155,8 @@
     __weak typeof(self) weakSelf = self;
 
     [self.robot pauseCleaningWithCompletion:^(NSError * _Nullable error) {
+        
+        [weakSelf updateStateDescription];
         [weakSelf stopLoading];
     }];
 }
