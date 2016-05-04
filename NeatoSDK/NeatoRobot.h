@@ -53,18 +53,28 @@ typedef NS_ENUM(NSUInteger, RobotAction) {
 
 typedef NS_ENUM(NSUInteger, RobotCleaningCategory){
     RobotCleaningCategoryManual = 1,
-    RobotCleaningCategoryHouse = 2,
-    RobotCleaningCategorySpot = 3
+    RobotCleaningCategoryHouse  = 2,
+    RobotCleaningCategorySpot   = 3
 };
 
 typedef NS_ENUM(NSUInteger, RobotCleaningMode){
-    RobotCleaningModeEco = 1,
-    RobotCleaningModeTurbo = 2
+    RobotCleaningModeEco    = 1,
+    RobotCleaningModeTurbo  = 2
 };
 
 typedef NS_ENUM(NSUInteger, RobotCleaningModifier){
     RobotCleaningModifierNormal = 1,
     RobotCleaningModifierDouble = 2
+};
+
+typedef NS_ENUM(NSUInteger, RobotScheduleDay){
+    RobotScheduleDaySunday      = 0,
+    RobotScheduleDayMonday      = 1,
+    RobotScheduleDayTuesday     = 2,
+    RobotScheduleDayWednesday   = 3,
+    RobotScheduleDayThrusday    = 4,
+    RobotScheduleDayFriday      = 5,
+    RobotScheduleDaySaturday    = 6
 };
 
 NS_ASSUME_NONNULL_BEGIN
@@ -82,6 +92,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign, readonly) bool isDocked;
 @property (nonatomic, assign, readonly) bool isScheduleEnabled;
 @property (nonatomic, strong, readonly) NSDictionary *availableServices;
+@property (nonatomic, strong, readonly) NSDictionary *availableCommands;
+@property (nonatomic, copy, readonly) NSString *error;
+@property (nonatomic, copy, readonly) NSString *alert;
+@property (nonatomic, copy, readonly) NSString *firmware;
 
 /**
  Initialize a new Robot instance.
@@ -110,7 +124,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @param parameters: Define the cleaning setup. Check Neato docs for all the available choices.
  @param completion: Callback to handle call response.
-
+ 
  **/
 - (void)startCleaningWithParameters:(NSDictionary *)parameters completion:(void (^)(NSError * _Nullable error))completion;
 

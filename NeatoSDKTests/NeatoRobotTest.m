@@ -243,7 +243,7 @@ describe(@"NeatoRobot", ^{
                              code:200];
             });
             
-            it(@"executes a completion callback",^{
+            it(@"executes the completion callback",^{
                 __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret"];
 
                 waitUntil(^(DoneCallback done) {
@@ -252,6 +252,7 @@ describe(@"NeatoRobot", ^{
                         done();
                     }];
                 });
+                
                 waitUntil(^(DoneCallback done) {
                     [robot pauseCleaningWithCompletion:^(NSError * _Nullable error) {
                         expect(true);
@@ -322,6 +323,46 @@ describe(@"NeatoRobot", ^{
                         expect([robot supportedVersionForService:@"service_1"]).to.equal(@"version_1");
                         expect([robot supportedVersionForService:@"unknown_service"]).to.beNil();
                         done();
+                    }];
+                });
+            });
+        });
+        
+        context(@"Cleaning support",^{
+            before(^{
+                signInUser();
+                // A robot that support houseCleaning and doesn't support spotCleaning
+                [OHHTTPStubs stub:@"/vendors/neato/robots/serial/messages"
+                         withJSON:@"{\"result\":\"ok\", \"state\":1, \"availableServices\":{\"houseCleaning\":\"version_1\"}}"
+                             code:200];
+            });
+            
+            it(@"can execute houseCleaning",^{
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret"];
+                waitUntil(^(DoneCallback done) {
+                    
+                    [robot updateStateWithCompletion:^(NSError * _Nullable error) {
+                        NSDictionary* houseCleaningParam = @{@"category":@(RobotCleaningCategoryHouse)};
+                        [robot startCleaningWithParameters:houseCleaningParam completion:^(NSError * _Nullable error) {
+                            expect(error).to.beNil();
+                            done();
+                        }];
+                        
+                    }];
+                });
+            });
+            
+            it(@"cannot execute spotCleaning",^{
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret"];
+                waitUntil(^(DoneCallback done) {
+                    
+                    [robot updateStateWithCompletion:^(NSError * _Nullable error) {
+                        NSDictionary* houseCleaningParam = @{@"category":@(RobotCleaningCategorySpot)};
+                        [robot startCleaningWithParameters:houseCleaningParam completion:^(NSError * _Nullable error) {
+                            expect(error).notTo.beNil();
+                            done();
+                        }];
+                        
                     }];
                 });
             });

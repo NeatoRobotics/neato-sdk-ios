@@ -110,10 +110,16 @@ static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages"
             _isCharging = [response[@"details"][@"isCharging"] boolValue];
             _isDocked = [response[@"details"][@"isDocked"] boolValue];
             _isScheduleEnabled = [response[@"details"][@"isScheduleEnabled"] boolValue];
+            _error = response[@"error"];
+            _alert = response[@"alert"];
         }
         
         if([response[@"availableServices"] isKindOfClass:[NSDictionary class]]){
             _availableServices = response[@"availableServices"];
+        }
+        
+        if([response[@"meta"] isKindOfClass:[NSDictionary class]]){
+            _firmware = response[@"firmware"];
         }
     }
 }
@@ -174,12 +180,39 @@ static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages"
     return self.availableServices[serviceName];
 }
 
+- (BOOL)verifyCleaningServiceSupportForParameters:(NSDictionary *)parameters{
+    
+    int category = [parameters[@"category"] intValue];
+    NSString *serviceVersion;
+
+    if(category){
+        
+        switch (category) {
+            case RobotCleaningCategoryHouse:
+                serviceVersion = [self supportedVersionForService:@"houseCleaning"];
+                break;
+            case RobotCleaningCategorySpot:
+                serviceVersion = [self supportedVersionForService:@"spotCleaning"];
+                break;
+            default:
+                break;
+        }
+    }
+    
+    return (serviceVersion != nil);
+}
+
 #pragma mark Cleaning
 
 - (void)startCleaningWithParameters:(NSDictionary *)parameters completion:(void (^)(NSError * _Nullable error))completion{
-    [self sendAndManageCommand:@"startCleaning" parameters:parameters completion:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
-        completion(error);
-    }];
+    
+    if ([self verifyCleaningServiceSupportForParameters:parameters]){
+        [self sendAndManageCommand:@"startCleaning" parameters:parameters completion:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
+            completion(error);
+        }];
+    }else{
+        completion([NSError errorWithDomain:@"Robot" code:1 userInfo:nil]);
+    }
 }
 
 - (void)pauseCleaningWithCompletion:(void (^)(NSError * _Nullable error))completion{
