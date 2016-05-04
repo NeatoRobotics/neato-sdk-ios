@@ -53,6 +53,10 @@
 
 #pragma mark - Table Delegate
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 90.0;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return [self.robots count];
 }
@@ -68,10 +72,6 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    [self performSegueWithIdentifier:@"robotCommands" sender:[tableView cellForRowAtIndexPath:indexPath]];
-}
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     UITableViewCell *cell = sender;
@@ -81,4 +81,5 @@
     NeatoRobotCommands *commands = segue.destinationViewController;
     commands.robot = [[NeatoRobot alloc]initWithName:robot.name serial:robot.serial secretKey:robot.secretKey];
 }
+
 @end

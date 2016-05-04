@@ -12,6 +12,7 @@
 @interface NeatoRobotCommands()
 @property (nonatomic, weak) IBOutlet UISwitch* scheduleSwitch;
 @property (nonatomic, weak) IBOutlet UILabel* robotState;
+@property (nonatomic, weak) IBOutlet UIView* loader;
 @end
 
 @implementation NeatoRobotCommands
@@ -22,19 +23,43 @@
     NSAssert(self.robot != nil, @"A robot is needed...");
     
     self.title = self.robot.name;
+    [self attachLoader];
     [self updateRobotState];
+}
+
+- (void)attachLoader{
+    
+    self.loader.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:self.loader];
+    
+    NSArray *constraint_POS_V = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[loader]-0-|"
+                                                                        options:0
+                                                                        metrics:nil
+                                                                          views:@{@"loader":self.loader}];
+    
+    NSArray *constraint_POS_H = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[loader]-0-|"
+                                                                        options:0
+                                                                        metrics:nil
+                                                                          views:@{@"loader":self.loader}];
+    
+    [self.view addConstraints:constraint_POS_V];
+    [self.view addConstraints:constraint_POS_H];
 }
 
 #pragma - Robot -
 
 - (IBAction)updateRobotState{
-    
+    [self startLoading];
+
+    __weak typeof(self) weakSelf = self;
+
     [self.robot updateStateWithCompletion:^(NSError * _Nonnull error) {
         if(error){
-            self.robotState.text = @"Offline";
+            weakSelf.robotState.text = @"Offline"; // or check the `robot.online` property
         }else{
-            self.robotState.text = @"Online";
+            weakSelf.robotState.text = @"Online";
         }
+        [weakSelf stopLoading];
     }];
 }
 
@@ -48,33 +73,43 @@
 #pragma mark - Cleaning -
 
 - (IBAction)startCleaning:(id)sender{
+    [self startLoading];
 
+    __weak typeof(self) weakSelf = self;
     [self.robot startCleaningWithParameters:@{@"category":@(RobotCleaningCategoryHouse),
                                               @"modifier":@(RobotCleaningModifierNormal),
                                               @"mode":@(RobotCleaningModeTurbo)}
                                  completion:^(NSError * _Nullable error) {
                                      
-                                     [self stopLoading];
+                                     [weakSelf stopLoading];
     }];
 }
 
 - (IBAction)stopCleaning:(id)sender{
-    
+    [self startLoading];
+
+    __weak typeof(self) weakSelf = self;
+
     [self.robot stopCleaningWithCompletion:^(NSError * _Nullable error) {
-        [self stopLoading];
+        [weakSelf stopLoading];
     }];
 }
 
 - (IBAction)pauseCleaning:(id)sender{
-    
+    [self startLoading];
+
+    __weak typeof(self) weakSelf = self;
+
     [self.robot pauseCleaningWithCompletion:^(NSError * _Nullable error) {
-        [self stopLoading];
+        [weakSelf stopLoading];
     }];
 }
 
 #pragma mark - Scheduling -
 
 - (IBAction)scheduleStateChanged:(id)sender{
+    [self startLoading];
+
     if ([self.scheduleSwitch isOn]){
         [self enableSchedule];
     }else{
@@ -102,9 +137,12 @@
 }
 
 - (void)schedule:(NSArray *)events{
+    [self startLoading];
+
+    __weak typeof(self) weakSelf = self;
     [self.robot setScheduleWithCleaningEvent:events completion:^(NSError * _Nullable error) {
-        
-        [self stopLoading];
+
+        [weakSelf stopLoading];
 
         if(!error){
             
@@ -116,21 +154,35 @@
 }
 
 - (void)enableSchedule{
-    
+    [self startLoading];
+
+    __weak typeof(self) weakSelf = self;
     [self.robot enableScheduleWithCompletion:^(NSError * _Nullable error) {
-        [self stopLoading];
+        [weakSelf stopLoading];
     }];
 }
 
 - (void)disableSchedule{
-    
+    [self startLoading];
+
+    __weak typeof(self) weakSelf = self;
     [self.robot disableScheduleWithCompletion:^(NSError * _Nullable error) {
-        [self stopLoading];
+        [weakSelf stopLoading];
+    }];
+}
+
+- (void)startLoading{
+    [UIView animateWithDuration:0.3 animations:^{
+        self.loader.alpha = 1.0;
+        self.loader.userInteractionEnabled = true;
     }];
 }
 
 - (void)stopLoading{
-
+    [UIView animateWithDuration:0.3 animations:^{
+        self.loader.alpha = 0;
+        self.loader.userInteractionEnabled = false;
+    }];
 }
 
 @end
