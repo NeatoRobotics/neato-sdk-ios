@@ -176,7 +176,7 @@ describe(@"NeatoRobot", ^{
                 __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"robot" serial:@"123456" secretKey:@"secret"];
                 
                 waitUntil(^(DoneCallback done) {
-                    [robot sendCommand:@"command" parameters:nil completion:^(bool result, id  _Nullable data, NSError * _Nonnull error) {
+                    [robot sendAndManageCommand:@"command" parameters:nil completion:^(bool result, id  _Nullable data, NSError * _Nonnull error) {
                         expect(result).to.equal(true);
                         expect(data).to.equal(@"data");
                         done();
@@ -197,7 +197,7 @@ describe(@"NeatoRobot", ^{
                 __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"robot" serial:@"123456" secretKey:@"secret"];
                 
                 waitUntil(^(DoneCallback done) {
-                    [robot sendCommand:@"command" parameters:@{@"INVALID_PARAM":[NSDate date]} completion:^(bool result, id  _Nullable data, NSError * _Nonnull error) {
+                    [robot sendAndManageCommand:@"command" parameters:@{@"INVALID_PARAM":[NSDate date]} completion:^(bool result, id  _Nullable data, NSError * _Nonnull error) {
                         expect(result).to.equal(false);
                         expect(data).to.beNil();
                         expect(error).notTo.beNil();
@@ -221,7 +221,7 @@ describe(@"NeatoRobot", ^{
                 __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"robot" serial:@"123456" secretKey:@"secret"];
                 
                 waitUntil(^(DoneCallback done) {
-                    [robot sendCommand:@"command" parameters:nil completion:^(bool result, id  _Nullable data, NSError * _Nonnull error) {
+                    [robot sendAndManageCommand:@"command" parameters:nil completion:^(bool result, id  _Nullable data, NSError * _Nonnull error) {
                         expect(result).to.equal(false);
                         expect(data).to.beNil();
                         expect(error).notTo.beNil();
@@ -369,7 +369,8 @@ describe(@"NeatoRobot", ^{
         });
     });
     
-    describe(@"Get Schedule", ^{
+    
+    describe(@"Schedule", ^{
         
         context(@"when a list of schedules is available", ^{
             before(^{
@@ -381,11 +382,68 @@ describe(@"NeatoRobot", ^{
             
             it(@"receives the list",^{
                 __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret"];
+                [robot forceServices:@{@"schedule":@"basic-1"}];
                 
                 waitUntil(^(DoneCallback done) {
                    
                     [robot getScheduleWithCompletion:^(NSDictionary * _Nonnull scheduleInfo, NSError * _Nullable error) {
                         expect([scheduleInfo[@"events"] count]).to.equal(2);
+                        done();
+                    }];
+                });
+            });
+        });
+        
+        context(@"when a robot doesn't support schedule", ^{
+            
+            before(^{
+                signInUser();
+                [OHHTTPStubs stub:@"/vendors/neato/robots/serial/messages"
+                         withFile:@"botvac_get_schedule.json"
+                             code:200];
+            });
+            
+            it(@"receives an error", ^{
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret"];
+                
+                waitUntil(^(DoneCallback done) {
+                    [robot getScheduleWithCompletion:^(NSDictionary * _Nonnull scheduleInfo, NSError * _Nullable error) {
+                        expect(error.domain).to.equal(@"Robot.service");
+                        done();
+                    }];
+                });
+                
+                waitUntil(^(DoneCallback done) {
+                    [robot getScheduleWithCompletion:^(NSDictionary * _Nonnull scheduleInfo, NSError * _Nullable error) {
+                        expect(error.domain).to.equal(@"Robot.service");
+                        done();
+                    }];
+                });
+                
+                waitUntil(^(DoneCallback done) {
+                    [robot enableScheduleWithCompletion:^(NSError * _Nullable error) {
+                        expect(error.domain).to.equal(@"Robot.service");
+                        done();
+                    }];
+                });
+                
+                waitUntil(^(DoneCallback done) {
+                    [robot disableScheduleWithCompletion:^(NSError * _Nullable error) {
+                        expect(error.domain).to.equal(@"Robot.service");
+                        done();
+                    }];
+                });
+                
+                waitUntil(^(DoneCallback done) {
+                    [robot setScheduleWithCleaningEvent:@[] completion:^(NSError * _Nullable error) {
+                        expect(error.domain).to.equal(@"Robot.service");
+                        done();
+                    }];
+                });
+                
+                waitUntil(^(DoneCallback done) {
+                    [robot getScheduleWithCompletion:^(NSDictionary * _Nonnull scheduleInfo, NSError * _Nullable error) {
+                        expect(error.domain).to.equal(@"Robot.service");
                         done();
                     }];
                 });

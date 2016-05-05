@@ -21,7 +21,7 @@ static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages"
  Send command to the robot then extract result, state and data from robot response.
  **/
 
-- (void)sendCommand:(NSString*)command
+- (void)sendAndManageCommand:(NSString*)command
          parameters:(NSDictionary* _Nullable) parameters
            completion:(void (^)(bool result, id _Nullable data, NSError *error))completionHandler{
 
@@ -76,12 +76,34 @@ static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages"
     }
 }
 
+- (BOOL)verifyCleaningServiceSupportForParameters:(NSDictionary *)parameters{
+    
+    int category = [parameters[@"category"] intValue];
+    NSString *serviceVersion;
+    
+    if(category){
+        
+        switch (category) {
+            case RobotCleaningCategoryHouse:
+                serviceVersion = [self supportedVersionForService:@"houseCleaning"];
+                break;
+            case RobotCleaningCategorySpot:
+                serviceVersion = [self supportedVersionForService:@"spotCleaning"];
+                break;
+            default:
+                break;
+        }
+    }
+    
+    return (serviceVersion != nil);
+}
+
 /**
  Send command to the robot and manage the robot response calling success or failure callbacks.
  **/
-- (void)sendAndManageCommand:(NSString*)command parameters:(NSDictionary* _Nullable)parameters
+- (void)sendCommand:(NSString*)command parameters:(NSDictionary* _Nullable)parameters
                   completion:(void(^)(NSDictionary* _Nullable data, NSError * _Nullable error))completion{
-    [self sendCommand:command
+    [self sendAndManageCommand:command
            parameters:parameters
            completion:^(bool result, id  _Nullable data, NSError * _Nullable error) {
                  if(result){
@@ -171,7 +193,7 @@ static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages"
 #pragma mark Robot
 
 - (void)updateStateWithCompletion:(void(^)(NSError * _Nullable error))completion{
-    [self sendAndManageCommand:@"getRobotState" parameters:nil completion:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
+    [self sendCommand:@"getRobotState" parameters:nil completion:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
         completion(error);
     }];
 }
@@ -180,34 +202,13 @@ static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages"
     return self.availableServices[serviceName];
 }
 
-- (BOOL)verifyCleaningServiceSupportForParameters:(NSDictionary *)parameters{
-    
-    int category = [parameters[@"category"] intValue];
-    NSString *serviceVersion;
-
-    if(category){
-        
-        switch (category) {
-            case RobotCleaningCategoryHouse:
-                serviceVersion = [self supportedVersionForService:@"houseCleaning"];
-                break;
-            case RobotCleaningCategorySpot:
-                serviceVersion = [self supportedVersionForService:@"spotCleaning"];
-                break;
-            default:
-                break;
-        }
-    }
-    
-    return (serviceVersion != nil);
-}
 
 #pragma mark Cleaning
 
 - (void)startCleaningWithParameters:(NSDictionary *)parameters completion:(void (^)(NSError * _Nullable error))completion{
     
     if ([self verifyCleaningServiceSupportForParameters:parameters]){
-        [self sendAndManageCommand:@"startCleaning" parameters:parameters completion:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
+        [self sendCommand:@"startCleaning" parameters:parameters completion:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
             completion(error);
         }];
     }else{
@@ -216,13 +217,13 @@ static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages"
 }
 
 - (void)pauseCleaningWithCompletion:(void (^)(NSError * _Nullable error))completion{
-    [self sendAndManageCommand:@"pauseCleaning" parameters:nil completion:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
+    [self sendCommand:@"pauseCleaning" parameters:nil completion:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
         completion(error);
     }];
 }
 
 - (void)stopCleaningWithCompletion:(void (^)(NSError * _Nullable error))completion{
-    [self sendAndManageCommand:@"stopCleaning" parameters:nil completion:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
+    [self sendCommand:@"stopCleaning" parameters:nil completion:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
         completion(error);
     }];
 }
@@ -230,27 +231,45 @@ static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages"
 #pragma mark Scheduling
 
 - (void)enableScheduleWithCompletion:(void (^)(NSError * _Nullable error))completion{
-    [self sendAndManageCommand:@"enableSchedule" parameters:nil completion:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
-        completion(error);
-    }];
+    if ([self supportedVersionForService:@"schedule"]){
+        [self sendCommand:@"enableSchedule" parameters:nil completion:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
+            completion(error);
+        }];
+    }else{
+        completion([NSError errorWithDomain:@"Robot.service" code:1 userInfo:nil]);
+    }
 }
 
 - (void)disableScheduleWithCompletion:(void (^)(NSError * _Nullable error))completion{
-    [self sendAndManageCommand:@"disableSchedule" parameters:nil completion:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
-        completion(error);
-    }];    
+    if ([self supportedVersionForService:@"schedule"]){
+        [self sendCommand:@"disableSchedule" parameters:nil completion:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
+            completion(error);
+        }];
+    }else{
+        completion([NSError errorWithDomain:@"Robot.service" code:1 userInfo:nil]);
+    }
 }
 
 - (void)setScheduleWithCleaningEvent:(NSArray *)events completion:(void (^)(NSError * _Nullable error))completion{
-    NSDictionary *parameters = @{@"type":@(1), @"events":events};
-    [self sendAndManageCommand:@"setSchedule" parameters:parameters completion:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
-        completion(error);
-    }];
+    if ([self supportedVersionForService:@"schedule"]){
+        NSDictionary *parameters = @{@"type":@(1), @"events":events};
+        [self sendCommand:@"setSchedule" parameters:parameters completion:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
+            completion(error);
+        }];
+    }else{
+        completion([NSError errorWithDomain:@"Robot.service" code:1 userInfo:nil]);
+    }
 }
 
 - (void)getScheduleWithCompletion:(void (^)(NSDictionary * scheduleInfo, NSError * _Nullable error))completion{
-    [self sendAndManageCommand:@"getSchedule" parameters:nil completion:completion];
+    if ([self supportedVersionForService:@"schedule"]){
+        [self sendCommand:@"getSchedule" parameters:nil completion:completion];
+    }else{
+        completion(nil, [NSError errorWithDomain:@"Robot.service" code:1 userInfo:nil]);
+    }
 }
+
+
 
 #pragma mark Helpers
 
@@ -259,5 +278,10 @@ static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages"
     _action = action;
     _online = online;
 }
+
+- (void)forceServices:(NSDictionary*)services{
+    _availableServices = services;
+}
+
 
 @end
