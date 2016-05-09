@@ -293,9 +293,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="Zg4-qK-kr0">
-                        <barButtonItem key="rightBarButtonItem" title="Info" id="F0N-rK-C0A"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Title" id="Zg4-qK-kr0"/>
                     <connections>
                         <outlet property="loader" destination="sz6-GU-tVz" id="aGZ-Wr-M2e"/>
                         <outlet property="robotState" destination="PRe-p8-Drd" id="jxa-fm-BHS"/>

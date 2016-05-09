@@ -48,56 +48,60 @@
 
 - (void)updateStateDescription{
     
+    if (self.robot.online){
     
-    switch (self.robot.state) {
-            
-        case RobotStateIdle:
-            self.robotState.text = @"Ready to clean";
+        switch (self.robot.state) {
+                
+            case RobotStateIdle:
+                self.robotState.text = @"Ready to clean";
 
-            break;
+                break;
+            
+            case RobotStateBusy:
+                
+                switch (self.robot.action){
+                        
+                    case RobotActionHouseCleaning:
+                        self.robotState.text = @"House Cleaning";
+                        break;
+                        
+                    case RobotActionSpotCleaning:
+                        self.robotState.text = @"Spot Cleaning";
+                        break;
+                        
+                    case RobotActionManualCleaning:
+                        self.robotState.text = @"Manual Cleaning";
+                        break;
+                        
+                        // You can handle all the other Robot Action here
+                        
+                    default:
+                        self.robotState.text = @"Busy";
+                }
+                break;
+                
+            case RobotStatePaused:
+                self.robotState.text = @"Paused";
+                break;
+                
+            case RobotStateError:
+                self.robotState.text = @"Error";
+                break;
+                
+            case RobotStateInvalid:
+                self.robotState.text = @"???";
+
+        }
         
-        case RobotStateBusy:
-            
-            switch (self.robot.action){
-                    
-                case RobotActionHouseCleaning:
-                    self.robotState.text = @"House Cleaning";
-                    break;
-                    
-                case RobotActionSpotCleaning:
-                    self.robotState.text = @"Spot Cleaning";
-                    break;
-                    
-                case RobotActionManualCleaning:
-                    self.robotState.text = @"Manual Cleaning";
-                    break;
-                    
-                    // You can handle all the other Robot Action here
-                    
-                default:
-                    self.robotState.text = @"Busy";
-            }
-            break;
-            
-        case RobotStatePaused:
-            self.robotState.text = @"Paused";
-            break;
-            
-        case RobotStateError:
-            self.robotState.text = @"Error";
-            break;
-            
-        case RobotStateInvalid:
-            self.robotState.text = @"???";
+        if(self.robot.action == RobotStateBusy){
 
-    }
-    
-    if(self.robot.action == RobotStateBusy){
-
-    }
-    
-    if(self.robot.action == RobotStateBusy){
-    
+        }
+        
+        if(self.robot.action == RobotStateBusy){
+        
+        }
+    }else{
+        self.robotState.text = @"Offline";
     }
 }
 

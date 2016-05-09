@@ -36,8 +36,10 @@ static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages"
         NSData *jsonData = [NSJSONSerialization dataWithJSONObject:payloadData options:0 error:&jsonSerializeError];
         
         if(!jsonSerializeError){
-            NSString *payloadString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
             
+            // Sign the call
+            
+            NSString *payloadString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
             NSString *dateString = [NSDate date].rfc1123String;
             NSString *unsignedString = [NSString stringWithFormat:@"%@\n%@\n%@",
                                         self.serial.lowercaseString,
@@ -45,15 +47,13 @@ static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages"
                                         payloadString];
             NSString *signedString = [unsignedString SHA256:self.secretKey];
             
-            
             // Perform call
+            
             NeatoHTTPSessionManager *manager = [NeatoHTTPSessionManager managerWithNucleoAuthorization:signedString date:dateString];
             NSString *path = [NSString stringWithFormat:kNeatoNucleoMessagesPath,self.serial];
             [manager POST:path parameters:payloadData
                  progress:^(NSProgress * _Nonnull uploadProgress) {}
                   success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                      
-                      NSLog(@"%@", responseObject);
                       
                       _online = true;
                       [self updateStateFromCommandResponse:responseObject];
@@ -138,6 +138,10 @@ static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages"
         
         if([response[@"availableServices"] isKindOfClass:[NSDictionary class]]){
             _availableServices = response[@"availableServices"];
+        }
+        
+        if([response[@"availableCommands"] isKindOfClass:[NSDictionary class]]){
+            _availableCommands = response[@"availableCommands"];
         }
         
         if([response[@"meta"] isKindOfClass:[NSDictionary class]]){
