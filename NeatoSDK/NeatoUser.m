@@ -7,6 +7,7 @@
 //
 
 #import "NeatoUser.h"
+#import "NeatoRobot.h"
 #import "NeatoAuthentication.h"
 #import "NeatoHTTPSessionManager.h"
 
@@ -30,7 +31,14 @@ static NSString * const kNeatoBeehiveUserInfoPath = @"/users/me";
             progress:^(NSProgress * _Nonnull downloadProgress) {}
              success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                  if ([responseObject isKindOfClass:[NSArray class]]){
-                     completionHandler(responseObject, nil);
+                     NSMutableArray *robots = [NSMutableArray array];
+                     for(NSDictionary* robotData in responseObject){
+                         NeatoRobot *robot = [[NeatoRobot alloc] initWithName:robotData[@"name"]
+                                                                       serial:robotData[@"serial"]
+                                                                    secretKey:robotData[@"secret_key"]];
+                         [robots addObject:robot];
+                     }
+                     completionHandler(robots, nil);
                  }else{
                      completionHandler(nil, [NSError errorWithDomain:@"Beehive.Robots" code:1 userInfo:nil]);
                  }

@@ -46,7 +46,7 @@ static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages"
                                         dateString,
                                         payloadString];
             NSString *signedString = [unsignedString SHA256:self.secretKey];
-            
+
             // Perform call
             
             NeatoHTTPSessionManager *manager = [NeatoHTTPSessionManager managerWithNucleoAuthorization:signedString date:dateString];
