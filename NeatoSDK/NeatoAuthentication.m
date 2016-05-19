@@ -10,7 +10,7 @@
 
 #import "NeatoAuthentication.h"
 #import "NeatoTokenUserDefaultStore.h"
-#import "NeatoHTTPSessionManager.h"
+#import "NeatoSDKSessionManager.h"
 
 #pragma mark - Constants and Typedef
 
@@ -138,7 +138,7 @@ static NSString * const kNeatoOAuthAuthorizeEndPoint = @"https://beehive.neatocl
 
 - (void) logoutWithCompletion:(NeatoAuthenticationLogoutCallback)completionHandler{
 
-    NeatoHTTPSessionManager *manager = [NeatoHTTPSessionManager authenticatedBeehiveManager];
+    NeatoSDKSessionManager *manager = [NeatoSDKSessionManager authenticatedBeehiveManager];
     
     [manager POST:@"/oauth2/revoke"
                     parameters:@{@"token":self.accessToken}

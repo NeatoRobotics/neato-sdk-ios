@@ -29,12 +29,8 @@
     NeatoUser *user = [NeatoUser new];
     
     [user getRobotsWithCompletion:^(NSArray * _Nullable robots, NSError * _Nonnull error) {
-        
-        for (NSDictionary *robotData in robots){
-            Robot * robot = [Robot robotWithDictionary:robotData];
-            [self.robots addObject:robot];
-        }
-
+        NSLog(@"%@", robots);
+        self.robots = [NSMutableArray arrayWithArray:robots];
         [self.table reloadData];
     }];
 }

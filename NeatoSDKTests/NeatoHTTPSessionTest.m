@@ -1,6 +1,6 @@
 #import <Specta/Specta.h>
 #import <Expecta/Expecta.h>
-#import "NeatoHTTPSessionManager.h"
+#import "NeatoSDKSessionManager.h"
 #import "MockNeatoTokenStore.h"
 
 @import NeatoSDK;
@@ -14,9 +14,9 @@ describe(@"NeatoHTTPSessionManager", ^{
         context(@"when initialized", ^{
             
             it(@"has the right headers", ^{
-                NeatoHTTPSessionManager *manager = [NeatoHTTPSessionManager managerWithNucleoAuthorization:@"a_string" date:@"a_date"];
-                NSString *authHeader = [manager.requestSerializer valueForHTTPHeaderField:@"Authorization"];
-                NSString *dateHeader = [manager.requestSerializer valueForHTTPHeaderField:@"Date"];
+                NeatoSDKSessionManager *manager = [NeatoSDKSessionManager managerWithNucleoAuthorization:@"a_string" date:@"a_date"];
+                NSString *authHeader = [manager valueForHTTPHeaderField:@"Authorization"];
+                NSString *dateHeader = [manager valueForHTTPHeaderField:@"Date"];
                 expect(authHeader).to.equal(@"NEATOAPP a_string");
                 expect(dateHeader).to.equal(@"a_date");
             });
@@ -26,8 +26,8 @@ describe(@"NeatoHTTPSessionManager", ^{
     describe(@"Beehive manager", ^{
         context(@"when initialized", ^{
             it(@"has the right headers", ^{
-                NeatoHTTPSessionManager *manager = [NeatoHTTPSessionManager managerWithBeehiveAuthorization:@"a_token"];
-                NSString *authHeader = [manager.requestSerializer valueForHTTPHeaderField:@"Authorization"];
+                NeatoSDKSessionManager *manager = [NeatoSDKSessionManager managerWithBeehiveAuthorization:@"a_token"];
+                NSString *authHeader = [manager valueForHTTPHeaderField:@"Authorization"];
                 expect(authHeader).to.equal(@"Bearer a_token");
             });
         });
@@ -43,8 +43,8 @@ describe(@"NeatoHTTPSessionManager", ^{
                 
                 it(@"uses the current auth token", ^{
                     expect([[[NeatoAuthentication sharedInstance] tokenStore] readStoredAccessToken]).to.equal(@"a_valid_access_token");
-                    NeatoHTTPSessionManager *manager = [NeatoHTTPSessionManager authenticatedBeehiveManager];
-                    NSString *authHeader = [manager.requestSerializer valueForHTTPHeaderField:@"Authorization"];
+                    NeatoSDKSessionManager *manager = [NeatoSDKSessionManager authenticatedBeehiveManager];
+                    NSString *authHeader = [manager valueForHTTPHeaderField:@"Authorization"];
                     expect(authHeader).to.equal(@"Bearer a_valid_access_token");
                 });
             });
@@ -56,7 +56,7 @@ describe(@"NeatoHTTPSessionManager", ^{
                 });
                 
                 it(@"uses the current auth token", ^{
-                    NeatoHTTPSessionManager *manager = [NeatoHTTPSessionManager authenticatedBeehiveManager];
+                    NeatoSDKSessionManager *manager = [NeatoSDKSessionManager authenticatedBeehiveManager];
                     expect(manager).to.beNil();
                 });
             });

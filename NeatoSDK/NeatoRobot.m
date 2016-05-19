@@ -7,7 +7,7 @@
 //
 
 #import "NeatoRobot.h"
-#import "NeatoHTTPSessionManager.h"
+#import "NeatoSDKSessionManager.h"
 #import "NSDate+Neato.h"
 #import "NSString+Neato.h"
 
@@ -49,7 +49,7 @@ static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages"
 
             // Perform call
             
-            NeatoHTTPSessionManager *manager = [NeatoHTTPSessionManager managerWithNucleoAuthorization:signedString date:dateString];
+            NeatoSDKSessionManager *manager = [NeatoSDKSessionManager managerWithNucleoAuthorization:signedString date:dateString];
             NSString *path = [NSString stringWithFormat:kNeatoNucleoMessagesPath,self.serial];
             [manager POST:path parameters:payloadData
                  progress:^(NSProgress * _Nonnull uploadProgress) {}
