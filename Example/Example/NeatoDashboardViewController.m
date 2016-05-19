@@ -8,12 +8,12 @@
 
 #import "NeatoDashboardViewController.h"
 #import "NeatoRobotCommands.h"
-#import "Robot.h"
-
+#import "RobotCell.h"
 @import NeatoSDK;
 
 @interface NeatoDashboardViewController ()<UITableViewDelegate, UITableViewDataSource>
-@property (nonatomic, strong) NSMutableArray *robots;
+
+@property (nonatomic, strong) NSArray *robots;
 @property (nonatomic, weak) IBOutlet UITableView *table;
 @end
 
@@ -29,10 +29,20 @@
     NeatoUser *user = [NeatoUser new];
     
     [user getRobotsWithCompletion:^(NSArray * _Nullable robots, NSError * _Nonnull error) {
-        NSLog(@"%@", robots);
-        self.robots = [NSMutableArray arrayWithArray:robots];
+        self.robots = robots;
         [self.table reloadData];
+        [self updateRobots];
     }];
+}
+
+- (void)updateRobots{
+    for(NeatoRobot *robot in self.robots){
+        [robot updateStateWithCompletion:^(NSError * _Nullable error) {
+            NSUInteger index = [self.robots indexOfObject:robot];
+            [self.table reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:index inSection:0]]
+                              withRowAnimation:UITableViewRowAnimationNone];
+        }];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,9 +50,7 @@
 }
 
 - (IBAction)logout:(id)sender{
-    [[NeatoAuthentication sharedInstance] logoutWithCompletion:^(NSError * _Nonnull error) {
-        NSLog(@"%@", error);
-        
+    [[NeatoAuthentication sharedInstance] logoutWithCompletion:^(NSError * _Nonnull error) {        
         [self dismissViewControllerAnimated:true completion:nil];
     }];
 }
@@ -50,7 +58,7 @@
 #pragma mark - Table Delegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 90.0;
+    return 70.0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -58,24 +66,47 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NeatoRobot *robot = self.robots[indexPath.row];
+    RobotCell *cell = (RobotCell*)[tableView dequeueReusableCellWithIdentifier:@"robot_cell"];
+    cell.name.text = robot.name;
     
-    Robot *robot = self.robots[indexPath.row];
+    NSString *status = @"OFFLINE";
+    UIColor *color = [UIColor colorWithWhite:0.5 alpha:1.0];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"robot_cell"];
-    cell.textLabel.text = robot.name;
-    cell.detailTextLabel.text = robot.model;
-    
+    if (robot.online){
+        switch (robot.state) {
+            case RobotStateIdle:
+                status = @"READY";
+                color = [UIColor colorWithRed:0.2 green:0.7 blue:0.1 alpha:1.0];
+                break;
+            case RobotStateBusy:
+                status = @"BUSY";
+                color = [UIColor orangeColor];
+                break;
+            case RobotStatePaused:
+                status = @"PAUSED";
+                color = [UIColor colorWithRed:0.2 green:0.7 blue:0.1 alpha:1.0];
+                break;
+            default:
+                status = @"ERROR";
+                color = [UIColor colorWithRed:0.8 green:0.2 blue:0.1 alpha:1.0];
+                break;
+        }
+    }
+    cell.status.text = status;
+    cell.status.textColor = color;
+    cell.battery.text = [NSString stringWithFormat:@"%d%%",robot.chargeLevel];
+    cell.batteryIndicator.progress = robot.chargeLevel / 100.0;
     return cell;
 }
-
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     UITableViewCell *cell = sender;
     NSIndexPath *index = [self.table indexPathForCell:cell];
-    Robot *robot = self.robots[index.row];
-    NSLog(@"ROBOT%@", robot);
+    [self.table deselectRowAtIndexPath:index animated:false];
+    NeatoRobot *robot = self.robots[index.row];
     NeatoRobotCommands *commands = segue.destinationViewController;
-    commands.robot = [[NeatoRobot alloc]initWithName:robot.name serial:robot.serial secretKey:robot.secretKey];
+    commands.robot = robot;
 }
 
 @end

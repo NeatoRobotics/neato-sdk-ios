@@ -12,10 +12,10 @@
 		5849EE8D1CCA4EC500A2C2D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5849EE8B1CCA4EC500A2C2D6 /* Main.storyboard */; };
 		5849EE8F1CCA4EC500A2C2D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5849EE8E1CCA4EC500A2C2D6 /* Assets.xcassets */; };
 		5849EE921CCA4EC500A2C2D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5849EE901CCA4EC500A2C2D6 /* LaunchScreen.storyboard */; };
-		5849EE9E1CCA526800A2C2D6 /* NeatoLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5849EE9D1CCA526800A2C2D6 /* NeatoLoginViewController.m */; };
-		5849EEA31CCA55B900A2C2D6 /* NeatoDashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5849EEA21CCA55B900A2C2D6 /* NeatoDashboardViewController.m */; };
-		58DF8D6E1CCF565C00B1F6DA /* Robot.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DF8D6D1CCF565C00B1F6DA /* Robot.m */; };
-		58DF8D711CCF899400B1F6DA /* NeatoRobotCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = 58DF8D701CCF899400B1F6DA /* NeatoRobotCommands.m */; };
+		58C52FBA1CEE1B0300D619F0 /* NeatoDashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C52FB51CEE1B0300D619F0 /* NeatoDashboardViewController.m */; };
+		58C52FBB1CEE1B0300D619F0 /* NeatoLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C52FB71CEE1B0300D619F0 /* NeatoLoginViewController.m */; };
+		58C52FBC1CEE1B0300D619F0 /* NeatoRobotCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C52FB91CEE1B0300D619F0 /* NeatoRobotCommands.m */; };
+		58C52FBF1CEE1B7300D619F0 /* RobotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C52FBE1CEE1B7300D619F0 /* RobotCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,14 +40,14 @@
 		5849EE8E1CCA4EC500A2C2D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5849EE911CCA4EC500A2C2D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5849EE931CCA4EC500A2C2D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5849EE9C1CCA526800A2C2D6 /* NeatoLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeatoLoginViewController.h; sourceTree = "<group>"; };
-		5849EE9D1CCA526800A2C2D6 /* NeatoLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeatoLoginViewController.m; sourceTree = "<group>"; };
-		5849EEA11CCA55B900A2C2D6 /* NeatoDashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeatoDashboardViewController.h; sourceTree = "<group>"; };
-		5849EEA21CCA55B900A2C2D6 /* NeatoDashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeatoDashboardViewController.m; sourceTree = "<group>"; };
-		58DF8D6C1CCF565C00B1F6DA /* Robot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Robot.h; sourceTree = "<group>"; };
-		58DF8D6D1CCF565C00B1F6DA /* Robot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Robot.m; sourceTree = "<group>"; };
-		58DF8D6F1CCF899400B1F6DA /* NeatoRobotCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeatoRobotCommands.h; sourceTree = "<group>"; };
-		58DF8D701CCF899400B1F6DA /* NeatoRobotCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeatoRobotCommands.m; sourceTree = "<group>"; };
+		58C52FB41CEE1B0300D619F0 /* NeatoDashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeatoDashboardViewController.h; sourceTree = "<group>"; };
+		58C52FB51CEE1B0300D619F0 /* NeatoDashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeatoDashboardViewController.m; sourceTree = "<group>"; };
+		58C52FB61CEE1B0300D619F0 /* NeatoLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeatoLoginViewController.h; sourceTree = "<group>"; };
+		58C52FB71CEE1B0300D619F0 /* NeatoLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeatoLoginViewController.m; sourceTree = "<group>"; };
+		58C52FB81CEE1B0300D619F0 /* NeatoRobotCommands.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeatoRobotCommands.h; sourceTree = "<group>"; };
+		58C52FB91CEE1B0300D619F0 /* NeatoRobotCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeatoRobotCommands.m; sourceTree = "<group>"; };
+		58C52FBD1CEE1B7300D619F0 /* RobotCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RobotCell.h; sourceTree = "<group>"; };
+		58C52FBE1CEE1B7300D619F0 /* RobotCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RobotCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +80,6 @@
 		5849EE811CCA4EC500A2C2D6 /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				58DF8D6B1CCF564400B1F6DA /* Models */,
 				5849EE9F1CCA526F00A2C2D6 /* Controllers */,
 				5849EEA01CCA528A00A2C2D6 /* Views */,
 				5849EE851CCA4EC500A2C2D6 /* AppDelegate.h */,
@@ -103,12 +102,12 @@
 		5849EE9F1CCA526F00A2C2D6 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				5849EE9C1CCA526800A2C2D6 /* NeatoLoginViewController.h */,
-				5849EE9D1CCA526800A2C2D6 /* NeatoLoginViewController.m */,
-				5849EEA11CCA55B900A2C2D6 /* NeatoDashboardViewController.h */,
-				5849EEA21CCA55B900A2C2D6 /* NeatoDashboardViewController.m */,
-				58DF8D6F1CCF899400B1F6DA /* NeatoRobotCommands.h */,
-				58DF8D701CCF899400B1F6DA /* NeatoRobotCommands.m */,
+				58C52FB41CEE1B0300D619F0 /* NeatoDashboardViewController.h */,
+				58C52FB51CEE1B0300D619F0 /* NeatoDashboardViewController.m */,
+				58C52FB61CEE1B0300D619F0 /* NeatoLoginViewController.h */,
+				58C52FB71CEE1B0300D619F0 /* NeatoLoginViewController.m */,
+				58C52FB81CEE1B0300D619F0 /* NeatoRobotCommands.h */,
+				58C52FB91CEE1B0300D619F0 /* NeatoRobotCommands.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -116,19 +115,12 @@
 		5849EEA01CCA528A00A2C2D6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				58C52FBD1CEE1B7300D619F0 /* RobotCell.h */,
+				58C52FBE1CEE1B7300D619F0 /* RobotCell.m */,
 				5849EE8B1CCA4EC500A2C2D6 /* Main.storyboard */,
 				5849EE901CCA4EC500A2C2D6 /* LaunchScreen.storyboard */,
 			);
 			name = Views;
-			sourceTree = "<group>";
-		};
-		58DF8D6B1CCF564400B1F6DA /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				58DF8D6C1CCF565C00B1F6DA /* Robot.h */,
-				58DF8D6D1CCF565C00B1F6DA /* Robot.m */,
-			);
-			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,12 +194,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58DF8D6E1CCF565C00B1F6DA /* Robot.m in Sources */,
-				5849EEA31CCA55B900A2C2D6 /* NeatoDashboardViewController.m in Sources */,
-				5849EE9E1CCA526800A2C2D6 /* NeatoLoginViewController.m in Sources */,
+				58C52FBB1CEE1B0300D619F0 /* NeatoLoginViewController.m in Sources */,
+				58C52FBA1CEE1B0300D619F0 /* NeatoDashboardViewController.m in Sources */,
 				5849EE871CCA4EC500A2C2D6 /* AppDelegate.m in Sources */,
+				58C52FBC1CEE1B0300D619F0 /* NeatoRobotCommands.m in Sources */,
+				58C52FBF1CEE1B7300D619F0 /* RobotCell.m in Sources */,
 				5849EE841CCA4EC500A2C2D6 /* main.m in Sources */,
-				58DF8D711CCF899400B1F6DA /* NeatoRobotCommands.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
