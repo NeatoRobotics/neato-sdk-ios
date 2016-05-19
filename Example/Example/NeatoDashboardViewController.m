@@ -9,7 +9,7 @@
 #import "NeatoDashboardViewController.h"
 #import "NeatoRobotCommands.h"
 #import "RobotCell.h"
-@import NeatoSDK;
+#import "NeatoSDK.h"
 
 @interface NeatoDashboardViewController ()<UITableViewDelegate, UITableViewDataSource>
 

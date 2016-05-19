@@ -6,7 +6,6 @@
 //
 
 @import UIKit;
-@import AFNetworking;
 
 #import "NeatoAuthentication.h"
 #import "NeatoTokenUserDefaultStore.h"

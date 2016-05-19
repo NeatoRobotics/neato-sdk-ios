@@ -9,8 +9,6 @@
 #import "NeatoSDKSessionManager.h"
 #import "NeatoAuthentication.h"
 
-@import AFNetworking;
-
 NSString * const kBeehiveBaseURLPath = @"https://beehive.neatocloud.com/";
 NSString * const kNucleoBaseURLPath = @"https://nucleo.neatocloud.com:4443/";
 

@@ -16,6 +16,16 @@
 		58C52FBB1CEE1B0300D619F0 /* NeatoLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C52FB71CEE1B0300D619F0 /* NeatoLoginViewController.m */; };
 		58C52FBC1CEE1B0300D619F0 /* NeatoRobotCommands.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C52FB91CEE1B0300D619F0 /* NeatoRobotCommands.m */; };
 		58C52FBF1CEE1B7300D619F0 /* RobotCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C52FBE1CEE1B7300D619F0 /* RobotCell.m */; };
+		58C52FDA1CEE23FA00D619F0 /* NeatoHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C52FC11CEE23FA00D619F0 /* NeatoHTTPSessionManager.m */; };
+		58C52FDB1CEE23FA00D619F0 /* NeatoHTTPTaskDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C52FC31CEE23FA00D619F0 /* NeatoHTTPTaskDelegate.m */; };
+		58C52FDC1CEE23FA00D619F0 /* NSDate+Neato.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C52FC61CEE23FA00D619F0 /* NSDate+Neato.m */; };
+		58C52FDD1CEE23FA00D619F0 /* NSString+Neato.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C52FC81CEE23FA00D619F0 /* NSString+Neato.m */; };
+		58C52FDE1CEE23FA00D619F0 /* NeatoTokenUserDefaultStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C52FCD1CEE23FA00D619F0 /* NeatoTokenUserDefaultStore.m */; };
+		58C52FDF1CEE23FA00D619F0 /* NeatoSDKSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C52FCF1CEE23FA00D619F0 /* NeatoSDKSessionManager.m */; };
+		58C52FE01CEE23FA00D619F0 /* NeatoAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C52FD11CEE23FA00D619F0 /* NeatoAuthentication.m */; };
+		58C52FE11CEE23FA00D619F0 /* NeatoRobot.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C52FD41CEE23FA00D619F0 /* NeatoRobot.m */; };
+		58C52FE21CEE23FA00D619F0 /* NeatoUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C52FD61CEE23FA00D619F0 /* NeatoUser.m */; };
+		58C52FE31CEE23FA00D619F0 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58C52FD81CEE23FA00D619F0 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -48,6 +58,27 @@
 		58C52FB91CEE1B0300D619F0 /* NeatoRobotCommands.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeatoRobotCommands.m; sourceTree = "<group>"; };
 		58C52FBD1CEE1B7300D619F0 /* RobotCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RobotCell.h; sourceTree = "<group>"; };
 		58C52FBE1CEE1B7300D619F0 /* RobotCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RobotCell.m; sourceTree = "<group>"; };
+		58C52FC01CEE23FA00D619F0 /* NeatoHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeatoHTTPSessionManager.h; sourceTree = "<group>"; };
+		58C52FC11CEE23FA00D619F0 /* NeatoHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeatoHTTPSessionManager.m; sourceTree = "<group>"; };
+		58C52FC21CEE23FA00D619F0 /* NeatoHTTPTaskDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeatoHTTPTaskDelegate.h; sourceTree = "<group>"; };
+		58C52FC31CEE23FA00D619F0 /* NeatoHTTPTaskDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeatoHTTPTaskDelegate.m; sourceTree = "<group>"; };
+		58C52FC51CEE23FA00D619F0 /* NSDate+Neato.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Neato.h"; sourceTree = "<group>"; };
+		58C52FC61CEE23FA00D619F0 /* NSDate+Neato.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Neato.m"; sourceTree = "<group>"; };
+		58C52FC71CEE23FA00D619F0 /* NSString+Neato.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Neato.h"; sourceTree = "<group>"; };
+		58C52FC81CEE23FA00D619F0 /* NSString+Neato.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Neato.m"; sourceTree = "<group>"; };
+		58C52FCA1CEE23FA00D619F0 /* NeatoTokenStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeatoTokenStore.h; sourceTree = "<group>"; };
+		58C52FCC1CEE23FA00D619F0 /* NeatoTokenUserDefaultStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeatoTokenUserDefaultStore.h; sourceTree = "<group>"; };
+		58C52FCD1CEE23FA00D619F0 /* NeatoTokenUserDefaultStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeatoTokenUserDefaultStore.m; sourceTree = "<group>"; };
+		58C52FCE1CEE23FA00D619F0 /* NeatoSDKSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeatoSDKSessionManager.h; sourceTree = "<group>"; };
+		58C52FCF1CEE23FA00D619F0 /* NeatoSDKSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeatoSDKSessionManager.m; sourceTree = "<group>"; };
+		58C52FD01CEE23FA00D619F0 /* NeatoAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeatoAuthentication.h; sourceTree = "<group>"; };
+		58C52FD11CEE23FA00D619F0 /* NeatoAuthentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeatoAuthentication.m; sourceTree = "<group>"; };
+		58C52FD31CEE23FA00D619F0 /* NeatoRobot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeatoRobot.h; sourceTree = "<group>"; };
+		58C52FD41CEE23FA00D619F0 /* NeatoRobot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeatoRobot.m; sourceTree = "<group>"; };
+		58C52FD51CEE23FA00D619F0 /* NeatoUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeatoUser.h; sourceTree = "<group>"; };
+		58C52FD61CEE23FA00D619F0 /* NeatoUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeatoUser.m; sourceTree = "<group>"; };
+		58C52FD71CEE23FA00D619F0 /* NeatoSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeatoSDK.h; sourceTree = "<group>"; };
+		58C52FD81CEE23FA00D619F0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +111,7 @@
 		5849EE811CCA4EC500A2C2D6 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				58C52FD91CEE23FA00D619F0 /* NeatoSDK */,
 				5849EE9F1CCA526F00A2C2D6 /* Controllers */,
 				5849EEA01CCA528A00A2C2D6 /* Views */,
 				5849EE851CCA4EC500A2C2D6 /* AppDelegate.h */,
@@ -121,6 +153,67 @@
 				5849EE901CCA4EC500A2C2D6 /* LaunchScreen.storyboard */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		58C52FC41CEE23FA00D619F0 /* NeatoHTTP */ = {
+			isa = PBXGroup;
+			children = (
+				58C52FC01CEE23FA00D619F0 /* NeatoHTTPSessionManager.h */,
+				58C52FC11CEE23FA00D619F0 /* NeatoHTTPSessionManager.m */,
+				58C52FC21CEE23FA00D619F0 /* NeatoHTTPTaskDelegate.h */,
+				58C52FC31CEE23FA00D619F0 /* NeatoHTTPTaskDelegate.m */,
+			);
+			path = NeatoHTTP;
+			sourceTree = "<group>";
+		};
+		58C52FC91CEE23FA00D619F0 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				58C52FC41CEE23FA00D619F0 /* NeatoHTTP */,
+				58C52FC51CEE23FA00D619F0 /* NSDate+Neato.h */,
+				58C52FC61CEE23FA00D619F0 /* NSDate+Neato.m */,
+				58C52FC71CEE23FA00D619F0 /* NSString+Neato.h */,
+				58C52FC81CEE23FA00D619F0 /* NSString+Neato.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		58C52FCB1CEE23FA00D619F0 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				58C52FCA1CEE23FA00D619F0 /* NeatoTokenStore.h */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		58C52FD21CEE23FA00D619F0 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				58C52FCB1CEE23FA00D619F0 /* Protocols */,
+				58C52FCC1CEE23FA00D619F0 /* NeatoTokenUserDefaultStore.h */,
+				58C52FCD1CEE23FA00D619F0 /* NeatoTokenUserDefaultStore.m */,
+				58C52FCE1CEE23FA00D619F0 /* NeatoSDKSessionManager.h */,
+				58C52FCF1CEE23FA00D619F0 /* NeatoSDKSessionManager.m */,
+				58C52FD01CEE23FA00D619F0 /* NeatoAuthentication.h */,
+				58C52FD11CEE23FA00D619F0 /* NeatoAuthentication.m */,
+			);
+			name = Authentication;
+			sourceTree = "<group>";
+		};
+		58C52FD91CEE23FA00D619F0 /* NeatoSDK */ = {
+			isa = PBXGroup;
+			children = (
+				58C52FC91CEE23FA00D619F0 /* Utils */,
+				58C52FD21CEE23FA00D619F0 /* Authentication */,
+				58C52FD31CEE23FA00D619F0 /* NeatoRobot.h */,
+				58C52FD41CEE23FA00D619F0 /* NeatoRobot.m */,
+				58C52FD51CEE23FA00D619F0 /* NeatoUser.h */,
+				58C52FD61CEE23FA00D619F0 /* NeatoUser.m */,
+				58C52FD71CEE23FA00D619F0 /* NeatoSDK.h */,
+				58C52FD81CEE23FA00D619F0 /* Info.plist */,
+			);
+			name = NeatoSDK;
+			path = ../../NeatoSDK;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +274,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58C52FE31CEE23FA00D619F0 /* Info.plist in Resources */,
 				5849EE921CCA4EC500A2C2D6 /* LaunchScreen.storyboard in Resources */,
 				5849EE8F1CCA4EC500A2C2D6 /* Assets.xcassets in Resources */,
 				5849EE8D1CCA4EC500A2C2D6 /* Main.storyboard in Resources */,
@@ -194,12 +288,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58C52FDC1CEE23FA00D619F0 /* NSDate+Neato.m in Sources */,
 				58C52FBB1CEE1B0300D619F0 /* NeatoLoginViewController.m in Sources */,
+				58C52FE11CEE23FA00D619F0 /* NeatoRobot.m in Sources */,
 				58C52FBA1CEE1B0300D619F0 /* NeatoDashboardViewController.m in Sources */,
+				58C52FDF1CEE23FA00D619F0 /* NeatoSDKSessionManager.m in Sources */,
+				58C52FE21CEE23FA00D619F0 /* NeatoUser.m in Sources */,
+				58C52FDD1CEE23FA00D619F0 /* NSString+Neato.m in Sources */,
 				5849EE871CCA4EC500A2C2D6 /* AppDelegate.m in Sources */,
 				58C52FBC1CEE1B0300D619F0 /* NeatoRobotCommands.m in Sources */,
+				58C52FE01CEE23FA00D619F0 /* NeatoAuthentication.m in Sources */,
 				58C52FBF1CEE1B7300D619F0 /* RobotCell.m in Sources */,
 				5849EE841CCA4EC500A2C2D6 /* main.m in Sources */,
+				58C52FDA1CEE23FA00D619F0 /* NeatoHTTPSessionManager.m in Sources */,
+				58C52FDB1CEE23FA00D619F0 /* NeatoHTTPTaskDelegate.m in Sources */,
+				58C52FDE1CEE23FA00D619F0 /* NeatoTokenUserDefaultStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

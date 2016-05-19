@@ -6,7 +6,6 @@
 //  Copyright © 2016 Neato Robotics. All rights reserved.
 //
 
-#import <AFNetworking/AFNetworking.h>
 #import <Specta/Specta.h>
 #import <Expecta/Expecta.h>
 #import <OHHTTPStubs/OHHTTPStubs.h>

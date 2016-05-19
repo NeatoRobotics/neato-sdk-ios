@@ -1,4 +1,3 @@
-#import <AFNetworking/AFNetworking.h>
 #import <Specta/Specta.h>
 #import <Expecta/Expecta.h>
 

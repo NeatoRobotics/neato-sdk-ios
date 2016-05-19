@@ -12,7 +12,6 @@
 		583ACE751CD0BF4F00C2CE0A /* TestHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 583ACE741CD0BF4F00C2CE0A /* TestHelpers.m */; };
 		583ACE781CD1011600C2CE0A /* NeatoRobot.h in Headers */ = {isa = PBXBuildFile; fileRef = 583ACE761CD1011600C2CE0A /* NeatoRobot.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		583ACE791CD1011600C2CE0A /* NeatoRobot.m in Sources */ = {isa = PBXBuildFile; fileRef = 583ACE771CD1011600C2CE0A /* NeatoRobot.m */; };
-		58A338281CC93993008F5B7D /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A338271CC93993008F5B7D /* AFNetworking.framework */; };
 		58A338391CC93D16008F5B7D /* NeatoAuthentication.h in Headers */ = {isa = PBXBuildFile; fileRef = 58A338301CC93D16008F5B7D /* NeatoAuthentication.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		58A3383A1CC93D16008F5B7D /* NeatoAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A338311CC93D16008F5B7D /* NeatoAuthentication.m */; };
 		58A3383B1CC93D16008F5B7D /* NeatoAuthentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A338311CC93D16008F5B7D /* NeatoAuthentication.m */; };
@@ -35,7 +34,6 @@
 		58C52FB11CEDFE3400D619F0 /* NeatoHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C52FAD1CEDFE3400D619F0 /* NeatoHTTPSessionManager.m */; };
 		58C52FB21CEDFE3400D619F0 /* NeatoHTTPTaskDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 58C52FAE1CEDFE3400D619F0 /* NeatoHTTPTaskDelegate.h */; };
 		58C52FB31CEDFE3400D619F0 /* NeatoHTTPTaskDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58C52FAF1CEDFE3400D619F0 /* NeatoHTTPTaskDelegate.m */; };
-		58C58CA41CCA6A90005DCB3D /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A338271CC93993008F5B7D /* AFNetworking.framework */; };
 		58C58CA51CCA6A93005DCB3D /* Expecta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A3382B1CC93BC3008F5B7D /* Expecta.framework */; };
 		58C58CA61CCA6A98005DCB3D /* Specta.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58A3382C1CC93BC3008F5B7D /* Specta.framework */; };
 		58C58CA71CCA6A9D005DCB3D /* OHHTTPStubs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5849EEA61CCA66D400A2C2D6 /* OHHTTPStubs.framework */; };
@@ -74,7 +72,6 @@
 		58A338121CC92D85008F5B7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58A338171CC92D85008F5B7D /* NeatoSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NeatoSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58A3381E1CC92D85008F5B7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		58A338271CC93993008F5B7D /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
 		58A3382B1CC93BC3008F5B7D /* Expecta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Expecta.framework; path = Carthage/Build/iOS/Expecta.framework; sourceTree = "<group>"; };
 		58A3382C1CC93BC3008F5B7D /* Specta.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Specta.framework; path = Carthage/Build/iOS/Specta.framework; sourceTree = "<group>"; };
 		58A338301CC93D16008F5B7D /* NeatoAuthentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeatoAuthentication.h; sourceTree = "<group>"; };
@@ -115,7 +112,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58A338281CC93993008F5B7D /* AFNetworking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,7 +119,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58C58CA41CCA6A90005DCB3D /* AFNetworking.framework in Frameworks */,
 				58C58CA51CCA6A93005DCB3D /* Expecta.framework in Frameworks */,
 				58C58CA61CCA6A98005DCB3D /* Specta.framework in Frameworks */,
 				58C58CA71CCA6A9D005DCB3D /* OHHTTPStubs.framework in Frameworks */,
@@ -213,7 +208,6 @@
 				5849EEA61CCA66D400A2C2D6 /* OHHTTPStubs.framework */,
 				58A3382B1CC93BC3008F5B7D /* Expecta.framework */,
 				58A3382C1CC93BC3008F5B7D /* Specta.framework */,
-				58A338271CC93993008F5B7D /* AFNetworking.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -305,7 +299,6 @@
 				58A338091CC92D85008F5B7D /* Frameworks */,
 				58A3380A1CC92D85008F5B7D /* Headers */,
 				58A3380B1CC92D85008F5B7D /* Resources */,
-				58A3382A1CC93B0D008F5B7D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -392,20 +385,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		58A3382A1CC93B0D008F5B7D /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/AFNetworking.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
 		58A338551CC941D7008F5B7D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -414,7 +393,6 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Expecta.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Specta.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/AFNetworking.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/OHHTTPStubs.framework",
 			);
 			outputPaths = (

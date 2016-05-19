@@ -7,7 +7,6 @@
 //
 
 #import "NeatoRobotCommands.h"
-@import NeatoSDK;
 
 @interface NeatoRobotCommands()
 @property (nonatomic, weak) IBOutlet UISwitch* scheduleSwitch;

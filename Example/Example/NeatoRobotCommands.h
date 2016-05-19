@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@import NeatoSDK;
+#import "NeatoSDK.h"
 
 @interface NeatoRobotCommands : UIViewController
 @property (nonatomic, strong) NeatoRobot *robot;

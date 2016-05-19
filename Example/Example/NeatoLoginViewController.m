@@ -7,7 +7,7 @@
 //
 
 #import "NeatoLoginViewController.h"
-@import NeatoSDK;
+#import "NeatoSDK.h"
 
 @interface NeatoLoginViewController ()
 
