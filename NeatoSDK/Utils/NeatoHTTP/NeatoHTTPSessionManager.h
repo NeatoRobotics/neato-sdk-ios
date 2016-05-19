@@ -3,15 +3,17 @@
 //  NeatoHTTP
 //
 //  Created by Yari D'areglia on 12/05/16.
-//  Copyright © 2016 Neato Robotics. All rights reserved.
+//  2016 Neato Robotics.
 //
 
 #import <Foundation/Foundation.h>
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NeatoHTTPSessionManager : NSObject<NSURLSessionDataDelegate>
 
 - (instancetype)initWithConfiguration:(NSURLSessionConfiguration*)configuration baseURL:(NSURL*)base;
+
 - (instancetype)initWithBaseURL:(NSURL*)base;
 
 - (NSURLSessionDataTask *_Nullable)dataTaskWithHTTPMethod:(NSString *)method
@@ -35,8 +37,12 @@ NS_ASSUME_NONNULL_BEGIN
                                progress:(nullable void (^)(NSProgress *uploadProgress))uploadProgress
                                 success:(nullable void (^)(NSURLSessionDataTask *task, id _Nullable responseObject))success
                                 failure:(nullable void (^)(NSURLSessionDataTask * _Nullable task, NSError *error))failure;
-#pragma mark - AFNetworking substitution
 
+- (nullable NSURLSessionDataTask *)PUT:(NSString *)URLString
+                             parameters:(nullable id)parameters
+                               progress:(nullable void (^)(NSProgress *uploadProgress))uploadProgress
+                                success:(nullable void (^)(NSURLSessionDataTask *task, id _Nullable responseObject))success
+                                failure:(nullable void (^)(NSURLSessionDataTask * _Nullable task, NSError *error))failure;
 
 @end
 

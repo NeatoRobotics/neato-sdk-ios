@@ -3,7 +3,7 @@
 //  NeatoHTTP
 //
 //  Created by Yari D'areglia on 12/05/16.
-//  Copyright © 2016 Neato Robotics. All rights reserved.
+//  2016 Neato Robotics.
 //
 
 #import "NeatoHTTPTaskDelegate.h"

@@ -3,7 +3,7 @@
 //  NeatoSDK
 //
 //  Created by Yari D'areglia on 26/04/16.
-//  Copyright © 2016 Neato Robotics. All rights reserved.
+//  2016 Neato Robotics.
 //
 
 #import "NSDate+Neato.h"

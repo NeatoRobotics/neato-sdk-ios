@@ -3,12 +3,13 @@
 //  NeatoHTTP
 //
 //  Created by Yari D'areglia on 12/05/16.
-//  Copyright © 2016 Neato Robotics. All rights reserved.
+//  2016 Neato Robotics.
 //
 
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
+
 typedef void (^NeatoHTTPTaskCompletionCallback)(NSHTTPURLResponse * _Nullable response, id  _Nullable responseObject, NSError * _Nullable error);
 
 @interface NeatoHTTPTaskDelegate : NSObject

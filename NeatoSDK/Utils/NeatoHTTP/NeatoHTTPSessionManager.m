@@ -3,7 +3,7 @@
 //  NeatoHTTP
 //
 //  Created by Yari D'areglia on 12/05/16.
-//  Copyright © 2016 Neato Robotics. All rights reserved.
+//  2016 Neato Robotics.
 //
 
 #import "NeatoHTTPSessionManager.h"
@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 @implementation NeatoHTTPSessionManager
+
+#pragma mark - Public -
 
 - (instancetype)initWithConfiguration:(NSURLSessionConfiguration*)configuration baseURL:(NSURL*)base{
     self = [super init];
@@ -65,6 +67,17 @@ NS_ASSUME_NONNULL_BEGIN
     
     return [self dataTaskWithHTTPMethod:@"POST" URLString:URLString parameters:parameters success:success failure:failure];
 }
+
+- (NSURLSessionDataTask * _Nullable)PUT:(NSString *)URLString
+                              parameters:(id _Nullable)parameters
+                                progress:(void (^ _Nullable)(NSProgress * _Nonnull))uploadProgress
+                                 success:(void (^ _Nullable)(NSURLSessionDataTask * _Nonnull, id _Nullable))success
+                                 failure:(void (^ _Nullable)(NSURLSessionDataTask * _Nullable, NSError * _Nonnull))failure{
+    
+    return [self dataTaskWithHTTPMethod:@"PUT" URLString:URLString parameters:parameters success:success failure:failure];
+}
+
+#pragma mark - Private -
 
 - (NSURLSessionDataTask *_Nullable)dataTaskWithHTTPMethod:(NSString *)method
                                        URLString:(NSString *)URLString
@@ -132,8 +145,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 
-
-#pragma mark - URLSession Delegate
+#pragma mark - URLSession Delegate -
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(nullable NSError *)error{
    

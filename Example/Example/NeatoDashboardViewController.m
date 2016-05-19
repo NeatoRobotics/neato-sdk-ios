@@ -3,7 +3,7 @@
 //  Example
 //
 //  Created by Yari D'areglia on 22/04/16.
-//  Copyright © 2016 Neato Robotics. All rights reserved.
+//  2016 Neato Robotics.
 //
 
 #import "NeatoDashboardViewController.h"
