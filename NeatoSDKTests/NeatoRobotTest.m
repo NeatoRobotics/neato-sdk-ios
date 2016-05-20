@@ -29,10 +29,11 @@ describe(@"NeatoRobot", ^{
         context(@"when receives parameters", ^{
             
             it(@"has attributes", ^{
-                NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret"];
+                NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret" model:@"model"];
                 expect(robot.name).to.equal(@"name");
                 expect(robot.serial).to.equal(@"serial");
                 expect(robot.secretKey).to.equal(@"secret");
+                expect(robot.model).to.equal(@"model");
             });
         });
     });
@@ -49,7 +50,7 @@ describe(@"NeatoRobot", ^{
             });
             
             it(@"updates robot properties", ^{
-                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret"];
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret" model:@"botvacConnected"];
                 
                 waitUntil(^(DoneCallback done) {
                     [robot updateStateWithCompletion:^(NSError * _Nullable error) {
@@ -78,7 +79,7 @@ describe(@"NeatoRobot", ^{
             });
             
             it(@"robot is not online", ^{
-                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret"];
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret" model:@"botvacConnected"];
                 [robot forceRobotState:RobotStateBusy action:RobotActionHouseCleaning online:YES];
 
                 waitUntil(^(DoneCallback done) {
@@ -100,7 +101,7 @@ describe(@"NeatoRobot", ^{
             });
             
             it(@"robot is not online", ^{
-                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret"];
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret" model:@"botvacConnected"];
                 [robot forceRobotState:RobotStateBusy action:RobotActionHouseCleaning online:YES];
                 
                 waitUntil(^(DoneCallback done) {
@@ -123,7 +124,7 @@ describe(@"NeatoRobot", ^{
             });
             
             it(@"robot is not online", ^{
-                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret"];
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret" model:@"botvacConnected"];
                 [robot forceRobotState:RobotStateBusy action:RobotActionHouseCleaning online:YES];
                 
                 waitUntil(^(DoneCallback done) {
@@ -146,7 +147,7 @@ describe(@"NeatoRobot", ^{
             });
             
             it(@"robot is not online", ^{
-                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret"];
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret" model:@"botvacConnected"];
                 [robot forceRobotState:RobotStateBusy action:RobotActionHouseCleaning online:YES];
                 
                 waitUntil(^(DoneCallback done) {
@@ -172,7 +173,7 @@ describe(@"NeatoRobot", ^{
             });
             
             it(@"converts the response in result and data", ^{
-                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"robot" serial:@"123456" secretKey:@"secret"];
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"robot" serial:@"123456" secretKey:@"secret" model:@"botvacConnected"];
                 
                 waitUntil(^(DoneCallback done) {
                     [robot sendAndManageCommand:@"command" parameters:nil completion:^(bool result, id  _Nullable data, NSError * _Nonnull error) {
@@ -193,7 +194,7 @@ describe(@"NeatoRobot", ^{
             });
             
             it(@"reises an error", ^{
-                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"robot" serial:@"123456" secretKey:@"secret"];
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"robot" serial:@"123456" secretKey:@"secret" model:@"botvacConnected"];
                 
                 waitUntil(^(DoneCallback done) {
                     [robot sendAndManageCommand:@"command" parameters:@{@"INVALID_PARAM":[NSDate date]} completion:^(bool result, id  _Nullable data, NSError * _Nonnull error) {
@@ -217,7 +218,7 @@ describe(@"NeatoRobot", ^{
             });
             
             it(@"reises an error", ^{
-                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"robot" serial:@"123456" secretKey:@"secret"];
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"robot" serial:@"123456" secretKey:@"secret" model:@"botvacConnected"];
                 
                 waitUntil(^(DoneCallback done) {
                     [robot sendAndManageCommand:@"command" parameters:nil completion:^(bool result, id  _Nullable data, NSError * _Nonnull error) {
@@ -243,7 +244,7 @@ describe(@"NeatoRobot", ^{
             });
             
             it(@"executes the completion callback",^{
-                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret"];
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret" model:@"botvacConnected"];
 
                 waitUntil(^(DoneCallback done) {
                     [robot startCleaningWithParameters:@{} completion:^(NSError * _Nullable error) {
@@ -288,6 +289,12 @@ describe(@"NeatoRobot", ^{
                         done();
                     }];
                 });
+                waitUntil(^(DoneCallback done) {
+                    [robot findMeWithCompletion:^(NSError * _Nullable error) {
+                        expect(true);
+                        done();
+                    }];
+                });
                 
             });
         });
@@ -304,7 +311,7 @@ describe(@"NeatoRobot", ^{
             });
             
             it(@"stores the services",^{
-            __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret"];
+            __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret" model:@"botvacConnected"];
             
                 waitUntil(^(DoneCallback done) {
                     [robot updateStateWithCompletion:^(NSError * _Nullable error) {
@@ -315,7 +322,7 @@ describe(@"NeatoRobot", ^{
             });
             
             it(@"supports a service",^{
-                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret"];
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret" model:@"botvacConnected"];
                 
                 waitUntil(^(DoneCallback done) {
                     [robot updateStateWithCompletion:^(NSError * _Nullable error) {
@@ -337,7 +344,7 @@ describe(@"NeatoRobot", ^{
             });
             
             it(@"can execute houseCleaning",^{
-                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret"];
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret" model:@"botvacConnected"];
                 waitUntil(^(DoneCallback done) {
                     
                     [robot updateStateWithCompletion:^(NSError * _Nullable error) {
@@ -352,7 +359,7 @@ describe(@"NeatoRobot", ^{
             });
             
             it(@"cannot execute spotCleaning",^{
-                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret"];
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret" model:@"botvacConnected"];
                 waitUntil(^(DoneCallback done) {
                     
                     [robot updateStateWithCompletion:^(NSError * _Nullable error) {
@@ -380,7 +387,7 @@ describe(@"NeatoRobot", ^{
             });
             
             it(@"receives the list",^{
-                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret"];
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret" model:@"botvacConnected"];
                 [robot forceServices:@{@"schedule":@"basic-1"}];
                 
                 waitUntil(^(DoneCallback done) {
@@ -403,7 +410,7 @@ describe(@"NeatoRobot", ^{
             });
             
             it(@"receives an error", ^{
-                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret"];
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret" model:@"botvacConnected"];
                 
                 waitUntil(^(DoneCallback done) {
                     [robot getScheduleWithCompletion:^(NSDictionary * _Nonnull scheduleInfo, NSError * _Nullable error) {

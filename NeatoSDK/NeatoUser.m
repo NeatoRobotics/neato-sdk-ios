@@ -36,7 +36,8 @@ static NSString * const kNeatoBeehiveUserInfoPath = @"/users/me";
                      for(NSDictionary* robotData in responseObject){
                          NeatoRobot *robot = [[NeatoRobot alloc] initWithName:robotData[@"name"]
                                                                        serial:robotData[@"serial"]
-                                                                    secretKey:robotData[@"secret_key"]];
+                                                                    secretKey:robotData[@"secret_key"]
+                                                                        model:robotData[@"model"]];
                          [robots addObject:robot];
                      }
                      completionHandler(robots, nil);

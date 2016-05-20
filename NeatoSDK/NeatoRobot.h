@@ -84,6 +84,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy, readonly) NSString* serial;
 @property (nonatomic, copy, readonly) NSString* secretKey;
 @property (nonatomic, copy, readonly) NSString* name;
+@property (nonatomic, copy, readonly) NSString* model;
 @property (nonatomic, assign, readonly) RobotState state;
 @property (nonatomic, assign, readonly) RobotAction action;
 @property (nonatomic, assign, readonly) bool online;
@@ -105,7 +106,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param secretKey: robot secret key
  
  **/
-- (instancetype)initWithName:(NSString*)name serial:(NSString *)serial secretKey:(NSString *)secretKey;
+- (instancetype)initWithName:(NSString*)name serial:(NSString *)serial secretKey:(NSString *)secretKey model:(NSString *)model;
 
 /**
  Update robot state asynchronously. When the update succeeded robot properties will be updated to the current robot state.
@@ -138,6 +139,14 @@ NS_ASSUME_NONNULL_BEGIN
  
  **/
 - (void)stopCleaningWithCompletion:(void (^)(NSError * _Nullable error))completion;
+
+/**
+ Send returnToBase command to the robot. After this call succeeded robot state will be automatically updated to the new robot state (i.e. state:busy action:returning to base).
+ 
+ @param completion: Callback to handle call response.
+ 
+ **/
+- (void)sendToBaseWithCompletion:(void (^)(NSError * _Nullable error))completion;
 
 /**
  Send enableSchedule command to the robot. After this call succeeded robot state will be automatically updated to the new robot state (i.e state:paused action:house cleaning).
@@ -182,11 +191,25 @@ NS_ASSUME_NONNULL_BEGIN
  **/
 - (NSString * _Nullable)supportedVersionForService:(NSString*)serviceName;
 
+
+/**
+ Send the findMe command to the robot.
+ 
+ @param completion: Callback to handle call response.
+ 
+ Note: If the robot doesn't support the find me service, an error is returned in the callback.
+ Before calling this function you should verify that the robot supports the "findMe" service calling `supportedVersionForService:`.
+ **/
+- (void)findMeWithCompletion:(void (^)(NSError * _Nullable error))completion;
+
+/* TEST-RELATED HEADERS */
+
 /**
  Force robot state and action. This function should be used for testing purpose only.
  **/
 - (void)forceRobotState:(RobotState)state action:(RobotAction)action online:(BOOL)online;
 - (void)forceServices:(NSDictionary*)services;
+
 
 /** 
  Public for testing 

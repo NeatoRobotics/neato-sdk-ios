@@ -69,6 +69,7 @@
     NeatoRobot *robot = self.robots[indexPath.row];
     RobotCell *cell = (RobotCell*)[tableView dequeueReusableCellWithIdentifier:@"robot_cell"];
     cell.name.text = robot.name;
+    cell.model.text = robot.model;
     
     NSString *status = @"OFFLINE";
     UIColor *color = [UIColor colorWithWhite:0.5 alpha:1.0];

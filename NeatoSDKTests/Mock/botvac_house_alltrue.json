@@ -31,7 +31,8 @@
         "houseCleaning":"basic-1",
         "spotCleaning":"basic-1",
         "manualCleaning":"basic-1",
-        "schedule":"basic-1"
+        "schedule":"basic-1",
+        "findMe":"basic-1"
     },
     "meta":{
         "modelName":"BotVacConnected",

@@ -87,7 +87,7 @@ NS_ASSUME_NONNULL_BEGIN
 {
     NSURLRequest *request = [self buildRequestWithURLString:URLString HTTPMethod:method parameters:parameters];
     if (!request) {
-        failure(nil, [NSError errorWithDomain:@"HTTP.wrong.params" code:0 userInfo:parameters]);
+        failure(nil, [NSError errorWithDomain:@"Neato.HTTP.BadReq" code:0 userInfo:parameters]);
         return nil;
     }else{
         

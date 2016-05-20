@@ -118,7 +118,6 @@ static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages"
              }];
 }
 
-
 /**
  Given a robot response that contains the state property, initialize robot properties with values from the response.
  **/
@@ -184,12 +183,13 @@ static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages"
 
 #pragma mark - Public -
 
-- (instancetype)initWithName:(NSString*)name serial:(NSString *)serial secretKey:(NSString *)secretKey{
+- (instancetype)initWithName:(NSString*)name serial:(NSString *)serial secretKey:(NSString *)secretKey model:(NSString *)model{
     self = [super init];
     if (self) {
         _name = name;
         _serial = serial;
         _secretKey = secretKey;
+        _model = model;
     }
     return self;
 }
@@ -232,6 +232,13 @@ static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages"
     }];
 }
 
+- (void)sendToBaseWithCompletion:(void (^)(NSError * _Nullable error))completion{
+    [self sendCommand:@"sendToBase" parameters:nil completion:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
+        completion(error);
+    }];
+}
+
+
 #pragma mark Scheduling
 
 - (void)enableScheduleWithCompletion:(void (^)(NSError * _Nullable error))completion{
@@ -273,7 +280,15 @@ static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages"
     }
 }
 
+#pragma mark - Advanced Services - 
 
+- (void)findMeWithCompletion:(void (^)(NSError * _Nullable))completion{
+    if ([self supportedVersionForService:@"findMe"]){
+        [self sendCommand:@"findMe" parameters:nil completion:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
+            completion(error);
+        }];
+    }
+}
 
 #pragma mark Helpers
 
