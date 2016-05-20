@@ -33,7 +33,7 @@ typedef NS_ENUM(NSUInteger, RobotState) {
  @constant RobotActionSpotCleaning          Robot is in Spot Cleaning mode
  @constant RobotActionManualCleaning        Robot is in Manual Cleaning mode
  @constant RobotActionMenuActive            Robot LCD UI is in use
- @constant RobotActionSuspendedCleaning     Robot cannot continue cleaning (i.e. battery its low)
+ @constant RobotActionSuspendedCleaning     Robot cannot continue cleaning (i.e. battery is low)
  @constant RobotActionUpdating              Robot is performing a software update
  @constant RobotActionCopyLogs              Robot is sending logs
  @constant RobotActionRecoveryLocation      Robot is recovery location
@@ -77,7 +77,10 @@ typedef NS_ENUM(NSUInteger, RobotScheduleDay){
     RobotScheduleDaySaturday    = 6
 };
 
+
 NS_ASSUME_NONNULL_BEGIN
+
+extern NSString * const kNeatoError_RobotServices;
 
 @interface NeatoRobot : NSObject
 

@@ -22,8 +22,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"DASHBOARD";
+    self.title = @"YOUR ROBOTS";
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     @{NSForegroundColorAttributeName:[UIColor whiteColor],
+       NSFontAttributeName:[UIFont fontWithName:@"Avenir-Book" size:15]}];
     
     self.robots = [NSMutableArray array];
     NeatoUser *user = [NeatoUser new];
@@ -33,6 +36,11 @@
         [self.table reloadData];
         [self updateRobots];
     }];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self.navigationItem setPrompt:nil];
 }
 
 - (void)updateRobots{
@@ -53,6 +61,10 @@
     [[NeatoAuthentication sharedInstance] logoutWithCompletion:^(NSError * _Nonnull error) {        
         [self dismissViewControllerAnimated:true completion:nil];
     }];
+}
+
+- (IBAction)presetUserBox:(id)sender{
+    
 }
 
 #pragma mark - Table Delegate
@@ -102,12 +114,14 @@
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    UITableViewCell *cell = sender;
-    NSIndexPath *index = [self.table indexPathForCell:cell];
-    [self.table deselectRowAtIndexPath:index animated:false];
-    NeatoRobot *robot = self.robots[index.row];
-    NeatoRobotCommands *commands = segue.destinationViewController;
-    commands.robot = robot;
+    if ([segue.identifier isEqualToString:@"Commands"]){
+        UITableViewCell *cell = sender;
+        NSIndexPath *index = [self.table indexPathForCell:cell];
+        [self.table deselectRowAtIndexPath:index animated:false];
+        NeatoRobot *robot = self.robots[index.row];
+        NeatoRobotCommands *commands = segue.destinationViewController;
+        commands.robot = robot;
+    }
 }
 
 @end

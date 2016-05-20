@@ -12,6 +12,7 @@
 #import "NSString+Neato.h"
 
 static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages";
+NSString * const kNeatoError_RobotServices = @"Robot.Services";
 
 @implementation NeatoRobot
 
@@ -247,7 +248,7 @@ static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages"
             completion(error);
         }];
     }else{
-        completion([NSError errorWithDomain:@"Robot.service" code:1 userInfo:nil]);
+        completion([NSError errorWithDomain:kNeatoError_RobotServices code:1 userInfo:nil]);
     }
 }
 
@@ -257,7 +258,7 @@ static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages"
             completion(error);
         }];
     }else{
-        completion([NSError errorWithDomain:@"Robot.service" code:1 userInfo:nil]);
+        completion([NSError errorWithDomain:kNeatoError_RobotServices code:1 userInfo:nil]);
     }
 }
 
@@ -268,7 +269,7 @@ static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages"
             completion(error);
         }];
     }else{
-        completion([NSError errorWithDomain:@"Robot.service" code:1 userInfo:nil]);
+        completion([NSError errorWithDomain:kNeatoError_RobotServices code:1 userInfo:nil]);
     }
 }
 
@@ -276,7 +277,7 @@ static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages"
     if ([self supportedVersionForService:@"schedule"]){
         [self sendCommand:@"getSchedule" parameters:nil completion:completion];
     }else{
-        completion(nil, [NSError errorWithDomain:@"Robot.service" code:1 userInfo:nil]);
+        completion(nil, [NSError errorWithDomain:kNeatoError_RobotServices code:1 userInfo:nil]);
     }
 }
 
@@ -287,6 +288,8 @@ static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages"
         [self sendCommand:@"findMe" parameters:nil completion:^(NSDictionary * _Nullable data, NSError * _Nullable error) {
             completion(error);
         }];
+    }else{
+        completion([NSError errorWithDomain:kNeatoError_RobotServices code:1 userInfo:nil]);
     }
 }
 

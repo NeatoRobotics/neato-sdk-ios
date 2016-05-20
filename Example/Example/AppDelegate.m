@@ -20,7 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [NeatoAuthentication configureWithClientID:@"c54d0ac5def8323befb61cfc74e514af80bde385d878c23e47ca990fccb40258"
-                                scopes:@[NeatoOAuthScopeControlRobots, NeatoOAuthScopePublicProfile, NeatoOAuthScopeEmail]
+                                scopes:@[NeatoOAuthScopeControlRobots, NeatoOAuthScopeEmail]
                            redirectURI:@"marco-app://neato"];
     
     return YES;

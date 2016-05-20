@@ -124,6 +124,23 @@
     }];
 }
 
+- (IBAction)findRobot:(id)sender{
+    __weak typeof(self) weakSelf = self;
+    [self.robot findMeWithCompletion:^(NSError * _Nullable error) {
+        if(error){
+            if(error.domain == kNeatoError_RobotServices){
+                UIAlertController *ctr = [UIAlertController alertControllerWithTitle:@"Error"
+                                                    message:@"Find Me is not supported by this robot"
+                                             preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *action = [UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleDefault handler:nil];
+                [ctr addAction:action];
+                
+                [weakSelf presentViewController:ctr animated:true completion:nil];
+            }
+        }
+    }];
+}
+
 #pragma mark - Cleaning -
 
 - (IBAction)startCleaning:(id)sender{
@@ -158,6 +175,18 @@
     __weak typeof(self) weakSelf = self;
 
     [self.robot pauseCleaningWithCompletion:^(NSError * _Nullable error) {
+        
+        [weakSelf updateStateDescription];
+        [weakSelf stopLoading];
+    }];
+}
+
+- (IBAction)returnToBase:(id)sender{
+    [self startLoading];
+    
+    __weak typeof(self) weakSelf = self;
+    
+    [self.robot sendToBaseWithCompletion:^(NSError * _Nullable error) {
         
         [weakSelf updateStateDescription];
         [weakSelf stopLoading];
