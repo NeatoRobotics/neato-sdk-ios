@@ -40,6 +40,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithBaseURL:(NSURL *)base{
     NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
+    config.URLCache = nil;
+    config.timeoutIntervalForRequest = 20.0;
+    config.URLCredentialStorage = nil;
+    config.requestCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
+    
+    //NSURLSessionConfiguration *config = [NSURLSessionConfiguration defaultSessionConfiguration];
     return [self initWithConfiguration:config baseURL:base];
 }
 
