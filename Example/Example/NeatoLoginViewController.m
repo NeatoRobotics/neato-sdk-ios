@@ -17,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logout) name:@"Logout" object:nil];
     // Do any additional setup after loading the view.
 }
 
@@ -26,6 +27,10 @@
     if ([[NeatoAuthentication sharedInstance]isAuthenticated]){
         [self enterDashboard];
     }
+}
+
+- (void)logout{
+    [self dismissViewControllerAnimated:true completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

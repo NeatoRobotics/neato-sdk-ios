@@ -11,8 +11,7 @@
 
 @interface NeatoUserViewController ()
 @property (nonatomic, weak) IBOutlet UILabel* email;
-@property (nonatomic, weak) IBOutlet UILabel* firstname;
-@property (nonatomic, weak) IBOutlet UILabel* lastname;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loader;
 @end
 
 @implementation NeatoUserViewController
@@ -27,8 +26,17 @@
         if(!error){
             NSLog(@"%@", userinfo);
             weakSelf.email.text = userinfo[@"email"];
-            weakSelf.firstname.text = ([userinfo[@"first_name"] isEqual:[NSNull null]]) ? @"-" : userinfo[@"first_name"];
-            weakSelf.lastname.text = ([userinfo[@"last_name"] isEqual:[NSNull null]]) ? @"-" : userinfo[@"last_name"];
+            [weakSelf.loader stopAnimating];
+        }
+    }];
+}
+
+- (IBAction)logout{
+    [self.loader startAnimating];
+    
+    [[NeatoAuthentication sharedInstance] logoutWithCompletion:^(NSError * _Nullable error) {
+        if (!error){
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"Logout" object:nil];
         }
     }];
 }
