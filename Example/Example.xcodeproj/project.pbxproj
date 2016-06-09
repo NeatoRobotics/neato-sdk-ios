@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5811265C1D09AA0200A3D438 /* NeatoHTTPExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5811265B1D09AA0200A3D438 /* NeatoHTTPExampleViewController.m */; };
 		5849EE841CCA4EC500A2C2D6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5849EE831CCA4EC500A2C2D6 /* main.m */; };
 		5849EE871CCA4EC500A2C2D6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5849EE861CCA4EC500A2C2D6 /* AppDelegate.m */; };
 		5849EE8D1CCA4EC500A2C2D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5849EE8B1CCA4EC500A2C2D6 /* Main.storyboard */; };
@@ -44,6 +45,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5811265A1D09AA0200A3D438 /* NeatoHTTPExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NeatoHTTPExampleViewController.h; sourceTree = "<group>"; };
+		5811265B1D09AA0200A3D438 /* NeatoHTTPExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NeatoHTTPExampleViewController.m; sourceTree = "<group>"; };
 		5849EE7F1CCA4EC500A2C2D6 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5849EE831CCA4EC500A2C2D6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5849EE851CCA4EC500A2C2D6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -148,6 +151,8 @@
 				58C52FB91CEE1B0300D619F0 /* NeatoRobotCommands.m */,
 				58B5D0841CEF6E29005F85F1 /* NeatoUserViewController.h */,
 				58B5D0851CEF6E29005F85F1 /* NeatoUserViewController.m */,
+				5811265A1D09AA0200A3D438 /* NeatoHTTPExampleViewController.h */,
+				5811265B1D09AA0200A3D438 /* NeatoHTTPExampleViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -315,6 +320,7 @@
 				5849EE841CCA4EC500A2C2D6 /* main.m in Sources */,
 				58C52FDA1CEE23FA00D619F0 /* NeatoHTTPSessionManager.m in Sources */,
 				58C52FDB1CEE23FA00D619F0 /* NeatoHTTPTaskDelegate.m in Sources */,
+				5811265C1D09AA0200A3D438 /* NeatoHTTPExampleViewController.m in Sources */,
 				58C52FDE1CEE23FA00D619F0 /* NeatoTokenUserDefaultStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

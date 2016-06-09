@@ -15,6 +15,7 @@
 
 @property (nonatomic, strong) NSArray *robots;
 @property (nonatomic, weak) IBOutlet UITableView *table;
+@property (nonatomic, strong) NSTimer *updateTimer;
 @end
 
 @implementation NeatoDashboardViewController
@@ -43,6 +44,18 @@
     [self.navigationItem setPrompt:nil];
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.updateTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(updateRobots) userInfo:nil repeats:true];
+    [self.updateTimer fire];
+}
+
+- (void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    
+    [self.updateTimer invalidate];
+}
+
 - (void)updateRobots{
     for(NeatoRobot *robot in self.robots){
         [robot updateStateWithCompletion:^(NSError * _Nullable error) {
@@ -57,9 +70,8 @@
     [super didReceiveMemoryWarning];
 }
 
-
-- (IBAction)presetUserBox:(id)sender{
-    
+- (void)dealloc{
+    NSLog(@"DEALLOC");
 }
 
 #pragma mark - Table Delegate
@@ -99,6 +111,7 @@
                 break;
             default:
                 status = @"ERROR";
+                cell.userInteractionEnabled = false;
                 color = [UIColor colorWithRed:0.8 green:0.2 blue:0.1 alpha:1.0];
                 break;
         }

@@ -256,6 +256,33 @@
             </objects>
             <point key="canvasLocation" x="2504" y="109"/>
         </scene>
+        <!--NeatoHTTP Example View Controller-->
+        <scene sceneID="F9Q-21-YSe">
+            <objects>
+                <viewController id="XpZ-Ui-wG7" customClass="NeatoHTTPExampleViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="D5t-Rg-j4h"/>
+                        <viewControllerLayoutGuide type="bottom" id="Pc7-po-3Nb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6aZ-m7-YJH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CDW-dl-USc">
+                                <rect key="frame" x="15" y="37" width="134" height="30"/>
+                                <state key="normal" title="Testing HTTP CALL"/>
+                                <connections>
+                                    <action selector="sendData" destination="XpZ-Ui-wG7" eventType="touchUpInside" id="tBZ-li-KIS"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZXd-kR-x9C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3235" y="-69"/>
+        </scene>
         <!--Title-->
         <scene sceneID="ONR-ly-DYu">
             <objects>
