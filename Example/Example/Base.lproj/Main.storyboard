@@ -163,11 +163,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="vSO-zf-ECG">
-                        <barButtonItem key="leftBarButtonItem" image="Logout_ICN" id="pBJ-N5-YBg">
-                            <connections>
-                                <action selector="logout:" destination="Cr7-wi-hSc" id="X9Y-jZ-cw2"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="User_ICN" id="WVo-Pl-cTA">
                             <color key="tintColor" red="0.95686274510000002" green="0.96862745100000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
@@ -476,7 +471,6 @@
     </scenes>
     <resources>
         <image name="Login_BTN" width="150" height="55"/>
-        <image name="Logout_ICN" width="25" height="25"/>
         <image name="User_ICN" width="25" height="25"/>
     </resources>
 </document>

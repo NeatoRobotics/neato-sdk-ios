@@ -57,11 +57,6 @@
     [super didReceiveMemoryWarning];
 }
 
-- (IBAction)logout:(id)sender{
-    [[NeatoAuthentication sharedInstance] logoutWithCompletion:^(NSError * _Nonnull error) {        
-        [self dismissViewControllerAnimated:true completion:nil];
-    }];
-}
 
 - (IBAction)presetUserBox:(id)sender{
     
@@ -87,6 +82,8 @@
     UIColor *color = [UIColor colorWithWhite:0.5 alpha:1.0];
     
     if (robot.online){
+        cell.userInteractionEnabled = true;
+
         switch (robot.state) {
             case RobotStateIdle:
                 status = @"READY";
@@ -105,11 +102,15 @@
                 color = [UIColor colorWithRed:0.8 green:0.2 blue:0.1 alpha:1.0];
                 break;
         }
+    }else{
+        cell.userInteractionEnabled = false;
     }
+    
     cell.status.text = status;
     cell.status.textColor = color;
     cell.battery.text = [NSString stringWithFormat:@"%d%%",robot.chargeLevel];
     cell.batteryIndicator.progress = robot.chargeLevel / 100.0;
+    
     return cell;
 }
 
