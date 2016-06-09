@@ -92,6 +92,8 @@ NS_ASSUME_NONNULL_BEGIN
     }else{
         
         __block NSURLSessionDataTask *dataTask = nil;
+        __weak typeof(self) weakSelf = self;
+        
         dataTask = [self registerTaskWithRequest:request
                                completionHandler:^(NSHTTPURLResponse * _Nullable response, id  _Nullable responseObject, NSError * _Nullable error) {
             if (error) {
@@ -106,6 +108,8 @@ NS_ASSUME_NONNULL_BEGIN
         }];
         
         [dataTask resume];
+        [weakSelf.session finishTasksAndInvalidate];
+        
         return dataTask;
     }
 }
@@ -147,6 +151,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - URLSession Delegate -
 
+- (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(nullable NSError *)error{
+    NSLog(@"DID BECOME INVALID");
+}
+
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(nullable NSError *)error{
    
     NeatoHTTPTaskDelegate *taskDelegate = self.taskDelegates[@(task.taskIdentifier)];
@@ -156,6 +164,9 @@ NS_ASSUME_NONNULL_BEGIN
         }else{
             [taskDelegate didCompleteWithResponse:nil Error:error];
         }
+        
+        [self.taskDelegates removeObjectForKey:@(task.taskIdentifier)];
+        
     }else{
         NSLog(@"TASK DELEGATE NOT FOUND");
     }
