@@ -414,42 +414,42 @@ describe(@"NeatoRobot", ^{
                 
                 waitUntil(^(DoneCallback done) {
                     [robot getScheduleWithCompletion:^(NSDictionary * _Nonnull scheduleInfo, NSError * _Nullable error) {
-                        expect(error.domain).to.equal(@"Robot.service");
+                        expect(error.domain).to.equal(@"Robot.Services");
                         done();
                     }];
                 });
                 
                 waitUntil(^(DoneCallback done) {
                     [robot getScheduleWithCompletion:^(NSDictionary * _Nonnull scheduleInfo, NSError * _Nullable error) {
-                        expect(error.domain).to.equal(@"Robot.service");
+                        expect(error.domain).to.equal(@"Robot.Services");
                         done();
                     }];
                 });
                 
                 waitUntil(^(DoneCallback done) {
                     [robot enableScheduleWithCompletion:^(NSError * _Nullable error) {
-                        expect(error.domain).to.equal(@"Robot.service");
+                        expect(error.domain).to.equal(@"Robot.Services");
                         done();
                     }];
                 });
                 
                 waitUntil(^(DoneCallback done) {
                     [robot disableScheduleWithCompletion:^(NSError * _Nullable error) {
-                        expect(error.domain).to.equal(@"Robot.service");
+                        expect(error.domain).to.equal(@"Robot.Services");
                         done();
                     }];
                 });
                 
                 waitUntil(^(DoneCallback done) {
                     [robot setScheduleWithCleaningEvent:@[] completion:^(NSError * _Nullable error) {
-                        expect(error.domain).to.equal(@"Robot.service");
+                        expect(error.domain).to.equal(@"Robot.Services");
                         done();
                     }];
                 });
                 
                 waitUntil(^(DoneCallback done) {
                     [robot getScheduleWithCompletion:^(NSDictionary * _Nonnull scheduleInfo, NSError * _Nullable error) {
-                        expect(error.domain).to.equal(@"Robot.service");
+                        expect(error.domain).to.equal(@"Robot.Services");
                         done();
                     }];
                 });

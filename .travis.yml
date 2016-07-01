@@ -1,3 +1,3 @@
 language: objective-c
-xcode_project: NeatoSDK.xcodeproj # path to your xcodeproj folder
-xcode_scheme: NeatoSDK
+osx_image: xcode7.3
+script: xctool -workspace NeatoSDK.xcworkspace/ -scheme NeatoSDK test -sdk iphonesimulator
