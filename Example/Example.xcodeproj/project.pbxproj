@@ -437,7 +437,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.neatorobotics.Example;
+				PRODUCT_BUNDLE_IDENTIFIER = com.neatorobotics.sdkexample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -450,7 +450,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.neatorobotics.Example;
+				PRODUCT_BUNDLE_IDENTIFIER = com.neatorobotics.sdkexample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
