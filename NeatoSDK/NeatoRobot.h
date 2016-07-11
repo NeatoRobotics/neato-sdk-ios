@@ -77,6 +77,10 @@ typedef NS_ENUM(NSUInteger, RobotScheduleDay){
     RobotScheduleDaySaturday    = 6
 };
 
+typedef NS_ENUM(NSUInteger, RobotNavigationMode){
+    RobotNavigationModeNormal   = 1,
+    RobotNavigationModeExtracare = 2
+};
 
 NS_ASSUME_NONNULL_BEGIN
 

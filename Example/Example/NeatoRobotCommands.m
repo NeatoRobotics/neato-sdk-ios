@@ -149,11 +149,15 @@
     __weak typeof(self) weakSelf = self;
     [self.robot startCleaningWithParameters:@{@"category":@(RobotCleaningCategoryHouse),
                                               @"modifier":@(RobotCleaningModifierNormal),
-                                              @"mode":@(RobotCleaningModeTurbo)}
+                                              @"mode":@(RobotCleaningModeTurbo),
+                                              @"navigationMode":@(RobotNavigationModeNormal)}
                                  completion:^(NSError * _Nullable error) {
-                                     
-                                     [weakSelf updateStateDescription];
-                                     [weakSelf stopLoading];
+                                     if(error == nil){
+                                         [weakSelf updateStateDescription];
+                                         [weakSelf stopLoading];
+                                     }else{
+                                         NSLog(@"%@", error.localizedDescription);
+                                     }
     }];
 }
 
