@@ -158,7 +158,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - URLSession Delegate -
 
 - (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(nullable NSError *)error{
-    NSLog(@"DID BECOME INVALID");
+    //NSLog(@"DID BECOME INVALID");
 }
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(nullable NSError *)error{

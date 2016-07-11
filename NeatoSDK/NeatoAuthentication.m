@@ -6,6 +6,7 @@
 //
 
 @import UIKit;
+@import SafariServices;
 
 #import "NeatoAuthentication.h"
 #import "NeatoTokenUserDefaultStore.h"
@@ -72,6 +73,18 @@ static NSString * const kNeatoOAuthAuthorizeEndPoint = @"https://beehive.neatocl
     }
 }
 
+#if TARGET_OS_IOS
+- (void) presentLoginControllerWithCompletion:(NeatoAuthenticationCallback) completionHandler{
+    self.authenticationCallback = completionHandler;
+    
+    NSURL *authURL = [self buildAuthorizationURL];
+    
+    UIViewController *viewController = [[[UIApplication sharedApplication] keyWindow] rootViewController];
+    SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:authURL];
+    [viewController presentViewController:safariViewController animated:YES completion:nil];
+}
+#endif
+
 - (BOOL) isAuthenticated{
     NSString *token = [self.tokenStore readStoredAccessToken];
     NSDate *tokenExpiration = [self.tokenStore readStoredAccessTokenExpirationDate];
@@ -85,6 +98,11 @@ static NSString * const kNeatoOAuthAuthorizeEndPoint = @"https://beehive.neatocl
 //  ACCEPT: marco-app://neato#access_token=3e5cc3f6e3fb4de2dfde5ac63e0a96a2f8c3613f608d53bee5577b727a8ad43b&token_type=bearer&expires_in=1209600
 //  DENY: marco-app://neato#error=access_denied&error_description=The+resource+owner+or+authorization+server+denied+the+request
 - (void) handleURL:(NSURL*)url{
+    
+    UIViewController *safariViewController = [[[UIApplication sharedApplication] keyWindow] rootViewController];
+    if ([[safariViewController presentedViewController] isKindOfClass:[SFSafariViewController class]]) {
+        [safariViewController dismissViewControllerAnimated:true completion:nil];
+    }
     
     NSString *urlPath = [url absoluteString];
     NSRange searchResult = [urlPath rangeOfString:@"#"];

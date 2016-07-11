@@ -7,7 +7,9 @@
 
 #import <Foundation/Foundation.h>
 #import "NeatoTokenStore.h"
-
+#if TARGET_OS_IOS
+#import <UIKit/UIKit.h>
+#endif
 NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - Constants and Typedef
@@ -65,6 +67,16 @@ typedef void (^NeatoAuthenticationLogoutCallback)(NSError* _Nullable  error);
  
 **/
 - (void) openLoginInBrowserWithCompletion:(NeatoAuthenticationCallback) completionHandler;
+
+#if TARGET_OS_IOS
+/**
+ Launch the login process with a local viewController
+ 
+ @param  completionHandler
+ 
+**/
+- (void) presentLoginControllerWithCompletion:(NeatoAuthenticationCallback) completionHandler;
+#endif
 
 /**
  Call this method inside the appDelegate application:handleOpenURL: method

@@ -40,7 +40,14 @@
 
 - (IBAction)launchLogin:(id)sender{
     
+    /* Use this code to launch external browser
     [[NeatoAuthentication sharedInstance] openLoginInBrowserWithCompletion:^(NSError *error) {
+        if(error == nil){
+            [self enterDashboard];
+        }
+    }];*/
+    
+    [[NeatoAuthentication sharedInstance] presentLoginControllerWithCompletion:^(NSError * _Nullable error) {
         if(error == nil){
             [self enterDashboard];
         }
