@@ -342,7 +342,18 @@ describe(@"NeatoRobot", ^{
                         done();
                     }];
                 });
-            }); 
+            });
+            
+            it(@"does not support a specific service version",^{
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret" model:@"botvacConnected"];
+                
+                waitUntil(^(DoneCallback done) {
+                    [robot updateStateWithCompletion:^(NSError * _Nullable error) {
+                        expect([robot supportService:@"service_1" version:@"version_not_supported"]).to.equal(NO);
+                        done();
+                    }];
+                });
+            });
         });
         
         context(@"Cleaning support",^{
