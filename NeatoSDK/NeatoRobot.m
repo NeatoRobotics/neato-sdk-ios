@@ -207,6 +207,9 @@ NSString * const kNeatoError_RobotServices = @"Robot.Services";
     return self.availableServices[serviceName];
 }
 
+- (BOOL)supportService:(NSString *)serviceName version:(NSString *)version{
+    return [self.availableServices[serviceName] isEqualToString:version];
+}
 
 #pragma mark Cleaning
 

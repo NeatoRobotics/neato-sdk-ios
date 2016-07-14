@@ -198,6 +198,13 @@ extern NSString * const kNeatoError_RobotServices;
  **/
 - (NSString * _Nullable)supportedVersionForService:(NSString*)serviceName;
 
+/**
+ Return true if the robot supports the given version for a specific service.
+ 
+ @param serviceName
+ @param version
+ **/
+- (BOOL)supportService:(NSString *)serviceName version:(NSString *)version;
 
 /**
  Send the findMe command to the robot.
