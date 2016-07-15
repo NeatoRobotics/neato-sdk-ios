@@ -173,7 +173,7 @@
 
 #pragma mark - Cleaning -
 
-- (IBAction)startCleaning:(id)sender{
+- (IBAction)startHouseCleaning:(id)sender{
     [self startLoading];
 
     __weak typeof(self) weakSelf = self;
@@ -191,6 +191,28 @@
                                          NSLog(@"%@", error.localizedDescription);
                                      }
     }];
+}
+
+- (IBAction)startSpotCleaning:(id)sender{
+    [self startLoading];
+    
+    __weak typeof(self) weakSelf = self;
+    [self.robot startCleaningWithParameters:@{@"category":@(RobotCleaningCategorySpot),
+                                              @"modifier":@(RobotCleaningModifierNormal),
+                                              @"mode":@(RobotCleaningModeTurbo),
+                                              @"spotWidth":@(200),
+                                              @"spotHeight":@(200),
+                                              @"navigationMode":@(RobotNavigationModeNormal)}
+                                 completion:^(NSError * _Nullable error) {
+                                     if(error == nil){
+                                         
+                                         [weakSelf updateStateDescription];
+                                         [weakSelf syncButtonsWithAvailableCommands];
+                                         [weakSelf stopLoading];
+                                     }else{
+                                         NSLog(@"%@", error.localizedDescription);
+                                     }
+                                 }];
 }
 
 - (IBAction)stopCleaning:(id)sender{

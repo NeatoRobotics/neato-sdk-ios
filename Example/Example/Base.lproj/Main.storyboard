@@ -324,7 +324,7 @@ CLEANING</string>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="startCleaning:" destination="dBV-B0-yel" eventType="touchUpInside" id="TxZ-Bd-7GP"/>
+                                            <action selector="startHouseCleaning:" destination="dBV-B0-yel" eventType="touchUpInside" id="Wfo-0T-xGX"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -339,7 +339,7 @@ CLEANING</string>
                                 <rect key="frame" x="301" y="56" width="299" height="110"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HV6-Ch-A39">
-                                        <rect key="frame" x="111" y="28" width="78" height="53"/>
+                                        <rect key="frame" x="110" y="28" width="78" height="53"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
                                         <state key="normal">
                                             <string key="title">SPOT
@@ -350,7 +350,7 @@ CLEANING</string>
                                             <color key="titleColor" white="1" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="startCleaning:" destination="dBV-B0-yel" eventType="touchUpInside" id="sdA-U0-DQ8"/>
+                                            <action selector="startSpotCleaning:" destination="dBV-B0-yel" eventType="touchUpInside" id="aO4-wo-CC1"/>
                                         </connections>
                                     </button>
                                 </subviews>
