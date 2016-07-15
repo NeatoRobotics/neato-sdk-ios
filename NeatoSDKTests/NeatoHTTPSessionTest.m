@@ -2,6 +2,9 @@
 #import <Expecta/Expecta.h>
 #import "NeatoSDKSessionManager.h"
 #import "MockNeatoTokenStore.h"
+#import <OHHTTPStubs/OHHTTPStubs.h>
+#import <OHHTTPStubs/OHHTTPStubsResponse+JSON.h>
+#import "OHHTTPStubs+Neato.h"
 
 @import NeatoSDK;
 
@@ -61,6 +64,18 @@ describe(@"NeatoHTTPSessionManager", ^{
                 });
             });
 
+        });
+    });
+    
+    
+    describe(@"HTTP calls", ^{
+        context(@"GET",^{
+            before(^{
+                [OHHTTPStubs stub:@"/a_get_call"
+                         withJSON:@"{\"result\":\"ok\"}"
+                             code:200];
+            });
+            
         });
     });
 });

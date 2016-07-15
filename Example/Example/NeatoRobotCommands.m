@@ -12,6 +12,13 @@
 @property (nonatomic, weak) IBOutlet UISwitch* scheduleSwitch;
 @property (nonatomic, weak) IBOutlet UILabel* robotState;
 @property (nonatomic, weak) IBOutlet UIView* loader;
+
+// Commands Buttons
+@property (nonatomic, weak) IBOutlet UIButton *startHouseCleaning;
+@property (nonatomic, weak) IBOutlet UIButton *startSpotCleaning;
+@property (nonatomic, weak) IBOutlet UIButton *pauseCleaning;
+@property (nonatomic, weak) IBOutlet UIButton *stopCleaning;
+@property (nonatomic, weak) IBOutlet UIButton *dock;
 @end
 
 @implementation NeatoRobotCommands
@@ -22,8 +29,19 @@
     NSAssert(self.robot != nil, @"A robot is needed...");
     
     self.title = self.robot.name;
+    [self setupUI];
     [self attachLoader];
     [self updateRobotState];
+}
+
+- (void)setupUI{
+
+    self.startHouseCleaning.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.startHouseCleaning.titleLabel.numberOfLines = 2;
+    self.startHouseCleaning.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.startSpotCleaning.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self.startSpotCleaning.titleLabel.numberOfLines = 2;
+    self.startSpotCleaning.titleLabel.textAlignment = NSTextAlignmentCenter;
 }
 
 - (void)attachLoader{
@@ -113,10 +131,22 @@
 
     [self.robot updateStateWithCompletion:^(NSError * _Nonnull error) {
         [weakSelf updateStateDescription];
+        [weakSelf syncButtonsWithAvailableCommands];
         [weakSelf stopLoading];
     }];
 }
 
+- (void) syncButtonsWithAvailableCommands{
+    self.startSpotCleaning.enabled = [self.robot.availableCommands[@"start"]boolValue];
+    self.startHouseCleaning.enabled = [self.robot.availableCommands[@"start"]boolValue];
+
+    self.pauseCleaning.enabled = [self.robot.availableCommands[@"pause"]boolValue];
+    self.stopCleaning.enabled = [self.robot.availableCommands[@"stop"]boolValue];
+    self.dock.enabled = [self.robot.availableCommands[@"goToBase"]boolValue];
+
+    
+    NSLog(@"%@", self.robot.availableCommands);
+}
 
 - (IBAction)robotInfo:(id)sender{
     [self.robot getScheduleWithCompletion:^(NSDictionary * _Nonnull scheduleInfo, NSError * _Nullable error) {
@@ -153,7 +183,9 @@
                                               @"navigationMode":@(RobotNavigationModeNormal)}
                                  completion:^(NSError * _Nullable error) {
                                      if(error == nil){
+                                         
                                          [weakSelf updateStateDescription];
+                                         [weakSelf syncButtonsWithAvailableCommands];
                                          [weakSelf stopLoading];
                                      }else{
                                          NSLog(@"%@", error.localizedDescription);
@@ -169,6 +201,7 @@
     [self.robot stopCleaningWithCompletion:^(NSError * _Nullable error) {
         
         [weakSelf updateStateDescription];
+        [weakSelf syncButtonsWithAvailableCommands];
         [weakSelf stopLoading];
     }];
 }
@@ -181,6 +214,7 @@
     [self.robot pauseCleaningWithCompletion:^(NSError * _Nullable error) {
         
         [weakSelf updateStateDescription];
+        [weakSelf syncButtonsWithAvailableCommands];
         [weakSelf stopLoading];
     }];
 }
@@ -193,6 +227,7 @@
     [self.robot sendToBaseWithCompletion:^(NSError * _Nullable error) {
         
         [weakSelf updateStateDescription];
+        [weakSelf syncButtonsWithAvailableCommands];
         [weakSelf stopLoading];
     }];
 }

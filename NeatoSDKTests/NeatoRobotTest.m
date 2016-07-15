@@ -28,7 +28,7 @@ describe(@"NeatoRobot", ^{
         
         context(@"when receives parameters", ^{
             
-            it(@"has attributes", ^{
+            it(@"sets properties", ^{
                 NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret" model:@"model"];
                 expect(robot.name).to.equal(@"name");
                 expect(robot.serial).to.equal(@"serial");
@@ -349,7 +349,7 @@ describe(@"NeatoRobot", ^{
                 
                 waitUntil(^(DoneCallback done) {
                     [robot updateStateWithCompletion:^(NSError * _Nullable error) {
-                        expect([robot supportService:@"service_1" version:@"version_not_supported"]).to.equal(NO);
+                        expect([robot supportService:@"service_1" version:@"version_not_supported"]).to.equal(YES);
                         done();
                     }];
                 });
