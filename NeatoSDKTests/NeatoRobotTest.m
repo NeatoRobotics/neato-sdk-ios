@@ -349,7 +349,7 @@ describe(@"NeatoRobot", ^{
                 
                 waitUntil(^(DoneCallback done) {
                     [robot updateStateWithCompletion:^(NSError * _Nullable error) {
-                        expect([robot supportService:@"service_1" version:@"version_not_supported"]).to.equal(YES);
+                        expect([robot supportService:@"service_1" version:@"version_not_supported"]).to.equal(NO);
                         done();
                     }];
                 });
