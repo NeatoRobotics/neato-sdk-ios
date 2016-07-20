@@ -44,7 +44,7 @@ Just call the configuration method in the `application:didFinishLaunchingWithOpt
 ```objective-c
 [NeatoAuthentication configureWithClientID:@"YOUR_CLIENT_ID"
                    scopes:@[NeatoOAuthScopeControlRobots]
-              redirectURI:@“MyCompanyNeatoCommander://neato"];
+              redirectURI:@"MyCompanyNeatoCommander://neato"];
 ```
 
 #### 3. Showing the Login page
@@ -107,8 +107,8 @@ and accessing user’s info:
 
   if(!error){
 		NSLog(@"%@ %@ %@",
-       userinfo[@"first_name"], 
-       userinfo[@"last_name"], 
+       userinfo[@"first_name"],
+       userinfo[@"last_name"],
        userinfo[@"email"]
     );
 	}
@@ -136,7 +136,7 @@ Each robot has a specific status that can be easily obtained using the function 
 }
 ```
 
-__Important Note:__ An instance of the `NeatoRobot` class doesn't update its state automatically. To get the updated robot state you need to call `updateStateWithCompletion` anytime you want to refresh the state of robot instance. 
+__Important Note:__ An instance of the `NeatoRobot` class doesn't update its state automatically. To get the updated robot state you need to call `updateStateWithCompletion` anytime you want to refresh the state of robot instance.
 The robot state is automatically updated when some specific commands completes (to get the list of this commands check the API documentation for the commands that respond with a __State Responses__. Some examples of those commands are `startCleaning`, stopCleaning` and `pauseCleaning`).
 
 #### Sending commands to a Robot
@@ -151,48 +151,48 @@ An online robot is ready to receives commands like `start cleaning`:
   completion:^(NSError * _Nullable error) {
 		if(!error){
 			// Robot is cleaning!
-			// now its state is “busy” and its action “cleaning house”
+			// now its state is "busy" and its action "cleaning house"
 		}
 }];
 ```
 
 Within the completion block of a command that changes the robot status (like `start cleaning`) the updated robot status is immediately available. Accessing robot properties from there you can be sure that you are working with the most recent robot status.
-Example: You call `pause cleaning` on a robot that has a state equal to`Busy` and `House Cleaning` as action. Inside the completion block of `pause cleaning` (if the call succeeds without errors) robot.state will be now equal to “Paused” and robot.action to “House Cleaning”.
+Example: You call `pause cleaning` on a robot that has a state equal to`Busy` and `House Cleaning` as action. Inside the completion block of `pause cleaning` (if the call succeeds without errors) robot.state will be now equal to "Paused" and robot.action to "House Cleaning".
 
 #### Available commands
 When you ask to update robot state through the `updateStateWithCompletion` function you also update the available commands list for the current robot state. These commands are `start`, `stop`, `pause`, `resume` and `goToBase` and they are listed under the `availableCommands` property (`NSDictionary`) of each `NeatoRobot` instance.
-You can leverage on this elements to show or hide buttons in your user interface. As example, when the robot is cleaning, `availableCommands` is equal to: 
+You can leverage on this elements to show or hide buttons in your user interface. As example, when the robot is cleaning, `availableCommands` is equal to:
 
-``` json
-	“start”: 0,
-	“stop”: 1,
-	“pause”: 1, 
-	“resume”: 0, 
-	“goToBase”: 0
+```json
+	"start": 0,
+	"stop": 1,
+	"pause": 1,
+	"resume": 0,
+	"goToBase": 0
 ```
-In this case, you might want to enable “stop” and “pause” buttons and disable “start” on your user interface.
+In this case, you might want to enable "stop" and "pause" buttons and disable "start" on your user interface.
 
 
-#### Robot Services 
-To identify the services available for a robot you can rely on the `availableServices` property returned by a `getRobotState` call. 
+#### Robot Services
+To identify the services available for a robot you can rely on the `availableServices` property returned by a `getRobotState` call.
 
-``` JSON
-    “availableServices”:{
-        “houseCleaning”: “basic-1”,
-        “manualCleaning”: “basic-1”,
-        “spotCleaning”: “basic-1”,
-        “easyConnect”: “basic-1”,
-        “schedule”: “basic-1”,
-        “softwareUpdate”: “basic-1”,
-        “findMe”:”basic-1”,
-        “localStats”:”advanced-1”
+```json
+    "availableServices":{
+        "houseCleaning": "basic-1",
+        "manualCleaning": "basic-1",
+        "spotCleaning": "basic-1",
+        "easyConnect": "basic-1",
+        "schedule": "basic-1",
+        "softwareUpdate": "basic-1",
+        "findMe":"basic-1",
+        "localStats":"advanced-1"
     }
 ```
 
 A `service` might have one or more versions. Take `houseCleaning` as example: this service supports 3 different versions, `minimal-1`, `basic-1` and `basic-2`. In turn each version might have completely different functions, or functions that require different parameters.
-You can read more about `houseCleaning` service here (__LINK NEEDED__). 
+You can read more about `houseCleaning` service here (__LINK NEEDED__).
 
-Before sending a command to a robot you should verify the robot supports that command and, depending on the service supported, you decide which function to call and white which parameters. 
+Before sending a command to a robot you should verify the robot supports that command and, depending on the service supported, you decide which function to call and white which parameters.
 
 
 
