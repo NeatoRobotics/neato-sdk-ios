@@ -27,7 +27,7 @@ typedef NS_ENUM(NSUInteger, RobotState) {
 
 /**
  @typedef RobotAction
- @brief An action that specify why a robot is busy (or paused)
+ @brief The robot action when state is busy or paused
  @constant RobotActionInvalid               An invalid action
  @constant RobotActionHouseCleaning         Robot is in House Cleaning mode
  @constant RobotActionSpotCleaning          Robot is in Spot Cleaning mode
@@ -51,17 +51,36 @@ typedef NS_ENUM(NSUInteger, RobotAction) {
     RobotActionRecoveryLocation
 };
 
+/**
+ @typedef RobotCleaningCategory
+ @brief The cleaning category
+ @constant RobotCleaningCategoryManual        Manual drive
+ @constant RobotCleaningCategoryHouse         House cleaning
+ @constant RobotCleaningCategorySpot          Spot cleaning
+ */
 typedef NS_ENUM(NSUInteger, RobotCleaningCategory){
     RobotCleaningCategoryManual = 1,
     RobotCleaningCategoryHouse  = 2,
     RobotCleaningCategorySpot   = 3
 };
 
+/**
+ @typedef RobotCleaningMode
+ @brief The cleaning mode
+ @constant RobotCleaningModeEco        Eco
+ @constant RobotCleaningModeTurbo      Turbo
+ */
 typedef NS_ENUM(NSUInteger, RobotCleaningMode){
     RobotCleaningModeEco    = 1,
     RobotCleaningModeTurbo  = 2
 };
 
+/**
+ @typedef RobotCleaningModifier
+ @brief The cleaning modifier
+ @constant RobotCleaningModeEco        Eco
+ @constant RobotCleaningModeTurbo      Turbo
+ */
 typedef NS_ENUM(NSUInteger, RobotCleaningModifier){
     RobotCleaningModifierNormal = 1,
     RobotCleaningModifierDouble = 2
