@@ -195,9 +195,16 @@ You can read more about `houseCleaning` service here (__LINK NEEDED__).
 Before sending a command to a robot you should verify the robot supports that command and, depending on the service supported, you decide which function to call and white which parameters.
 
 
+## Compile the SDK 
+The SDK internally uses Carthage to handle dependencies. 
 
+Currently we are adopting `specta/expecta` and `OHTTPStubs` to write all the SDK tests. Those libraries are not included into the repository, hence you cannot download the SDK source and just compile but you have to pull and compile the missing frameworks. 
+The fastest way to go is to move into the project folder from terminal and launch the Carthage bootstrap command:
 
-
+```
+carthage bootstrap —use-submodules  
+```
+This command will read the latest resolved frameworks version (you can check them into the cartfile.resolved), pull and compile the needed builds. Now you can compile and test the SDK. 
 
 
 
