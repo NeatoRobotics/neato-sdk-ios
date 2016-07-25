@@ -63,10 +63,21 @@ static NSString * const kNeatoOAuthAuthorizeEndPoint = @"https://beehive.neatocl
     [NeatoAuthentication sharedInstance].redirectURI = redirectURI;
 }
 
+- (NSURL*) authorizationURL{
+    
+    NSString *parametersString = [NSString stringWithFormat:@"client_id=%@&redirect_uri=%@&scope=%@&response_type=token",
+                                  self.clientID,
+                                  self.redirectURI,
+                                  [self.authScopes componentsJoinedByString:@"+"]];
+    
+    NSString *urlPath = [kNeatoOAuthLoginEndPoint stringByAppendingString:parametersString];
+    return [NSURL URLWithString:urlPath];
+}
+
 - (void) openLoginInBrowserWithCompletion:(NeatoAuthenticationCallback) completionHandler{
     self.authenticationCallback = completionHandler;
     
-    NSURL *authURL = [self buildAuthorizationURL];
+    NSURL *authURL = [self authorizationURL];
 
     if ([[UIApplication sharedApplication] canOpenURL:authURL]) {
         [[UIApplication sharedApplication] openURL:authURL]; // LCOV_EXCL_LINE
@@ -77,7 +88,7 @@ static NSString * const kNeatoOAuthAuthorizeEndPoint = @"https://beehive.neatocl
 - (void) presentLoginControllerWithCompletion:(NeatoAuthenticationCallback) completionHandler{
     self.authenticationCallback = completionHandler;
     
-    NSURL *authURL = [self buildAuthorizationURL];
+    NSURL *authURL = [self authorizationURL];
     
     UIViewController *viewController = [[[UIApplication sharedApplication] keyWindow] rootViewController];
     SFSafariViewController *safariViewController = [[SFSafariViewController alloc] initWithURL:authURL];
@@ -171,17 +182,6 @@ static NSString * const kNeatoOAuthAuthorizeEndPoint = @"https://beehive.neatocl
 }
 
 #pragma mark - Private Methods
-
-- (NSURL*) buildAuthorizationURL{
-    
-    NSString *parametersString = [NSString stringWithFormat:@"client_id=%@&redirect_uri=%@&scope=%@&response_type=token",
-                            self.clientID,
-                            self.redirectURI,
-                            [self.authScopes componentsJoinedByString:@"+"]];
-    
-    NSString *urlPath = [kNeatoOAuthLoginEndPoint stringByAppendingString:parametersString];
-    return [NSURL URLWithString:urlPath];
-}
 
 - (void) storeAccessTokenData{
     [self.tokenStore storeAccessToken:self.accessToken expirationDate:self.accessTokenExpiration];

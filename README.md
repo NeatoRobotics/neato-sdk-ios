@@ -1,4 +1,4 @@
-[![Build Status](https://magnum.travis-ci.com/NeatoRobotics/neato-sdk-ios.svg?token=qhAJEiMuuszAF4XdspZf&branch=master)](https://magnum.travis-ci.com/NeatoRobotics/neato-sdk.ios)
+[![Build Status](https://magnum.travis-ci.com/NeatoRobotics/neato-sdk-ios.svg?token=qhAJEiMuuszAF4XdspZf&branch=master)](https://magnum.travis-ci.com/NeatoRobotics/neato-sdk-ios)
 
 
 #Neato SDK - iOS

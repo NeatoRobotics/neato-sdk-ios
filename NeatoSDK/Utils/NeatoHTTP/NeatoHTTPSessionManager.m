@@ -83,6 +83,10 @@ NS_ASSUME_NONNULL_BEGIN
     return [self dataTaskWithHTTPMethod:@"PUT" URLString:URLString parameters:parameters success:success failure:failure];
 }
 
+- (void) clearSession{
+    [self.session finishTasksAndInvalidate];
+}
+
 #pragma mark - Private -
 
 - (NSURLSessionDataTask *_Nullable)dataTaskWithHTTPMethod:(NSString *)method
@@ -114,8 +118,8 @@ NS_ASSUME_NONNULL_BEGIN
         }];
         
         [dataTask resume];
-        [weakSelf.session finishTasksAndInvalidate];
-        
+        // Clear section here.
+        [weakSelf clearSession];
         return dataTask;
     }
 }

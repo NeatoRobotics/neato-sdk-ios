@@ -60,8 +60,17 @@ typedef void (^NeatoAuthenticationLogoutCallback)(NSError* _Nullable  error);
                        scopes: (NSArray<NSString*> *) scopes
                   redirectURI: (NSString*) redirectURI;
 
+
+/** 
+ Obtain the authorization url. 
+ You might need this method to write a custom authentication flow.
+ Use `openLoginInBrowserWithCompletion` or `presentLogicnControllerWithCompletion` to run
+ the default authentication flow.
+ **/
+- (NSURL*) authorizationURL;
+
 /**
- Launch the login process with an external browser.
+ Launch the authentication process with an external browser.
  
  @param  completionHandler
  
@@ -70,7 +79,7 @@ typedef void (^NeatoAuthenticationLogoutCallback)(NSError* _Nullable  error);
 
 #if TARGET_OS_IOS
 /**
- Launch the login process with a local viewController
+ Launch the authentication process with a local viewController
  
  @param  completionHandler
  
