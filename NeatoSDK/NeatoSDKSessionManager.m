@@ -37,6 +37,7 @@ NSString * const kNucleoBaseURLPath = @"https://nucleo.neatocloud.com:4443/";
     [manager setValue:authValue forHTTPHeaderField:@"Authorization"];
     [manager setValue:@"application/vnd.neato.nucleo.v1" forHTTPHeaderField:@"Accept"];
     [manager setValue:date forHTTPHeaderField:@"Date"];
+    [manager setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     [manager setValue:@"iOS-SDK" forHTTPHeaderField:@"X-Agent"];
     
     return manager;
@@ -46,6 +47,9 @@ NSString * const kNucleoBaseURLPath = @"https://nucleo.neatocloud.com:4443/";
     
     NeatoSDKSessionManager *manager = [[self alloc]initWithBaseURL:[NSURL URLWithString:url]];
     NSString *authValue = [NSString stringWithFormat:@"%@ %@", key, value];
+    [manager setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [manager setValue:@"application/vnd.neato.beehive.v1" forHTTPHeaderField:@"Accept"];
+    [manager setValue:@"iOS-SDK" forHTTPHeaderField:@"X-Agent"];
     [manager setValue:authValue forHTTPHeaderField:@"Authorization"];
     
     return manager;
