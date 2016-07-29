@@ -27,6 +27,7 @@ static NSString * const kNeatoOAuthAuthorizeEndPoint = @"https://beehive.neatocl
 
 @interface NeatoAuthentication()
 @property (nonatomic, strong) NeatoAuthenticationCallback authenticationCallback;
+@property (nonatomic, strong) NSString *oauthState;
 @end
 
 @implementation NeatoAuthentication
@@ -64,11 +65,12 @@ static NSString * const kNeatoOAuthAuthorizeEndPoint = @"https://beehive.neatocl
 }
 
 - (NSURL*) authorizationURL{
-    
-    NSString *parametersString = [NSString stringWithFormat:@"client_id=%@&redirect_uri=%@&scope=%@&response_type=token",
+    self.oauthState = [NSString stringWithFormat:@"st%dst",arc4random_uniform(10000)];
+    NSString *parametersString = [NSString stringWithFormat:@"client_id=%@&redirect_uri=%@&scope=%@&response_type=token&state=%@",
                                   self.clientID,
                                   self.redirectURI,
-                                  [self.authScopes componentsJoinedByString:@"+"]];
+                                  [self.authScopes componentsJoinedByString:@"+"],
+                                  self.oauthState];
     
     NSString *urlPath = [kNeatoOAuthLoginEndPoint stringByAppendingString:parametersString];
     return [NSURL URLWithString:urlPath];
@@ -146,6 +148,18 @@ static NSString * const kNeatoOAuthAuthorizeEndPoint = @"https://beehive.neatocl
                     NSDate *expirationDate = [NSDate dateWithTimeInterval:[value integerValue] sinceDate:[NSDate date]];
                     self.accessTokenExpiration = expirationDate;
                 }
+                
+                if ([key isEqualToString:@"state"]){
+                    
+                    if(![value isEqualToString:self.oauthState]){
+                        self.authenticationCallback([NSError errorWithDomain:NeatoAuthenticationErrorDomain code:2 userInfo:nil]);
+                        self.accessToken = nil;
+                        self.accessTokenExpiration = nil;
+                        NSLog(@"Neato SDK: state param is not valid.");
+                        break;
+                    }
+                }
+
             }
         }
         
