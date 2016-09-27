@@ -202,7 +202,7 @@ To identify the services available for a robot you can rely on the `availableSer
     }
 ```
 
-A `service` might have one or more versions. Take `houseCleaning` as example: this service supports 3 different versions, `basic-1`, `minimal-2` and `basic-2`. Each version might have completely different functions, or functions that require different parameters. You can read more about `houseCleaning` service here (__LINK NEEDED__).
+A `service` might have one or more versions. Take `houseCleaning` as example: this service supports 3 different versions, `basic-1`, `minimal-2` and `basic-2`. Each version might have completely different functions, or functions that require different parameters. You can read more about `houseCleaning` service [here](https://developers.neatorobotics.com/api/robot-remote-protocol/housecleaning).
 
 Before sending a command to a robot you should verify the robot supports that command and, depending on the service supported, you decide which function to call and with which parameters.
 
