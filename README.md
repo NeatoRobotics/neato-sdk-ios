@@ -1,8 +1,7 @@
 [![Build Status](https://magnum.travis-ci.com/NeatoRobotics/neato-sdk-ios.svg?token=qhAJEiMuuszAF4XdspZf&branch=master)](https://magnum.travis-ci.com/NeatoRobotics/neato-sdk-ios)
 
 # Neato SDK - iOS
-
-This is the official iOS SDK (Beta release) for the Neato API services.
+The official iOS SDK (Beta release) for the Neato API services can be found at this [link](https://github.com/NeatoRobotics/neato-sdk-ios).
 The Neato iOS SDK enables iOS apps to easily communicate with Neato connected robots and use its various features.
 
 To boost your development, you can also check the *sample application*.
