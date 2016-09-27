@@ -71,7 +71,7 @@ The user will be presented with a login page (on Safari) and when it completes t
 
 A slightly different way to present the login page is via `presentLoginControllerWithCompletion`. This method pushes a new view controller into your app hierarchy. The presented controller is an instance of `SFSafariViewController` that loads and presents the Neato Login page. The advantage of using this method is that your users don’t have to leave the App to perform the login.
 
-```
+```objective-c
 [[NeatoAuthentication sharedInstance] presentLoginControllerWithCompletion:^(NSError * _Nullable error) {
 	  if(error == nil){
       // The user is logged! do something here
@@ -178,7 +178,7 @@ Example: You call `pauseCleaning` on a robot that has a state equal to`Busy` and
 When you ask to update robot state through the `updateStateWithCompletion` function you also update the available commands list for the current robot state. These commands are `start`, `stop`, `pause`, `resume` and `goToBase` and they are listed under the `availableCommands` property (`NSDictionary`) of each `NeatoRobot` instance.
 You can leverage on these elements to show or hide buttons in your user interface. As example, when the robot is cleaning, `availableCommands` is equal to:
 
-```json
+```
 	"start": 0,
 	"stop": 1,
 	"pause": 1,
@@ -192,7 +192,7 @@ In this case, you might want to enable "stop" and "pause" buttons and disable "s
 
 To identify the services available for a robot you can rely on the `availableServices` property returned by a `getRobotState` call.
 
-```json
+```
     "availableServices":{
         "houseCleaning": "basic-1",
         "manualCleaning": "basic-1",
