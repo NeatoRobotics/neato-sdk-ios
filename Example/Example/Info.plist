@@ -29,7 +29,7 @@
 			<string>NeatoAuth</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>marco-app</string>
+				<string>neato-mobile-demo</string>
 			</array>
 		</dict>
 	</array>
