@@ -17,11 +17,8 @@
 NSString* const NeatoAuthenticationErrorDomain  = @"com.neatosdk.authentication";
 NSString* const NeatoOAuthScopeControlRobots    = @"control_robots";
 NSString* const NeatoOAuthScopePublicProfile    = @"public_profile";
-NSString* const NeatoOAuthScopeViewRobots       = @"view_robots";
-NSString* const NeatoOAuthScopeEmail            = @"email";
 
-static NSString * const kNeatoOAuthLoginEndPoint = @"https://beehive.neatocloud.com/login?";
-static NSString * const kNeatoOAuthAuthorizeEndPoint = @"https://beehive.neatocloud.com/oauth2/revoke";
+static NSString * const kNeatoOAuthAuthorizeEndPoint = @"https://apps.neatorobotics.com/oauth2/authorize?";
 
 #pragma mark - NeatoAuthentication Implementation
 
@@ -72,7 +69,7 @@ static NSString * const kNeatoOAuthAuthorizeEndPoint = @"https://beehive.neatocl
                                   [self.authScopes componentsJoinedByString:@"+"],
                                   self.oauthState];
     
-    NSString *urlPath = [kNeatoOAuthLoginEndPoint stringByAppendingString:parametersString];
+    NSString *urlPath = [kNeatoOAuthAuthorizeEndPoint stringByAppendingString:parametersString];
     return [NSURL URLWithString:urlPath];
 }
 
