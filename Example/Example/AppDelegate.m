@@ -19,7 +19,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [NeatoAuthentication configureWithClientID:@"71511e87da9aa6e42e7f350bdd74385effea087b64ab65d682fd0b683b9cfdca"
+    [NeatoAuthentication configureWithClientID:@"c1804e0f1cf184892470dd360f8006e64026e80db9dc04c1741785eddb1ed100"
                                 scopes:@[NeatoOAuthScopeControlRobots, NeatoOAuthScopePublicProfile]
                            redirectURI:@"neato-mobile-demo://demo"];
     
