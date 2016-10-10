@@ -21,8 +21,6 @@ typedef enum : NSUInteger {
 extern NSString* const NeatoAuthenticationErrorDomain;
 extern NSString* const NeatoOAuthScopeControlRobots;
 extern NSString* const NeatoOAuthScopePublicProfile;
-extern NSString* const NeatoOAuthScopeViewRobots;
-extern NSString* const NeatoOAuthScopeEmail;
                        
 typedef void (^NeatoAuthenticationCallback)(NSError* _Nullable error );
 typedef void (^NeatoAuthenticationLogoutCallback)(NSError* _Nullable  error);
