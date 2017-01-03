@@ -402,7 +402,7 @@ describe(@"NeatoRobot", ^{
             before(^{
                 signInUser();
                 [OHHTTPStubs stub:@"/users/me/robots/serial/maps"
-                         withFile:@"beehive_get_maps.json"
+                         withJSON:@"{\"maps\":[{\"map\":\"a\"},{\"map\":\"b\"}]}"
                              code:200];
             });
             
@@ -469,6 +469,7 @@ describe(@"NeatoRobot", ^{
                 
                 waitUntil(^(DoneCallback done) {
                     [robot getMapInfo:@"mapid" completion:^(NSDictionary * _Nonnull mapInfo, NSError * _Nullable error) {
+
                         expect(error.domain).to.equal(@"Robot.Services");
                         done();
                     }];
