@@ -6,4 +6,6 @@ branches:
 before_install:
  - brew update
  - carthage update --no-use-binaries --platform iOS
-script: xctool -workspace NeatoSDK.xcworkspace/ -scheme NeatoSDK test -sdk iphonesimulator
+
+script: xcodebuild -scheme NeatoSDK test -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.0' | xcpretty
+
