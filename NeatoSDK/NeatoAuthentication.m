@@ -17,6 +17,7 @@
 NSString* const NeatoAuthenticationErrorDomain  = @"com.neatosdk.authentication";
 NSString* const NeatoOAuthScopeControlRobots    = @"control_robots";
 NSString* const NeatoOAuthScopePublicProfile    = @"public_profile";
+NSString* const NeatoOAuthScopeMaps             = @"maps";
 
 static NSString * const kNeatoOAuthAuthorizeEndPoint = @"https://apps.neatorobotics.com/oauth2/authorize?";
 

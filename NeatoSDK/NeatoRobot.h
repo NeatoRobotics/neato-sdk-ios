@@ -202,13 +202,29 @@ extern NSString * const kNeatoError_RobotServices;
  **/
 - (void)setScheduleWithCleaningEvent:(NSArray *)events completion:(void (^)(NSError * _Nullable error))completion;
 
-/** 
+/**
  Request the schedule information to the robot.
  
  @param completion: a block that contains the schedule info returned or an error if the call fail.
  
- **/
+ ***/
 - (void)getScheduleWithCompletion:(void (^)(NSDictionary * scheduleInfo, NSError * _Nullable error))completion;
+
+/**
+ Request Map list for the robot.
+ 
+ @param completion: a block that contains the map list returned or an error if the call fail.
+ **/
+- (void)getMapsWithCompletion:(void (^)(NSArray * maps, NSError * _Nullable error))completion;
+
+/**
+ Request the map information to the robot.
+ 
+ @param mapID: A mapID (you can retrieve the current map list using the getMapsWithCompletion: call
+ @param completion: a block that contains the map info returned or an error if the call fail.
+ 
+ ***/
+- (void)getMapInfo:(NSString*)mapID completion:(void (^)(NSDictionary * mapInfo, NSError * _Nullable error))completion;
 
 /** 
  Return the version for the given service. It returns Nil if the service is not supported

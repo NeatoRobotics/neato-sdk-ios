@@ -144,7 +144,6 @@
     self.stopCleaning.enabled = [self.robot.availableCommands[@"stop"]boolValue];
     self.dock.enabled = [self.robot.availableCommands[@"goToBase"]boolValue];
 
-    
     NSLog(@"%@", self.robot.availableCommands);
 }
 
@@ -159,13 +158,7 @@
     [self.robot findMeWithCompletion:^(NSError * _Nullable error) {
         if(error){
             if(error.domain == kNeatoError_RobotServices){
-                UIAlertController *ctr = [UIAlertController alertControllerWithTitle:@"Error"
-                                                    message:@"Find Me is not supported by this robot"
-                                             preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *action = [UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleDefault handler:nil];
-                [ctr addAction:action];
-                
-                [weakSelf presentViewController:ctr animated:true completion:nil];
+                [weakSelf showMessage:@"Find Me is not supported by this robot" title:@"Error"];
             }
         }
     }];
@@ -318,6 +311,50 @@
     [self.robot disableScheduleWithCompletion:^(NSError * _Nullable error) {
         [weakSelf stopLoading];
     }];
+}
+
+#pragma mark - Maps -
+
+- (IBAction)getMaps{
+    [self startLoading];
+    
+    __weak typeof(self) weakSelf = self;
+    
+    // Get the list of Maps for this robot
+    [self.robot getMapsWithCompletion:^(NSArray * _Nonnull maps, NSError * _Nullable error) {
+        
+        if(error == nil){
+            if (maps.count > 0){
+                // Get details for a specific Map
+                NSString *mapID = maps[0][@"id"];
+                
+                [self.robot getMapInfo:mapID completion:^(NSDictionary * _Nonnull mapInfo, NSError * _Nullable error) {
+                    if (error == nil){
+                        [weakSelf showMessage:[NSString stringWithFormat:@"%@",mapInfo] title:@"Maps info"];
+                    }
+                    [weakSelf stopLoading];
+                }];
+            }
+        }else{
+            if(error.domain == kNeatoError_RobotServices){
+                [weakSelf showMessage:@"Maps service is not supported by this robot" title:@"Error"];
+            }
+            
+            [weakSelf stopLoading];
+        }
+    }];
+}
+
+#pragma mark - UI -
+
+- (void)showMessage:(NSString *)message title:(NSString *)title{
+    UIAlertController *ctr = [UIAlertController alertControllerWithTitle:title
+                                                                 message:message
+                                                          preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"ok" style:UIAlertActionStyleDefault handler:nil];
+    [ctr addAction:action];
+    
+    [self presentViewController:ctr animated:true completion:nil];
 }
 
 - (void)startLoading{

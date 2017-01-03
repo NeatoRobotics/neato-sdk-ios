@@ -1,10 +1,14 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Neato Login View Controller-->
@@ -16,18 +20,18 @@
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CKV-6h-1mD">
-                                <rect key="frame" x="225" y="273" width="150" height="55"/>
+                                <rect key="frame" x="85" y="256.5" width="150" height="55"/>
                                 <state key="normal" image="Login_BTN"/>
                                 <connections>
                                     <action selector="launchLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lxy-Ri-by1"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.97254901959999995" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.9658360481262207" green="0.98049330711364746" blue="0.98019146919250488" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="CKV-6h-1mD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="X2D-Cc-JXe"/>
                             <constraint firstItem="CKV-6h-1mD" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="poa-eY-8FP"/>
@@ -45,11 +49,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" translucent="NO" id="XQr-CZ-xWW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="barTintColor" red="0.20000000000000001" green="0.23921568630000001" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.20000000000000001" green="0.23921568630000001" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="0.0"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
@@ -69,61 +73,61 @@
                         <viewControllerLayoutGuide type="bottom" id="cVi-2V-prZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9DA-4s-7cb">
-                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hjB-U6-ZRF">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
-                                <color key="backgroundColor" red="0.20000000000000001" green="0.23921568630000001" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="separatorColor" red="0.46666666670000001" green="0.52549019610000003" blue="0.56470588239999997" alpha="0.58814903846153843" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.23921568630000001" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="separatorColor" red="0.46666666670000001" green="0.52549019610000003" blue="0.56470588239999997" alpha="0.58814903846153843" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="yRD-wt-zh7">
-                                    <rect key="frame" x="0.0" y="98" width="600" height="1"/>
+                                    <rect key="frame" x="0.0" y="98" width="320" height="1"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="0.46666666670000001" green="0.52549019610000003" blue="0.56470588239999997" alpha="0.0" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" red="0.46666666670000001" green="0.52549019610000003" blue="0.56470588239999997" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="robot_cell" rowHeight="70" id="06f-Ty-f1q" customClass="RobotCell">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="70"/>
+                                        <rect key="frame" x="0.0" y="28" width="320" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="06f-Ty-f1q" id="bnL-uL-Blf">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="70"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yD7-3m-xUk">
                                                     <rect key="frame" x="18" y="8" width="43" height="24"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
-                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Model" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSn-RN-1kq">
                                                     <rect key="frame" x="18" y="37" width="41" height="20"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
-                                                    <color key="textColor" red="0.74509803919999995" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.74509803919999995" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wLP-53-9VZ">
-                                                    <rect key="frame" x="548" y="11" width="33" height="17"/>
+                                                    <rect key="frame" x="268" y="11" width="33" height="17"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="12"/>
-                                                    <color key="textColor" red="0.97254901959999995" green="0.98431372549999996" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" red="0.9658360481262207" green="0.98049330711364746" blue="0.98019146919250488" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Battery" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2YU-L8-oD5">
-                                                    <rect key="frame" x="536" y="37" width="45" height="20"/>
+                                                    <rect key="frame" x="256" y="37" width="45" height="20"/>
                                                     <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="14"/>
-                                                    <color key="textColor" red="0.74509803919999995" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.74509803919999995" green="0.85098039219999999" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PSV-2K-HxM">
-                                                    <rect key="frame" x="516" y="61" width="65" height="2"/>
+                                                    <rect key="frame" x="236" y="61" width="65" height="2"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="65" id="am2-g7-IDE"/>
                                                     </constraints>
-                                                    <color key="progressTintColor" red="0.4431372549" green="0.73333333329999995" blue="0.30980392159999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <color key="trackTintColor" red="0.46666666670000001" green="0.52549019610000003" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="progressTintColor" red="0.37897604703903198" green="0.69380801916122437" blue="0.2440754771232605" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="trackTintColor" red="0.46666666670000001" green="0.52549019610000003" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </progressView>
                                             </subviews>
-                                            <color key="backgroundColor" red="0.20000000000000001" green="0.23921568630000001" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.20000000000000001" green="0.23921568630000001" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="vSn-RN-1kq" firstAttribute="leading" secondItem="yD7-3m-xUk" secondAttribute="leading" id="2Cr-GZ-jZa"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="2YU-L8-oD5" secondAttribute="trailing" constant="11" id="Ihr-NW-RJx"/>
@@ -137,7 +141,7 @@
                                                 <constraint firstItem="yD7-3m-xUk" firstAttribute="leading" secondItem="bnL-uL-Blf" secondAttribute="leadingMargin" constant="10" id="nGK-aQ-Oy3"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.20000000000000001" green="0.23921568630000001" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.20000000000000001" green="0.23921568630000001" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="battery" destination="2YU-L8-oD5" id="mBv-bz-4Yh"/>
                                             <outlet property="batteryIndicator" destination="PSV-2K-HxM" id="jys-3L-GeQ"/>
@@ -154,7 +158,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.20000000000000001" green="0.23921568630000001" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.20000000000000001" green="0.23921568630000001" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="hjB-U6-ZRF" firstAttribute="leading" secondItem="9DA-4s-7cb" secondAttribute="leading" id="9dv-J4-kXZ"/>
                             <constraint firstItem="cVi-2V-prZ" firstAttribute="top" secondItem="hjB-U6-ZRF" secondAttribute="bottom" id="KNK-6y-Gdp"/>
@@ -164,7 +168,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="vSO-zf-ECG">
                         <barButtonItem key="rightBarButtonItem" image="User_ICN" id="WVo-Pl-cTA">
-                            <color key="tintColor" red="0.95686274510000002" green="0.96862745100000003" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.94620072841644287" green="0.96030831336975098" blue="0.97521597146987915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <segue destination="FuR-EA-VOq" kind="presentation" modalTransitionStyle="flipHorizontal" id="Wbv-DN-5zN"/>
                             </connections>
@@ -191,9 +195,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XMP-TH-367">
-                                <rect key="frame" x="93" y="138" width="15" height="25"/>
+                                <rect key="frame" x="93" y="138" width="16" height="25"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="18"/>
-                                <color key="textColor" red="0.20000000000000001" green="0.23921568630000001" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.23921568630000001" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="User_ICN" translatesAutoresizingMaskIntoConstraints="NO" id="uw1-hM-xEl">
@@ -203,7 +207,7 @@
                                 <rect key="frame" x="16" y="30" width="33" height="29"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="12"/>
                                 <state key="normal" title="BACK">
-                                    <color key="titleColor" red="0.0039215686269999999" green="0.1450980392" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.0039215686269999999" green="0.1450980392" blue="0.2274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="6qD-1Z-PfO" kind="unwind" unwindAction="unwindToDashboard:" id="blJ-hM-tuT"/>
@@ -211,20 +215,20 @@
                             </button>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="we5-6G-5B2">
                                 <rect key="frame" x="90" y="171" width="20" height="20"/>
-                                <color key="color" red="0.20000000000000001" green="0.23921568630000001" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="color" red="0.20000000000000001" green="0.23921568630000001" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cNX-SL-P7R">
                                 <rect key="frame" x="132" y="28" width="52" height="29"/>
                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="12"/>
                                 <state key="normal" title="LOGOUT">
-                                    <color key="titleColor" red="0.0039215686269999999" green="0.1450980392" blue="0.2274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="0.0039215686269999999" green="0.1450980392" blue="0.2274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="logout" destination="FuR-EA-VOq" eventType="touchUpInside" id="vT4-Ux-d25"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="XMP-TH-367" firstAttribute="top" secondItem="uw1-hM-xEl" secondAttribute="bottom" constant="10" id="7IM-Us-HOD"/>
                             <constraint firstItem="we5-6G-5B2" firstAttribute="top" secondItem="XMP-TH-367" secondAttribute="bottom" constant="8" id="85N-ho-Jnj"/>
@@ -265,18 +269,19 @@
                         <viewControllerLayoutGuide type="bottom" id="Pc7-po-3Nb"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="6aZ-m7-YJH">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CDW-dl-USc">
                                 <rect key="frame" x="15" y="37" width="134" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Testing HTTP CALL"/>
                                 <connections>
                                     <action selector="sendData" destination="XpZ-Ui-wG7" eventType="touchUpInside" id="tBZ-li-KIS"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZXd-kR-x9C" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -292,28 +297,28 @@
                         <viewControllerLayoutGuide type="bottom" id="ZnX-cw-uEx"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cBO-R7-ujK">
-                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PRe-p8-Drd">
-                                <rect key="frame" x="293" y="15" width="13" height="21"/>
+                                <rect key="frame" x="154" y="15" width="13" height="21"/>
                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="15"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CtR-7c-Liz" userLabel="houseCleaning">
-                                <rect key="frame" x="0.0" y="56" width="299" height="110"/>
+                                <rect key="frame" x="0.0" y="56" width="159" height="80"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NWz-ZG-yww">
-                                        <rect key="frame" x="111" y="28" width="78" height="53"/>
+                                        <rect key="frame" x="41" y="13" width="78" height="53"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
                                         <state key="normal">
                                             <string key="title">HOUSE
 CLEANING</string>
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <state key="disabled">
-                                            <color key="titleColor" white="1" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="titleLabel.numberOfLines">
@@ -328,77 +333,77 @@ CLEANING</string>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.14179927147239263" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14179927147239263" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="NWz-ZG-yww" firstAttribute="centerY" secondItem="CtR-7c-Liz" secondAttribute="centerY" id="RBr-3Z-HPC"/>
                                     <constraint firstItem="NWz-ZG-yww" firstAttribute="centerX" secondItem="CtR-7c-Liz" secondAttribute="centerX" id="i5v-hA-dTw"/>
-                                    <constraint firstAttribute="height" constant="110" id="lUD-Qo-PkW"/>
+                                    <constraint firstAttribute="height" constant="80" id="lUD-Qo-PkW"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zlz-Ok-niq" userLabel="houseCleaning">
-                                <rect key="frame" x="301" y="56" width="299" height="110"/>
+                                <rect key="frame" x="161" y="56" width="159" height="80"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HV6-Ch-A39">
-                                        <rect key="frame" x="110" y="28" width="78" height="53"/>
+                                        <rect key="frame" x="40" y="13" width="78" height="53"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
                                         <state key="normal">
                                             <string key="title">SPOT
 CLEANING</string>
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <state key="disabled">
-                                            <color key="titleColor" white="1" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="startSpotCleaning:" destination="dBV-B0-yel" eventType="touchUpInside" id="aO4-wo-CC1"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.14179927149999999" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14179927149999999" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="110" id="8tL-fT-qL9"/>
+                                    <constraint firstAttribute="height" constant="80" id="8tL-fT-qL9"/>
                                     <constraint firstItem="HV6-Ch-A39" firstAttribute="centerX" secondItem="Zlz-Ok-niq" secondAttribute="centerX" id="Jg4-12-Og6"/>
                                     <constraint firstItem="HV6-Ch-A39" firstAttribute="centerY" secondItem="Zlz-Ok-niq" secondAttribute="centerY" id="m5m-7a-t8V"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BcY-cP-yfw" userLabel="Scheduling_bg">
-                                <rect key="frame" x="0.0" y="278" width="600" height="90"/>
+                                <rect key="frame" x="0.0" y="271" width="320" height="90"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cdy-gb-FkL">
-                                        <rect key="frame" x="194" y="44" width="78" height="33"/>
+                                        <rect key="frame" x="54" y="44" width="78" height="33"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
                                         <state key="normal" title="EVERYDAY">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="scheduleWeek" destination="dBV-B0-yel" eventType="touchUpInside" id="SKE-ED-yko"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scheduling" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgF-zy-ydy">
-                                        <rect key="frame" x="258" y="15" width="85" height="24"/>
+                                        <rect key="frame" x="118" y="15" width="85" height="24"/>
                                         <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="0.68746405291411039" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="0.68746405291411039" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UuJ-fk-tll">
-                                        <rect key="frame" x="518" y="12" width="51" height="31"/>
-                                        <color key="onTintColor" red="0.46666666670000001" green="0.52549019610000003" blue="0.56470588239999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        <rect key="frame" x="238" y="12" width="51" height="31"/>
+                                        <color key="onTintColor" red="0.46666666670000001" green="0.52549019610000003" blue="0.56470588239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <action selector="scheduleStateChanged:" destination="dBV-B0-yel" eventType="valueChanged" id="2Iv-TZ-pE1"/>
                                         </connections>
                                     </switch>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vm0-BE-ePO">
-                                        <rect key="frame" x="329" y="44" width="69" height="33"/>
+                                        <rect key="frame" x="189" y="44" width="69" height="33"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
                                         <state key="normal" title="MONDAY">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="scheduleMonday" destination="dBV-B0-yel" eventType="touchUpInside" id="aGe-Ru-HsJ"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.23486104147003306" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.23486104147003306" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="vm0-BE-ePO" firstAttribute="leading" secondItem="dgF-zy-ydy" secondAttribute="trailing" constant="-14" id="Ke5-RY-5JV"/>
                                     <constraint firstItem="UuJ-fk-tll" firstAttribute="centerY" secondItem="dgF-zy-ydy" secondAttribute="centerY" id="LPx-Vd-q3A"/>
@@ -412,42 +417,42 @@ CLEANING</string>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YwX-8e-KXx" userLabel="spotCleaning">
-                                <rect key="frame" x="0.0" y="168" width="600" height="90"/>
+                                <rect key="frame" x="0.0" y="138" width="320" height="80"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FdZ-TR-P0r">
-                                        <rect key="frame" x="0.0" y="0.0" width="199" height="90"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.14179927149999999" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="105.5" height="80"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14179927149999999" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
                                         <state key="normal" title="PAUSE">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <state key="disabled">
-                                            <color key="titleColor" white="1" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="pauseCleaning:" destination="dBV-B0-yel" eventType="touchUpInside" id="Sik-Zt-jxt"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NgT-dE-suc">
-                                        <rect key="frame" x="401" y="0.0" width="199" height="90"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.14179927149999999" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <rect key="frame" x="214.5" y="0.0" width="105.5" height="80"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14179927149999999" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
                                         <state key="normal" title="DOCK">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <state key="disabled">
-                                            <color key="titleColor" white="1" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNf-4p-5BV">
-                                        <rect key="frame" x="200" y="0.0" width="199" height="90"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.14179927149999999" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        <rect key="frame" x="107.5" y="0.0" width="105" height="80"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.14179927149999999" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
                                         <state key="normal" title="STOP">
-                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <state key="disabled">
-                                            <color key="titleColor" white="1" alpha="0.29999999999999999" colorSpace="calibratedWhite"/>
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="stopCleaning:" destination="dBV-B0-yel" eventType="touchUpInside" id="9g6-8K-XIu"/>
@@ -466,33 +471,53 @@ CLEANING</string>
                                     <constraint firstItem="FdZ-TR-P0r" firstAttribute="height" secondItem="YwX-8e-KXx" secondAttribute="height" id="jUv-DL-J0s"/>
                                     <constraint firstAttribute="trailing" secondItem="NgT-dE-suc" secondAttribute="trailing" id="ktY-70-zio"/>
                                     <constraint firstItem="NgT-dE-suc" firstAttribute="height" secondItem="YwX-8e-KXx" secondAttribute="height" id="uYQ-Ri-jwl"/>
-                                    <constraint firstAttribute="height" constant="90" id="uyP-jd-ZOO"/>
+                                    <constraint firstAttribute="height" constant="80" id="uyP-jd-ZOO"/>
                                     <constraint firstItem="eNf-4p-5BV" firstAttribute="centerY" secondItem="YwX-8e-KXx" secondAttribute="centerY" id="xLS-8s-c7i"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3st-B9-Mo4">
+                                <rect key="frame" x="107" y="220" width="106" height="49"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.15064225462883435" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="106" id="Ddg-i4-3hP"/>
+                                    <constraint firstAttribute="height" constant="49" id="YXs-j6-B1E"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="15"/>
+                                <state key="normal" title="GET MAPS">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="getMaps" destination="dBV-B0-yel" eventType="touchUpInside" id="8sh-X9-3BK"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.20000000000000001" green="0.23921568630000001" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.20000000000000001" green="0.23921568630000001" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="YwX-8e-KXx" firstAttribute="top" secondItem="CtR-7c-Liz" secondAttribute="bottom" constant="2" id="0g8-wJ-Buw"/>
                             <constraint firstItem="CtR-7c-Liz" firstAttribute="width" secondItem="Zlz-Ok-niq" secondAttribute="width" id="5PN-g6-5NM"/>
                             <constraint firstItem="Zlz-Ok-niq" firstAttribute="leading" secondItem="CtR-7c-Liz" secondAttribute="trailing" constant="2" id="7Ve-bt-yv3"/>
                             <constraint firstAttribute="trailing" secondItem="YwX-8e-KXx" secondAttribute="trailing" id="9zP-wc-sDy"/>
+                            <constraint firstItem="BcY-cP-yfw" firstAttribute="top" secondItem="3st-B9-Mo4" secondAttribute="bottom" constant="2" id="Bgb-w5-rFk"/>
                             <constraint firstAttribute="trailing" secondItem="Zlz-Ok-niq" secondAttribute="trailing" id="FdC-GG-j9Y"/>
+                            <constraint firstItem="3st-B9-Mo4" firstAttribute="top" secondItem="eNf-4p-5BV" secondAttribute="bottom" constant="2" id="KMe-Fz-S3J"/>
                             <constraint firstItem="Zlz-Ok-niq" firstAttribute="top" secondItem="PRe-p8-Drd" secondAttribute="bottom" constant="20" id="Km8-RC-qfB"/>
                             <constraint firstItem="BcY-cP-yfw" firstAttribute="leading" secondItem="cBO-R7-ujK" secondAttribute="leading" id="cfa-GY-6TB"/>
                             <constraint firstItem="CtR-7c-Liz" firstAttribute="top" secondItem="PRe-p8-Drd" secondAttribute="bottom" constant="20" id="ePg-Nj-qHR"/>
                             <constraint firstItem="PRe-p8-Drd" firstAttribute="centerX" secondItem="cBO-R7-ujK" secondAttribute="centerX" id="ez8-bu-DV9"/>
                             <constraint firstAttribute="trailing" secondItem="BcY-cP-yfw" secondAttribute="trailing" id="in9-7S-M6y"/>
                             <constraint firstItem="CtR-7c-Liz" firstAttribute="leading" secondItem="cBO-R7-ujK" secondAttribute="leading" id="ljU-w9-eMv"/>
+                            <constraint firstItem="3st-B9-Mo4" firstAttribute="centerX" secondItem="cBO-R7-ujK" secondAttribute="centerX" id="u6V-Xq-a4J"/>
                             <constraint firstItem="PRe-p8-Drd" firstAttribute="top" secondItem="VQX-9K-21Q" secondAttribute="bottom" constant="15" id="wkQ-RN-zne"/>
-                            <constraint firstItem="BcY-cP-yfw" firstAttribute="top" secondItem="YwX-8e-KXx" secondAttribute="bottom" constant="20" id="xvS-qK-Iu1"/>
                             <constraint firstItem="YwX-8e-KXx" firstAttribute="leading" secondItem="cBO-R7-ujK" secondAttribute="leading" id="zzI-jh-1kp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="Zg4-qK-kr0">
                         <rightBarButtonItems>
                             <barButtonItem style="done" systemItem="refresh" id="jrm-lE-T91">
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <action selector="updateRobotState" destination="dBV-B0-yel" id="R7t-ir-o0T"/>
                                 </connections>
@@ -526,11 +551,11 @@ CLEANING</string>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOADING" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ra-XH-5On">
                             <rect key="frame" x="97" y="82" width="46" height="14"/>
                             <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="10"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="0.6641224118098159" colorSpace="calibratedRGB"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="0.6641224118098159" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.20000000000000001" green="0.23921568630000001" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" red="0.20000000000000001" green="0.23921568630000001" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="9ra-XH-5On" firstAttribute="centerX" secondItem="sz6-GU-tVz" secondAttribute="centerX" id="3M1-U7-aul"/>
                         <constraint firstItem="7OW-Ww-kuu" firstAttribute="centerY" secondItem="sz6-GU-tVz" secondAttribute="centerY" id="GHA-Ew-DRv"/>
@@ -539,7 +564,7 @@ CLEANING</string>
                     </constraints>
                 </view>
             </objects>
-            <point key="canvasLocation" x="2704" y="747"/>
+            <point key="canvasLocation" x="2703.75" y="746.83098591549299"/>
         </scene>
     </scenes>
     <resources>

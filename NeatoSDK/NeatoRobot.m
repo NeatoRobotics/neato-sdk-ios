@@ -12,6 +12,9 @@
 #import "NSString+Neato.h"
 
 static NSString *kNeatoNucleoMessagesPath = @"/vendors/neato/robots/%@/messages";
+static NSString *kNeatoBeehiveMapsPath = @"/users/me/robots/%@/maps";
+static NSString *kNeatoBeehiveMapInfoPath = @"/users/me/robots/%@/maps/%@";
+
 NSString * const kNeatoError_RobotServices = @"Robot.Services";
 
 @implementation NeatoRobot
@@ -279,6 +282,70 @@ NSString * const kNeatoError_RobotServices = @"Robot.Services";
 - (void)getScheduleWithCompletion:(void (^)(NSDictionary * scheduleInfo, NSError * _Nullable error))completion{
     if ([self supportedVersionForService:@"schedule"]){
         [self sendCommand:@"getSchedule" parameters:nil completion:completion];
+    }else{
+        completion(nil, [NSError errorWithDomain:kNeatoError_RobotServices code:1 userInfo:nil]);
+    }
+}
+
+#pragma mark - Maps - 
+
+- (void)getMapsWithCompletion:(void (^)(NSArray * maps, NSError * _Nullable error))completion{
+    
+    if ([self supportedVersionForService:@"maps"]){
+        NeatoSDKSessionManager *manager = [NeatoSDKSessionManager authenticatedBeehiveManager];
+        
+        NSString *path = [NSString stringWithFormat:kNeatoBeehiveMapsPath,self.serial];
+        
+        if (manager != nil){
+            [manager GET:path
+              parameters:nil
+                progress:^(NSProgress * _Nonnull downloadProgress) {}
+                 success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                     
+                     if ([responseObject isKindOfClass:[NSDictionary class]]){
+                         if ([responseObject objectForKey:@"maps"]){
+                             completion(responseObject[@"maps"], nil);
+                         }
+                     }else{
+                         completion(nil, [NSError errorWithDomain:@"Beehive.Maps" code:1 userInfo:nil]);
+                     }
+                 }
+                 failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                     completion(nil, error);
+                 }];
+        }else{
+            completion(nil, [NSError errorWithDomain:@"OAuth" code:1 userInfo:nil]);
+        }
+    }else{
+        completion(nil, [NSError errorWithDomain:kNeatoError_RobotServices code:1 userInfo:nil]);
+    }
+}
+
+- (void)getMapInfo:(NSString*)mapID completion:(void (^)(NSDictionary * mapInfo, NSError * _Nullable error))completion{
+    
+    if ([self supportedVersionForService:@"maps"]){
+        NeatoSDKSessionManager *manager = [NeatoSDKSessionManager authenticatedBeehiveManager];
+        
+        NSString *path = [NSString stringWithFormat:kNeatoBeehiveMapInfoPath,self.serial, mapID];
+        
+        if (manager != nil){
+            [manager GET:path
+              parameters:nil
+                progress:^(NSProgress * _Nonnull downloadProgress) {}
+                 success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                     
+                     if ([responseObject isKindOfClass:[NSDictionary class]]){
+                        completion(responseObject, nil);
+                     }else{
+                         completion(nil, [NSError errorWithDomain:@"Beehive.MapInfo" code:1 userInfo:nil]);
+                     }
+                 }
+                 failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                     completion(nil, error);
+                 }];
+        }else{
+            completion(nil, [NSError errorWithDomain:@"OAuth" code:1 userInfo:nil]);
+        }
     }else{
         completion(nil, [NSError errorWithDomain:kNeatoError_RobotServices code:1 userInfo:nil]);
     }
