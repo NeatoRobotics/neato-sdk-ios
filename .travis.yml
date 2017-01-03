@@ -5,5 +5,5 @@ branches:
     - master
 before_install:
  - brew update
- - carthage bootstrap --use-submodules --platform iOS
+ - carthage update ---no-use-binaries --platform iOS
 script: xctool -workspace NeatoSDK.xcworkspace/ -scheme NeatoSDK test -sdk iphonesimulator
