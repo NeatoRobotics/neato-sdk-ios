@@ -397,6 +397,85 @@ describe(@"NeatoRobot", ^{
         });
     });
     
+    describe(@"Maps", ^{
+        context(@"When a list of maps is available", ^{
+            before(^{
+                signInUser();
+                [OHHTTPStubs stub:@"/users/me/robots/serial/maps"
+                         withFile:@"beehive_get_maps.json"
+                             code:200];
+            });
+            
+            it(@"receives the list",^{
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret" model:@"botvacConnected"];
+                [robot forceServices:@{@"maps":@"basic-1"}];
+                
+                waitUntil(^(DoneCallback done) {
+                    [robot getMapsWithCompletion:^(NSArray * _Nonnull maps, NSError * _Nullable error) {
+                        expect([maps count]).to.equal(2);
+                        done();
+                    }];
+                });
+            });
+        });
+        
+        context(@"When requests specific map info", ^{
+            before(^{
+                signInUser();
+                [OHHTTPStubs stub:@"/users/me/robots/serial/maps/mapid"
+                         withFile:@"beehive_get_map_info.json"
+                             code:200];
+            });
+            
+            it(@"receives map info",^{
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret" model:@"botvacConnected"];
+                [robot forceServices:@{@"maps":@"basic-1"}];
+                
+                waitUntil(^(DoneCallback done) {
+                    [robot getMapInfo:@"mapid" completion:^(NSDictionary * _Nonnull mapInfo, NSError * _Nullable error) {
+                       
+                        expect(mapInfo[@"id"]).to.equal(@"mapid");
+                        done();
+                    }];
+                });
+            });
+        });
+        
+        context(@"When robot doesn't support maps", ^{
+            before(^{
+                signInUser();
+                [OHHTTPStubs stub:@"/users/me/robots/serial/maps"
+                         withFile:@"beehive_get_maps.json"
+                             code:200];
+                
+                [OHHTTPStubs stub:@"/users/me/robots/serial/maps/mapid"
+                         withFile:@"beehive_get_map_info.json"
+                             code:200];
+            });
+            
+            it(@"receives an error for get maps",^{
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret" model:@"botvacConnected"];
+                
+                waitUntil(^(DoneCallback done) {
+                    [robot getMapsWithCompletion:^(NSArray * _Nonnull maps, NSError * _Nullable error) {
+                        expect(error.domain).to.equal(@"Robot.Services");
+                        done();
+                    }];
+                });
+            });
+            
+            it(@"receives an error for map info",^{
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret" model:@"botvacConnected"];
+                
+                waitUntil(^(DoneCallback done) {
+                    [robot getMapInfo:@"mapid" completion:^(NSDictionary * _Nonnull mapInfo, NSError * _Nullable error) {
+                        expect(error.domain).to.equal(@"Robot.Services");
+                        done();
+                    }];
+                });
+            });
+        });
+    });
     
     describe(@"Schedule", ^{
         
