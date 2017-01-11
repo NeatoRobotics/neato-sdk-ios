@@ -20,7 +20,7 @@ To boost your development, you can also check the *sample application*.
 To integrate the NeatoSDK into your Xcode project using Carthage, specify it in your Cartfile:
 
 ```
-github "NeatoRobotics/neato-sdk-ios" ~> 0.7
+github "NeatoRobotics/neato-sdk-ios" ~> 0.8
 ```
 
 ### Manually
