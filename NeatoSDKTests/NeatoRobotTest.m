@@ -400,6 +400,10 @@ describe(@"NeatoRobot", ^{
     
     describe(@"Maps", ^{
         
+        beforeAll(^{
+            [OHHTTPStubs removeAllStubs];
+        });
+        
         context(@"When cleaning service supports map cleaning", ^{
             before(^{
                 signInUser();
