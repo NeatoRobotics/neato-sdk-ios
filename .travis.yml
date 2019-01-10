@@ -1,11 +1,11 @@
 language: objective-c
-osx_image: xcode8.2
+osx_image: xcode10.1
 branches:
   only:
     - master
 before_install:
  - brew update
- - carthage update --no-use-binaries --platform iOS
+ - carthage bootstrap --no-use-binaries --platform iOS
 
 script: xcodebuild -scheme NeatoSDK test -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.0' | xcpretty
 
