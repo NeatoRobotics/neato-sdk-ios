@@ -94,6 +94,11 @@ NSString * const kNeatoError_RobotServices = @"Robot.Services";
             case RobotCleaningCategorySpot:
                 serviceVersion = [self supportedVersionForService:@"spotCleaning"];
                 break;
+            case RobotCleaningCategoryMap:
+                serviceVersion = [self supportedVersionForService:@"houseCleaning"];
+                if (!([serviceVersion isEqualToString:@"basic-3"] || [serviceVersion isEqualToString:@"basic-4"])){
+                    serviceVersion = nil;
+                }
             default:
                 break;
         }

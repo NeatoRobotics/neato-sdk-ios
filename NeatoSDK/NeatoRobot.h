@@ -61,7 +61,8 @@ typedef NS_ENUM(NSUInteger, RobotAction) {
 typedef NS_ENUM(NSUInteger, RobotCleaningCategory){
     RobotCleaningCategoryManual = 1,
     RobotCleaningCategoryHouse  = 2,
-    RobotCleaningCategorySpot   = 3
+    RobotCleaningCategorySpot   = 3,
+    RobotCleaningCategoryMap    = 4
 };
 
 /**
