@@ -404,56 +404,6 @@ describe(@"NeatoRobot", ^{
             [OHHTTPStubs removeAllStubs];
         });
         
-        context(@"When cleaning service supports map cleaning", ^{
-            before(^{
-                signInUser();
-                
-                // A robot that support mapCleaning
-                [OHHTTPStubs stub:@"/vendors/neato/robots/serial/messages"
-                         withJSON:@"{\"result\":\"ok\", \"state\":1, \"availableServices\":{\"houseCleaning\":\"basic-3\"}}"
-                             code:200];
-            });
-            
-            it(@"it can clean with category 4", ^{
-                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret" model:@"botvacConnected"];
-                
-                waitUntil(^(DoneCallback done) {
-                    [robot updateStateWithCompletion:^(NSError * _Nullable error) {
-                        NSDictionary* mapCleaningParam = @{@"category":@(RobotCleaningCategoryMap)};
-                        [robot startCleaningWithParameters:mapCleaningParam completion:^(NSError * _Nullable error) {
-                            expect(error).beNil();
-                            done();
-                        }];
-                    }];
-                });
-            });
-        });
-        
-        context(@"When cleaning service doesn't support map cleaning", ^{
-            before(^{
-                signInUser();
-                
-                // A robot that support mapCleaning
-                [OHHTTPStubs stub:@"/vendors/neato/robots/serial/messages"
-                         withJSON:@"{\"result\":\"ok\", \"state\":1, \"availableServices\":{\"houseCleaning\":\"invalid_service\"}}"
-                             code:200];
-            });
-            
-            it(@"it cannot clean with category 4", ^{
-                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret" model:@"botvacConnected"];
-                
-                waitUntil(^(DoneCallback done) {
-                    [robot updateStateWithCompletion:^(NSError * _Nullable error) {
-                        NSDictionary* mapCleaningParam = @{@"category":@(RobotCleaningCategoryMap)};
-                        [robot startCleaningWithParameters:mapCleaningParam completion:^(NSError * _Nullable error) {
-                            expect(error).toNot.beNil();
-                            done();
-                        }];
-                    }];
-                });
-            });
-        });
-        
         context(@"When a list of maps is available", ^{
             before(^{
                 signInUser();
@@ -529,6 +479,56 @@ describe(@"NeatoRobot", ^{
 
                         expect(error.domain).to.equal(@"Robot.Services");
                         done();
+                    }];
+                });
+            });
+        });
+        
+        context(@"When cleaning service supports map cleaning", ^{
+            before(^{
+                signInUser();
+                
+                // A robot that support mapCleaning
+                [OHHTTPStubs stub:@"/vendors/neato/robots/serial/messages"
+                         withJSON:@"{\"result\":\"ok\", \"state\":1, \"availableServices\":{\"houseCleaning\":\"basic-3\"}}"
+                             code:200];
+            });
+            
+            it(@"it can clean with category 4", ^{
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret" model:@"botvacConnected"];
+                
+                waitUntil(^(DoneCallback done) {
+                    [robot updateStateWithCompletion:^(NSError * _Nullable error) {
+                        NSDictionary* mapCleaningParam = @{@"category":@(RobotCleaningCategoryMap)};
+                        [robot startCleaningWithParameters:mapCleaningParam completion:^(NSError * _Nullable error) {
+                            expect(error).beNil();
+                            done();
+                        }];
+                    }];
+                });
+            });
+        });
+        
+        context(@"When cleaning service doesn't support map cleaning", ^{
+            before(^{
+                signInUser();
+                
+                // A robot that support mapCleaning
+                [OHHTTPStubs stub:@"/vendors/neato/robots/serial/messages"
+                         withJSON:@"{\"result\":\"ok\", \"state\":1, \"availableServices\":{\"houseCleaning\":\"invalid_service\"}}"
+                             code:200];
+            });
+            
+            it(@"it cannot clean with category 4", ^{
+                __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret" model:@"botvacConnected"];
+                
+                waitUntil(^(DoneCallback done) {
+                    [robot updateStateWithCompletion:^(NSError * _Nullable error) {
+                        NSDictionary* mapCleaningParam = @{@"category":@(RobotCleaningCategoryMap)};
+                        [robot startCleaningWithParameters:mapCleaningParam completion:^(NSError * _Nullable error) {
+                            expect(error).toNot.beNil();
+                            done();
+                        }];
                     }];
                 });
             });
