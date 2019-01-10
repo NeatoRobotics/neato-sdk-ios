@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/NeatoRobotics/neato-sdk-ios.svg?branch=master)](https://travis-ci.org/NeatoRobotics/neato-sdk-ios)
+[![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 # Neato SDK - iOS
 This is the [Neato Developer Network's](http://developers.neatorobotics.com) official iOS SDK (Beta release).
@@ -20,7 +21,7 @@ To boost your development, you can also check the *sample application*.
 To integrate the NeatoSDK into your Xcode project using Carthage, specify it in your Cartfile:
 
 ```
-github "NeatoRobotics/neato-sdk-ios" ~> 0.8
+github "NeatoRobotics/neato-sdk-ios" ~> 0.10.0
 ```
 
 ### Manually
