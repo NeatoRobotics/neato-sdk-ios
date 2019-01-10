@@ -458,6 +458,7 @@ describe(@"NeatoRobot", ^{
                              code:200];
             });
             
+            
             it(@"receives the list",^{
                 __block NeatoRobot *robot = [[NeatoRobot alloc]initWithName:@"name" serial:@"serial" secretKey:@"secret" model:@"botvacConnected"];
                 [robot forceServices:@{@"maps":@"basic-1"}];
